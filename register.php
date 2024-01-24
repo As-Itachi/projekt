@@ -18,7 +18,7 @@
             <div class="h-100 d-flex align-items-center justify-content-center">
                 <p>Registrieren</p>
             </div>
-            <form action="<?php echo $_SERVER['SCRIPT_NAME']?>">
+            <form method="POST" action="<?php echo $_SERVER['SCRIPT_NAME']?>">
                 <div class="mb-3 mt-3">
                     <label for="email" class="form-label">Email:</label>
                     <input type="email" class="form-control" id="email" placeholder="Email eingeben" name="email">
@@ -29,11 +29,32 @@
                 </div>
                 <div class="mb-3">
                     <label for="pwd" class="form-label">Passwort wiederholen:</label>
-                    <input type="password" class="form-control" id="pwd" placeholder="Passwort wiederholen" name="pswd">
+                    <input type="password" class="form-control" id="pwd" placeholder="Passwort wiederholen" name="pswd2">
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" name="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>
     </div>
+    <?php if(isset($_POST['submit'])) {
+        $email = $_POST['email'];
+        $pswd = $_POST['pswd'];
+        $pswd2 = $_POST['pswd2'];
+        if($pswd == $pswd2) {
+            $pswd = password_hash($pswd, PASSWORD_DEFAULT);
+            include_once 'include/dbConnection.php';
+            try{
+                $stmt = $pdo->prepare("INSERT INTO Benutzer (email, passwort) VALUES (:email, :passwort)");
+                $stmt->bindParam(':email', $email);
+                $stmt->bindParam(':passwort', $pswd);
+                $stmt->execute();
+            } catch(PDOException $e) {
+                echo "Error: " . $e->getMessage();
+                die();
+            }
+            header("Location: login.php");
+        } else {
+            echo "Passwords do not match";
+        }
+    } ?>
 </body>
 </html>
