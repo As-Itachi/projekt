@@ -18,7 +18,7 @@
             <div class="h-100 d-flex align-items-center justify-content-center">
                 <p>Registrieren</p>
             </div>
-            <form action="/action_page.php">
+            <form action="<?php echo $_SERVER['SCRIPT_NAME']?>">
                 <div class="mb-3 mt-3">
                     <label for="email" class="form-label">Email:</label>
                     <input type="email" class="form-control" id="email" placeholder="Email eingeben" name="email">
