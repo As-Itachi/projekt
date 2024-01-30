@@ -3,9 +3,9 @@
     session_start();
     require_once("include/dbConnection.php");
 
-    $_SESSION['idBenutzer'] = 'idBenutzer';
-    $_SESSION['istAdmin'] = 'istAdmin';
-    $_SESSION['passwort'] = 'passwort';
+    $_SESSION['idBenutzer'] = '';
+    $_SESSION['istAdmin'] = '';
+    $_SESSION['email'] = '';
 
 ?>
 
@@ -48,7 +48,7 @@
         $pswd = htmlspecialchars(trim($_POST['pswd']));
         include_once 'include/dbConnection.php';
         try{
-            $stmt = $pdo->prepare("SELECT passwort FROM Benutzer WHERE email = :email");
+            $stmt = $pdo->prepare("SELECT * FROM Benutzer WHERE email = :email");
             $stmt->bindParam(':email', $email);
             $stmt->execute();
         } catch(PDOException $e) {
@@ -83,6 +83,9 @@
                 echo "Login fehlgeschlagen";
             }
         } else {
+            $_SESSION['idBenutzer'] = $row['idBenutzer'];
+            $_SESSION['istAdmin'] = $row['istAdmin'];
+            $_SESSION['email'] = $row['email'];
             echo "Login fehlgeschlagen";
         }       
         
