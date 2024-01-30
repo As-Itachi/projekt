@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <div class="container-fluid">
+    <div class="container-fluid p-3">
         <div class="row">
         <div class="col-md-6">
             <?php
@@ -23,15 +23,18 @@
                         while ($zeile = $statement->fetch()) { 
                             $titel = $zeile['titel'];
                             $beschreibung = $zeile['beschreibung'];
+                            $id = $zeile['idBuecher'];
                             ?>
                             <tbody>
                                 <tr>
-                                    <td rowspan="2">Bild</td>
+                                    <td rowspan="2" class="p-1">
+                                        <img src="./bilder/<?php echo $id ?>.jpg" alt="Bild" width="100px" height="100px">
+                                    </td>
                                     <td colspan="2"><?php echo $titel ?></td>                   
                                 </tr>
                                 <tr>                               
-                                    <td><?php echo $beschreibung ?></td>           
-                                    <td>3. Spalte</td>
+                                    <td class="w-3"><?php echo $beschreibung ?></td>           
+                                    <td>Kaufen</td>
                                 </tr>
                             </tbody>
                             <?php
@@ -54,15 +57,18 @@
                         while ($zeile = $statement->fetch()) { 
                             $titel = $zeile['titel'];
                             $beschreibung = $zeile['beschreibung'];
+                            $id = $zeile['idBuecher'];
                             ?>
                             <tbody>
                                 <tr>
-                                    <td rowspan="2">Bild</td>
+                                    <td rowspan="2" class="p-1">
+                                        <img src="./bilder/<?php echo $id ?>.jpg" alt="Bild" width="100px" height="100px">
+                                    </td>
                                     <td colspan="2"><?php echo $titel ?></td>                   
                                 </tr>
                                 <tr>                               
                                     <td><?php echo $beschreibung ?></td>           
-                                    <td>3. Spalte</td>
+                                    <td>Kaufen</td>
                                 </tr>
                             </tbody>
                             <?php
