@@ -11,38 +11,54 @@
 
 <body>
 
-    <?php
 
-    require_once('include/dbConnection.php');
-
-
-
-    ?>
 
     <div class="container-fluid">
 
         <?php
 
-        $statement = $pdo->prepare("SELECT * FROM projektbuecher");
-
-        $statement->execute();
-
-        if($statement->rowCount() > 0){
+        require_once('include/dbConnection.php');
 
 
-            while($zeile = $statement->fetch()){
 
-                
+        try {
+
+            $statement = $pdo->prepare("SELECT * FROM buecher");
+
+            $statement->execute();
+
+            echo "<table>";
 
 
+            if ($statement->rowCount() > 0) {
+
+                while ($zeile = $statement->fetch()) { 
+                    ?>
+                    
+                    <tbody>
+                        <tr>
+                            <td rowspan="2">1. Spalte</td>
+                            <td colspan="2">2. Spalte</td>                   
+                        </tr>
+                        <tr>                               
+                            <td>2. Spalte</td>           
+                            <td>3. Spalte</td>
+                        </tr>
+                    </tbody>
+
+                    <?php
+                }
             }
+            echo "</table>";
+        } catch (PDOException $ex) {
 
-
+            die("Fehler beim Einfügen der Tabelle");
         }
 
+
         ?>
-
-
+        
+        
 
     </div>
 
