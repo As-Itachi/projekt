@@ -1,3 +1,14 @@
+<?php
+
+    session_start();
+    require_once("include/dbConnection.php");
+
+    $_SESSION['idBenutzer'] = 'idBenutzer';
+    $_SESSION['istAdmin'] = 'istAdmin';
+    $_SESSION['passwort'] = 'passwort';
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
