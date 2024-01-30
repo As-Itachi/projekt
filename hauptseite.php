@@ -10,53 +10,73 @@
 </head>
 
 <body>
-
-
-
     <div class="container-fluid">
-
-        <?php
-
-        require_once('include/dbConnection.php');
-
-
-
-        try {
-
-            $statement = $pdo->prepare("SELECT * FROM buecher");
-
-            $statement->execute();
-
-            echo "<table>";
-
-
-            if ($statement->rowCount() > 0) {
-
-                while ($zeile = $statement->fetch()) { 
-                    ?>
-                    
-                    <tbody>
-                        <tr>
-                            <td rowspan="2">1. Spalte</td>
-                            <td colspan="2">2. Spalte</td>                   
-                        </tr>
-                        <tr>                               
-                            <td>2. Spalte</td>           
-                            <td>3. Spalte</td>
-                        </tr>
-                    </tbody>
-
-                    <?php
+        <div class="row">
+        <div class="col-md-6">
+            <?php
+                require_once('include/dbConnection.php');
+                try {
+                    $statement = $pdo->prepare("SELECT * FROM buecher WHERE idBuecher % 2 = 0;");
+                    $statement->execute();
+                    echo "<table>";
+                    if ($statement->rowCount() > 0) {
+                        while ($zeile = $statement->fetch()) { 
+                            $titel = $zeile['titel'];
+                            $beschreibung = $zeile['beschreibung'];
+                            ?>
+                            <tbody>
+                                <tr>
+                                    <td rowspan="2">Bild</td>
+                                    <td colspan="2"><?php echo $titel ?></td>                   
+                                </tr>
+                                <tr>                               
+                                    <td><?php echo $beschreibung ?></td>           
+                                    <td>3. Spalte</td>
+                                </tr>
+                            </tbody>
+                            <?php
+                        }
+                    }
+                    echo "</table>";
+                } catch (PDOException $ex) {
+                    die("Fehler beim Einfügen der Tabelle");
                 }
-            }
-            echo "</table>";
-        } catch (PDOException $ex) {
+            ?>
+            </div>
+            <div class="col-md-6">
+            <?php
+                require_once('include/dbConnection.php');
+                try {
+                    $statement = $pdo->prepare("SELECT * FROM buecher WHERE idBuecher % 2 != 0;");
+                    $statement->execute();
+                    echo "<table>";
+                    if ($statement->rowCount() > 0) {
+                        while ($zeile = $statement->fetch()) { 
+                            $titel = $zeile['titel'];
+                            $beschreibung = $zeile['beschreibung'];
+                            ?>
+                            <tbody>
+                                <tr>
+                                    <td rowspan="2">Bild</td>
+                                    <td colspan="2"><?php echo $titel ?></td>                   
+                                </tr>
+                                <tr>                               
+                                    <td><?php echo $beschreibung ?></td>           
+                                    <td>3. Spalte</td>
+                                </tr>
+                            </tbody>
+                            <?php
+                        }
+                    }
+                    echo "</table>";
+                } catch (PDOException $ex) {
 
-            die("Fehler beim Einfügen der Tabelle");
-        }
-
-
-        ?>
+                    die("Fehler beim Einfügen der Tabelle");
+                }
+            ?>
+        
+            </div>
+        </div>
         
         
 
