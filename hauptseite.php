@@ -34,7 +34,7 @@
                                 </tr>
                                 <tr>                               
                                     <td class="w-3"><?php echo $beschreibung ?></td>           
-                                    <td>Kaufen</td>
+                                    <td><input type="submit" class="btn btn-success" value="Kaufen"></td>
                                 </tr>
                             </tbody>
                             <?php
@@ -68,7 +68,7 @@
                                 </tr>
                                 <tr>                               
                                     <td><?php echo $beschreibung ?></td>           
-                                    <td>Kaufen</td>
+                                    <td><td><input type="submit" class="btn btn-success" value="Kaufen"></td></td>
                                 </tr>
                             </tbody>
                             <?php
