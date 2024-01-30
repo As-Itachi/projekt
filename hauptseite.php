@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,11 +11,44 @@
 
 <body>
 
+    <?php
+
+    require_once('include/dbConnection.php');
+
+
+
+    ?>
+
+    <div class="container-fluid">
+
+        <?php
+
+        $statement = $pdo->prepare("SELECT * FROM projektbuecher");
+
+        $statement->execute();
+
+        if($statement->rowCount() > 0){
+
+
+            while($zeile = $statement->fetch()){
+
+                
+
+
+            }
+
+
+        }
+
+        ?>
+
+
+
+    </div>
 
 
 
 
 </body>
+
 </html>
-
-
