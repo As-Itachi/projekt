@@ -18,7 +18,10 @@ require_once('../include/dbConnection.php');
                 <div class="col-sm-2">
                     <ul class="list-group">
                         <li class="list-group-item">
-                            <a class="active" href="./kontodaten.php">Kontodaten</a>
+                            <a href="../hauptseite.php">Hauptseite</a>
+                        </li>
+                        <li class="list-group-item active text-white">
+                            <a href="./kontodaten.php">Kontodaten</a>
                         </li>
                         <li class="list-group-item">
                             <a href="./benutzerdaten.php">Benutzerdaten</a>

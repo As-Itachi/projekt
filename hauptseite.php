@@ -14,11 +14,11 @@ session_start();
 </head>
 
 <body>
+    <?php include('navbar/navbar.php'); ?>
     <div class="container-fluid p-3">
         <div class="row">
             <div class="col-md-6">
                 <?php
-                echo "email: " . $_SESSION['email'];
                 require_once('include/dbConnection.php');
                 try {
                     $statement = $pdo->prepare("SELECT * FROM buecher WHERE idBuecher % 2 = 0;");
