@@ -15,6 +15,18 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </head>
 <body>
+    <?php include('navbar/navbar.php'); ?>
+    <?php 
+        if($_GET['logout'] == true){
+            ?>
+            <div class="container-fluid w-25">
+                <div class="mt-4 p-3 bg-success border rounded text-white d-flex flex-column justify-content-center">
+                    <span class="text-center text-white">Sie wurden erfolgreich angemeldet</span>
+                </div>
+            </div>
+            <?php
+        }
+    ?>
     <div class="container-fluid w-25">
         <div class="mt-4 p-3 bg-primary border rounded text-white d-flex flex-column justify-content-center">
             <span class="text-center text-white">Haben Sie noch kein Konto?</span>
