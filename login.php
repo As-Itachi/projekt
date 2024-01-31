@@ -3,10 +3,6 @@
     session_start();
     require_once("include/dbConnection.php");
 
-    $_SESSION['idBenutzer'] = '';
-    $_SESSION['istAdmin'] = '';
-    $_SESSION['email'] = '';
-
 ?>
 
 <!DOCTYPE html>
@@ -78,14 +74,15 @@
                     echo "<h3>Die Daten (Passwort) wurden aktualisiert!</h3>";
                 }
                 echo "Login erfolgreich";
+                $_SESSION['idBenutzer'] = $row['idBenutzer'];
+                $_SESSION['istAdmin'] = $row['istAdmin'];
+                $_SESSION['email'] = $row['email'];
                 header("Location: hauptseite.php");
             } else {
                 echo "Login fehlgeschlagen";
             }
         } else {
-            $_SESSION['idBenutzer'] = $row['idBenutzer'];
-            $_SESSION['istAdmin'] = $row['istAdmin'];
-            $_SESSION['email'] = $row['email'];
+            
             echo "Login fehlgeschlagen";
         }       
         

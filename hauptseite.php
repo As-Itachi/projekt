@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,6 +18,7 @@
         <div class="row">
             <div class="col-md-6">
                 <?php
+                echo "email: " . $_SESSION['email'];
                 require_once('include/dbConnection.php');
                 try {
                     $statement = $pdo->prepare("SELECT * FROM buecher WHERE idBuecher % 2 = 0;");
