@@ -17,9 +17,15 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#" aria-current="page">Hauptseite</a>
                 </li>
+                <?php if(isset($_SESSION['email'])) { ?>
                 <li class="nav-item">
                     <a class="nav-link" href="./profil/">Benutzerprofil</a>
                 </li>
+                <?php } else {?>
+                <li class="nav-item">
+                    <a class="nav-link" href="./login.php">Anmelden</a>
+                </li>
+                <?php } ?>
             </ul>
             <a class="nav-link" href="./logout.php">Abmelden</a>
         </div>
