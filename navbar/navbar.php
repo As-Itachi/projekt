@@ -21,6 +21,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="./profil/">Benutzerprofil</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./warenkorb.php?/">Warenkorb</a>
+                </li>
                 <?php } else {?>
                 <li class="nav-item">
                     <a class="nav-link" href="./login.php">Anmelden</a>
