@@ -42,9 +42,9 @@
         </div>
     </div>
     <?php if(isset($_POST['submit'])) {
-        $email = $_POST['email'];
-        $pswd = $_POST['pswd'];
-        $pswd2 = $_POST['pswd2'];
+        $email = htmlspecialchars(trim($_POST['email']));
+        $pswd = htmlspecialchars(trim($_POST['pswd']));
+        $pswd2 = htmlspecialchars(trim($_POST['pswd2']));
         if($pswd == $pswd2) {
             $pswd = password_hash($pswd, PASSWORD_DEFAULT);
             include_once 'include/dbConnection.php';
