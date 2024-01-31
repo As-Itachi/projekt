@@ -16,15 +16,17 @@
 </head>
 <body>
     <?php include('navbar/navbar.php'); ?>
-    <?php 
-        if($_GET['logout'] == true){
-            ?>
-            <div class="container-fluid w-25">
-                <div class="mt-4 p-3 bg-success border rounded text-white d-flex flex-column justify-content-center">
-                    <span class="text-center text-white">Sie wurden erfolgreich angemeldet</span>
+    <?php
+        if(isset($_GET['logout'])){
+            if($_GET['logout'] == true){
+                ?>
+                <div class="container-fluid w-25">
+                    <div class="mt-4 p-3 bg-success border rounded text-white d-flex flex-column justify-content-center">
+                        <span class="text-center text-white">Sie wurden erfolgreich angemeldet</span>
+                    </div>
                 </div>
-            </div>
-            <?php
+                <?php
+            }
         }
     ?>
     <div class="container-fluid w-25">
