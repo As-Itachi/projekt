@@ -33,12 +33,58 @@ require_once('../include/dbConnection.php');
                 </div>
                 <div class="col-md-10">
                     <form action="<?php echo $_SERVER['SCRIPT_NAME']?>" method="post">
+                    <div class="mb-3 mt-3">
                         <label for="email" class="form-label">Email:</label>
-                        <input type="email" name="email" id="email" value="<?php echo $_SESSION['email']?>">
+                        <input type="email" class="form-control w-25" name="email" id="email" value="<?php echo $_SESSION['email']?>">
+                    </div>
+                    <input class="btn btn-primary" name="submit" type="submit" value="Email ändern">
                     </form>
                 </div>
             </div>
         </div>
     </div>
+    <?php
+    if(isset($_POST['submit'])){
+        $email = $_POST['email'];
+        $id = $_SESSION['idBenutzer'];
+        if($email == $_SESSION['email']){
+            echo "Email ist bereits in Verwendung";
+            die();
+        }
+        if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+            echo "Email ist ungültig";
+            die();
+        }
+        if(strlen($email) > 50){
+            echo "Email ist zu lang";
+            die();
+        }
+        try{
+            $stmt = $pdo->prepare("SELECT * FROM Benutzer WHERE email = :email");
+            $stmt->bindParam(':email', $email);
+            $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            if($result){
+                echo "Email ist bereits in Verwendung";
+                die();
+            }
+        } catch(PDOException $e) {
+            echo "Error: " . $e->getMessage();
+            die();
+        }
+        try{
+            $stmt = $pdo->prepare("UPDATE Benutzer SET email = :email WHERE idBenutzer = :id");
+            $stmt->bindParam(':email', $email);
+            $stmt->bindParam(':id', $id);
+            $stmt->execute();
+            $_SESSION['email'] = $email;
+            header("Location: ./kontodaten.php");
+        } catch(PDOException $e) {
+            echo "Error: " . $e->getMessage();
+            die();
+        }
+    }
+    
+    ?>
 </body>
 </html>
