@@ -15,6 +15,12 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </head>
 <body>
+    <div class="container-fluid w-25">
+        <div class="mt-4 p-3 bg-primary border rounded text-white d-flex flex-column justify-content-center">
+            <span class="text-center text-white">Haben Sie noch kein Konto?</span>
+            <a href="./register.php" class="text-center link-light">Registrieren</a>
+        </div>
+    </div>
     <div class="p-5 h-100 d-flex align-items-center justify-content-center">
         <div class="p-5 border">
             <div class="h-100 d-flex align-items-center justify-content-center">
