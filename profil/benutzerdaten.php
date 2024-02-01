@@ -47,19 +47,19 @@ require_once('../include/dbConnection.php');
                     <form action="<?php echo $_SERVER['SCRIPT_NAME']?>" method="post">
                     <div class="mb-3 mt-3">
                         <label for="name" class="form-label">Vorname:</label>
-                        <input type="text" class="form-control w-25" name="name" id="name" value="<?php echo $_SESSION['name']?>">
+                        <input type="text" <?php if (!is_null($_SESSION['name'])) { ?> required <?php } ?> class="form-control w-25" name="name" id="name" value="<?php echo $_SESSION['name']?>">
 
                         <label for="nname" class="form-label">Nachname:</label>
-                        <input type="text" class="form-control w-25" name="nname" id="nname" value="<?php echo $_SESSION['nname']?>">
+                        <input type="text" <?php if (!is_null($_SESSION['nname'])) { ?> required <?php } ?> class="form-control w-25" name="nname" id="nname" value="<?php echo $_SESSION['nname']?>">
 
                         <label for="wohnort" class="form-label">Adresse:</label>
-                        <input type="text" class="form-control w-25" name="wohnort" id="wohnort" value="<?php echo $_SESSION['wohnort']?>">
+                        <input type="text" <?php if (!is_null($_SESSION['wohnort'])) { ?> required <?php } ?> class="form-control w-25" name="wohnort" id="wohnort" value="<?php echo $_SESSION['wohnort']?>">
 
                         <label for="plz" class="form-label">Postleitzahl:</label>
-                        <input type="number" class="form-control w-25" name="plz" id="plz" value="<?php echo $_SESSION['plz']?>">
+                        <input type="number" <?php if (!is_null($_SESSION['plz'])) { ?> required <?php } ?> class="form-control w-25" name="plz" id="plz" value="<?php echo $_SESSION['plz']?>">
 
                         <label for="geburtstag" class="form-label">Geburtstag:</label>
-                        <input type="date" min="1950-01-01" max="<?php echo date("Y-m-d"); ?>" class="form-control w-25" name="geburtstag" id="geburtstag" value="<?php echo $_SESSION['geburtstag']?>">
+                        <input type="date" <?php if (!is_null($_SESSION['plz'])) { ?> required <?php } ?> min="1950-01-01" max="<?php echo date("Y-m-d"); ?>" class="form-control w-25" name="geburtstag" id="geburtstag" value="<?php echo $_SESSION['geburtstag']?>">
                     </div>
                     <input class="btn btn-primary" name="submit" type="submit" value="Benutzerdaten ändern">
                     </form>
