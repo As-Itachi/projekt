@@ -22,7 +22,7 @@
                 ?>
                 <div class="container-fluid w-25">
                     <div class="mt-4 p-3 bg-success border rounded text-white d-flex flex-column justify-content-center">
-                        <span class="text-center text-white">Sie wurden erfolgreich angemeldet</span>
+                        <span class="text-center text-white">Sie wurden erfolgreich abgemeldet</span>
                     </div>
                 </div>
                 <?php
