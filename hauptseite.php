@@ -21,15 +21,49 @@ session_start();
             <h5>Neue Bücher</h5>
             <h1><span style="color: pink;">Die beliebtesten Bücher diesen Jahres</span></h1>
             <p>Wir haben die besten Werke</p>
-            <button>Kaufe jetzt</button>
+            <button>Kaufe</button>
         </div>
     </section>
 
     <section id="brand" class="container">
-        <div>
-
+        <div class="row">
+            <img class="img-fluid col-lg-3 col-md-6 col-sm-12" src="bilder_test/2.jpeg" />
+            <img class="img-fluid col-lg-3 col-md-6 col-sm-12" src="bilder_test/2.jpeg" />
+            <img class="img-fluid col-lg-3 col-md-6 col-sm-12" src="bilder_test/2.jpeg" />
+            <img class="img-fluid col-lg-3 col-md-6 col-sm-12" src="bilder_test/2.jpeg" />
         </div>
         
+    </section>
+
+    <section id="new" class="w-100">
+        <div class="row p-0 m-0">
+
+            <div class="one col-lg-4 col-md-12 col-sm-12 p-0">
+                <img class="img-fluid" src="bilder/1.jpg">
+                <div class="details">
+                    <h2>Top Auswahl</h2>
+                    <button class="text-uppercase">Kaufen</button>
+                </div>
+            </div>
+
+            <div class="one col-lg-4 col-md-12 col-sm-12 p-0">
+                <img class="img-fluid" src="bilder/2.jpg">
+                <div class="details">
+                    <h2>Top Auswahl</h2>
+                    <button class="text-uppercase">Kaufen</button>
+                </div>
+            </div>
+
+            <div class="one col-lg-4 col-md-12 col-sm-12 p-0">
+                <img class="img-fluid" src="bilder/3.jpg">
+                <div class="details">
+                    <h2>Top Auswahl</h2>
+                    <button class="text-uppercase">Kaufen</button>
+                </div>
+            </div>
+
+        </div>
+
     </section>
     
     <?php 
