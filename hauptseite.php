@@ -17,9 +17,9 @@ session_start();
     <?php include('navbar/navbar.php'); ?>
 
     <section id="home">
-        <div>
+        <div class="container">
             <h5>Neue Bücher</h5>
-            <h1>Die beliebtesten Bücher diesen Jahres</h1>
+            <h1><span>Die beliebtesten Bücher diesen Jahres</span></h1>
             <p>Wir haben die besten Werke</p>
             <button>Kaufe jetzt</button>
         </div>
