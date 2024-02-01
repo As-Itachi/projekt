@@ -35,6 +35,17 @@ session_start();
                         </div>
                 </div>
             </div>
+
+            <div class="col-lg-6 col-md-12 col-12">
+                <h6>The Ruby Circle</h6>
+                <h3 class="py-4">All unsere Geheimnisse</h3>
+                <h2>23 €</h2>
+                <input type="number" value="1"/>
+                <button class="buy-btn">Zum Warenkorb</button>
+
+            </div>
+
+
         </div>
     </section>
     

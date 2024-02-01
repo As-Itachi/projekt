@@ -7,3 +7,21 @@
     flex-basis: 24%;
     cursor: pointer;
 }
+
+.singel-product input{
+    width: 50px;
+    height: 40px;
+    padding-left: 10px;
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+.singel-product input:focus{
+    outline: none;
+}
+
+.singel-product .buy-btn{
+    background-color: #fb774b;
+    opacity: 1;
+    transition: 0.4s all;
+}
