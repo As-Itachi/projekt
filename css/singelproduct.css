@@ -25,3 +25,7 @@
     opacity: 1;
     transition: 0.4s all;
 }
+
+.singel-product .buy-btn:hover{
+    background-color: #222222;
+}
