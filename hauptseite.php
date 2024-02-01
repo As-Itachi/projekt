@@ -15,6 +15,15 @@ session_start();
 
 <body>
     <?php include('navbar/navbar.php'); ?>
+
+    <section id="home">
+        <div>
+            <h5>Neue Bücher</h5>
+            <h1>Die beliebtesten Bücher diesen Jahres</h1>
+            <p>Wir haben die besten Werke</p>
+            <button>Kaufe jetzt</button>
+        </div>
+    </section>
     
     <?php 
     include('footer/footer.php');
