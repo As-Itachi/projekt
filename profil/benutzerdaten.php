@@ -29,10 +29,10 @@ require_once('../include/dbConnection.php');
                         <li class="list-group-item">
                             <a href="../hauptseite.php">Hauptseite</a>
                         </li>
-                        <li class="list-group-item active">
+                        <li class="list-group-item">
                             <a href="./kontodaten.php">Kontodaten</a>
                         </li>
-                        <li class="list-group-item">
+                        <li class="list-group-item active">
                             <a href="./benutzerdaten.php">Benutzerdaten</a>
                         </li>
                         <li class="list-group-item">
