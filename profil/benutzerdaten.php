@@ -46,10 +46,22 @@ require_once('../include/dbConnection.php');
                 <div class="col-md-10">
                     <form action="<?php echo $_SERVER['SCRIPT_NAME']?>" method="post">
                     <div class="mb-3 mt-3">
-                        <label for="email" class="form-label">Email:</label>
-                        <input type="email" class="form-control w-25" name="email" id="email" value="<?php echo $_SESSION['email']?>">
+                        <label for="name" class="form-label">Vorname:</label>
+                        <input type="text" class="form-control w-25" name="name" id="name" value="<?php echo $_SESSION['name']?>">
+
+                        <label for="nname" class="form-label">Nachname:</label>
+                        <input type="text" class="form-control w-25" name="nname" id="nname" value="<?php echo $_SESSION['nname']?>">
+
+                        <label for="wohnort" class="form-label">Adresse:</label>
+                        <input type="text" class="form-control w-25" name="wohnort" id="wohnort" value="<?php echo $_SESSION['wohnort']?>">
+
+                        <label for="plz" class="form-label">Postleitzahl:</label>
+                        <input type="number" class="form-control w-25" name="plz" id="plz" value="<?php echo $_SESSION['plz']?>">
+
+                        <label for="geburtstag" class="form-label">Geburtstag:</label>
+                        <input type="date" min="1950-01-01" max="<?php echo date("Y-m-d"); ?>" class="form-control w-25" name="geburtstag" id="geburtstag" value="<?php echo $_SESSION['geburtstag']?>">
                     </div>
-                    <input class="btn btn-primary" name="submit" type="submit" value="Email ändern">
+                    <input class="btn btn-primary" name="submit" type="submit" value="Benutzerdaten ändern">
                     </form>
                 </div>
             </div>
@@ -57,40 +69,28 @@ require_once('../include/dbConnection.php');
     </div>
     <?php
     if(isset($_POST['submit'])){
-        $email = $_POST['email'];
+        $name = $_POST['name'];
+        $nname = $_POST['nname'];
+        $wohnort = $_POST['wohnort'];
+        $plz = $_POST['plz'];
+        $geburtstag = $_POST['geburtstag'];
         $id = $_SESSION['idBenutzer'];
-        if($email == $_SESSION['email']){
-            echo "Email ist bereits in Verwendung";
-            die();
-        }
-        if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
-            echo "Email ist ungültig";
-            die();
-        }
-        if(strlen($email) > 50){
-            echo "Email ist zu lang";
-            die();
-        }
         try{
-            $stmt = $pdo->prepare("SELECT * FROM Benutzer WHERE email = :email");
-            $stmt->bindParam(':email', $email);
-            $stmt->execute();
-            $result = $stmt->fetch(PDO::FETCH_ASSOC);
-            if($result){
-                echo "Email ist bereits in Verwendung";
-                die();
-            }
-        } catch(PDOException $e) {
-            echo "Error: " . $e->getMessage();
-            die();
-        }
-        try{
-            $stmt = $pdo->prepare("UPDATE Benutzer SET email = :email WHERE idBenutzer = :id");
-            $stmt->bindParam(':email', $email);
+            $stmt = $pdo->prepare("UPDATE Benutzer SET name = :name, nname = :nname, wohnort = :wohnort, geburtstag = :geburtstag, plz = :plz WHERE idBenutzer = :id");
+            $stmt->bindParam(':name', $name);
+            $stmt->bindParam(':nname', $nname);
+            $stmt->bindParam(':wohnort', $wohnort);
+            $stmt->bindParam(':plz', $plz);
+            $stmt->bindParam(':geburtstag', $geburtstag);
             $stmt->bindParam(':id', $id);
             $stmt->execute();
-            $_SESSION['email'] = $email;
-            header("Location: ./kontodaten.php?success=1");
+            
+            $_SESSION['name'] = $name;
+            $_SESSION['nname'] = $nname;
+            $_SESSION['wohnort'] = $wohnort;
+            $_SESSION['geburtstag'] = $geburtstag;
+            $_SESSION['plz'] = $plz;
+            header("Location: ./benutzerdaten.php?success=1");
         } catch(PDOException $e) {
             echo "Error: " . $e->getMessage();
             die();

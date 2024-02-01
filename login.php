@@ -97,6 +97,12 @@
                 $_SESSION['idBenutzer'] = $row['idBenutzer'];
                 $_SESSION['istAdmin'] = $row['istAdmin'];
                 $_SESSION['email'] = $row['email'];
+
+                $_SESSION['name'] = $row['name'];
+                $_SESSION['nname'] = $row['nname'];
+                $_SESSION['wohnort'] = $row['wohnort'];
+                $_SESSION['plz'] = $row['plz'];
+                $_SESSION['geburtstag'] = $row['geburtstag'];
                 header("Location: hauptseite.php");
             } else {
                 echo "Login fehlgeschlagen";
