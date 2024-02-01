@@ -19,10 +19,17 @@ session_start();
     <section id="home">
         <div class="container">
             <h5>Neue Bücher</h5>
-            <h1><span>Die beliebtesten Bücher diesen Jahres</span></h1>
+            <h1><span style="color: pink;">Die beliebtesten Bücher diesen Jahres</span></h1>
             <p>Wir haben die besten Werke</p>
             <button>Kaufe jetzt</button>
         </div>
+    </section>
+
+    <section id="brand" class="container">
+        <div>
+
+        </div>
+        
     </section>
     
     <?php 
