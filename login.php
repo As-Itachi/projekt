@@ -28,6 +28,28 @@
                 <?php
             }
         }
+        if(isset($_GET['login-required'])){
+            if($_GET['login-required'] == true){
+                ?>
+                <div class="container-fluid w-25">
+                    <div class="mt-4 p-3 bg-danger border rounded text-white d-flex flex-column justify-content-center">
+                        <span class="text-center text-white">Sie müssen sich anmelden um diesen Bereich zu nutzen!</span>
+                    </div>
+                </div>
+                <?php
+            }
+        }
+        if(isset($_GET['login-failed'])){
+            if($_GET['login-failed'] == true){
+                ?>
+                <div class="container-fluid w-25">
+                    <div class="mt-4 p-3 bg-danger border rounded text-white d-flex flex-column justify-content-center">
+                        <span class="text-center text-white">Login fehlgeschlagen!</span>
+                    </div>
+                </div>
+                <?php
+            }
+        }
     ?>
     <div class="container-fluid w-25">
         <div class="mt-4 p-3 bg-primary border rounded text-white d-flex flex-column justify-content-center">
@@ -105,11 +127,10 @@
                 $_SESSION['geburtstag'] = $row['geburtstag'];
                 header("Location: hauptseite.php");
             } else {
-                echo "Login fehlgeschlagen";
+                header("Location: login.php?login-failed=true");
             }
         } else {
-            
-            echo "Login fehlgeschlagen";
+            header("Location: login.php?login-failed=true");
         }       
         
     }
