@@ -15,78 +15,7 @@ session_start();
 
 <body>
     <?php include('navbar/navbar.php'); ?>
-    <div class="container-fluid p-3">
-        <div class="row">
-            <div class="col-md-6">
-                <?php
-                require_once('include/dbConnection.php');
-                try {
-                    $statement = $pdo->prepare("SELECT * FROM buecher WHERE idBuecher % 2 = 0;");
-                    $statement->execute();
-                    echo "<table class='table'>";
-                    if ($statement->rowCount() > 0) {
-                        while ($zeile = $statement->fetch()) {
-                            $titel = $zeile['titel'];
-                            $beschreibung = $zeile['beschreibung'];
-                            $id = $zeile['idBuecher'];
-                            ?>
-                            <tbody>
-                                <tr>
-                                    <td rowspan="2" class="p-1">
-                                        <img src="./bilder/<?php echo $id ?>.jpg" alt="Bild" width="100px" height="100px">
-                                    </td>
-                                    <td colspan="2"><?php echo $titel ?></td>
-                                </tr>
-                                <tr>
-                                    <td class="w-3"><?php echo $beschreibung ?></td>
-                                    <td><input type="submit" class="btn btn-success" value="Kaufen"></td>
-                                </tr>
-                            </tbody>
-                        <?php
-                        }
-                    }
-                    echo "</table>";
-                } catch (PDOException $ex) {
-                    die("Fehler beim Einfügen der Tabelle");
-                }
-                ?>
-            </div>
-            <div class="col-md-6">
-                <?php
-                require_once('include/dbConnection.php');
-                try {
-                    $statement = $pdo->prepare("SELECT * FROM buecher WHERE idBuecher % 2 != 0;");
-                    $statement->execute();
-                    echo "<table class='table'>";
-                    if ($statement->rowCount() > 0) {
-                        while ($zeile = $statement->fetch()) {
-                            $titel = $zeile['titel'];
-                            $beschreibung = $zeile['beschreibung'];
-                            $id = $zeile['idBuecher'];
-                            ?>
-                            <tbody>
-                                <tr>
-                                    <td rowspan="2" class="p-1">
-                                        <img src="./bilder/<?php echo $id ?>.jpg" alt="Bild" width="100px" height="100px">
-                                    </td>
-                                    <td colspan="2"><?php echo $titel ?></td>
-                                </tr>
-                                <tr>
-                                    <td><?php echo $beschreibung ?></td>
-                                    <td><input type="submit" class="btn btn-success" value="Kaufen"></td>
-                                </tr>
-                            </tbody>
-                        <?php
-                        }
-                    }
-                    echo "</table>";
-                } catch (PDOException $ex) {
-                    die("Fehler beim Einfügen der Tabelle");
-                }
-                ?>
-            </div>
-        </div>
-    </div>
+    
     <?php 
     include('footer/footer.php');
     ?>
