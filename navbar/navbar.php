@@ -15,7 +15,7 @@
         <div class="collapse navbar-collapse" id="collapsibleNavId">
             <ul class="navbar-nav me-auto mt-2 mt-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" href="#" aria-current="page">Hauptseite</a>
+                    <a class="nav-link" href="./hauptseite.php" aria-current="page">Hauptseite</a>
                 </li>
                 <?php if(isset($_SESSION['email'])) { ?>
                 <li class="nav-item">
