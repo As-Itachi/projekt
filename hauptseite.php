@@ -18,7 +18,25 @@
 
 <body data-bs-spy="scroll" data-bs-target="#header" tabindex="0">
 
+    <header id="header">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-10">
+                     <nav id="navbar">
+                        <div class="main-menu stellarnav">
+                            <div class="hamburger">
+                                <span class="bar"></span>
+                                <span class="bar"></span>
+                                <span class="bar"></span>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
 
+    
     
 </body>
 
