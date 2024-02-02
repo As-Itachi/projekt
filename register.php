@@ -15,6 +15,48 @@
             <a href="./login.php" class="text-center link-light">Anmelden</a>
         </div>
     </div>
+    <?php if(isset($_GET['fields'])) { ?>
+        <div class="container-fluid w-25">
+                    <div class="mt-4 p-3 bg-danger border rounded text-white d-flex flex-column justify-content-center">
+                        <span class="text-center text-white">Sie müssen alle Pflichtfelder ausfüllen!</span>
+                    </div>
+                </div>
+    <?php } ?>
+    <?php if(isset($_GET['invalidemail'])) { ?>
+        <div class="container-fluid w-25">
+                    <div class="mt-4 p-3 bg-danger border rounded text-white d-flex flex-column justify-content-center">
+                        <span class="text-center text-white">Email ist ungültig!</span>
+                    </div>
+                </div>
+    <?php } ?>
+    <?php if(isset($_GET['pwshort'])) { ?>
+        <div class="container-fluid w-25">
+                    <div class="mt-4 p-3 bg-danger border rounded text-white d-flex flex-column justify-content-center">
+                        <span class="text-center text-white">Das Passwort muss mindestens 8 Zeichen lang sein!</span>
+                    </div>
+                </div>
+    <?php } ?>
+    <?php if(isset($_GET['emailtaken'])) { ?>
+        <div class="container-fluid w-25">
+                    <div class="mt-4 p-3 bg-danger border rounded text-white d-flex flex-column justify-content-center">
+                        <span class="text-center text-white">Diese Email ist bereits vergeben!</span>
+                    </div>
+                </div>
+    <?php } ?>
+    <?php if(isset($_GET['pwmatch'])) { ?>
+        <div class="container-fluid w-25">
+                    <div class="mt-4 p-3 bg-danger border rounded text-white d-flex flex-column justify-content-center">
+                        <span class="text-center text-white">Die Passwörter stimmen nicht überein!</span>
+                    </div>
+                </div>
+    <?php } ?>
+    <?php if(isset($_GET['dberror'])) { ?>
+        <div class="container-fluid w-25">
+                    <div class="mt-4 p-3 bg-danger border rounded text-white d-flex flex-column justify-content-center">
+                        <span class="text-center text-white">Datenbank Fehler!</span>
+                    </div>
+                </div>
+    <?php } ?>
     <div class="p-5 h-100 d-flex align-items-center justify-content-center">
         <div class="p-5 border">
             <div class="h-100 d-flex align-items-center justify-content-center">
@@ -46,6 +88,27 @@
         $email = htmlspecialchars(trim($_POST['email']));
         $pswd = htmlspecialchars(trim($_POST['pswd']));
         $pswd2 = htmlspecialchars(trim($_POST['pswd2']));
+        if(empty($email) || empty($pswd) || empty($pswd2)) {
+            header("Location: register.php?fields=false");
+        }
+        if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            header("Location: register.php?invalidemail=true");
+        }
+        if(strlen($pswd) < 8) {
+            header("Location: register.php?pwshort=true");
+        }
+        try{
+            include_once 'include/dbConnection.php';
+            $stmt = $pdo->prepare("SELECT email FROM Benutzer WHERE email = :email");
+            $stmt->bindParam(':email', $email);
+            $stmt->execute();
+            $result = $stmt->fetch();
+            if($result) {
+                header("Location: register.php?emailtaken=true");
+            }
+        } catch(PDOException $e) {
+            header("Location: register.php?dberror=true");
+        }
         if($pswd == $pswd2) {
             $pswd = password_hash($pswd, PASSWORD_DEFAULT);
             include_once 'include/dbConnection.php';
@@ -55,12 +118,12 @@
                 $stmt->bindParam(':passwort', $pswd);
                 $stmt->execute();
             } catch(PDOException $e) {
-                echo "Error: " . $e->getMessage();
-                die();
+                header("Location: register.php?dberror=true");
+                
             }
             header("Location: login.php");
         } else {
-            echo "Passwords do not match";
+            header("Location: register.php?pwmatch=false");
         }
     } ?>
 </body>
