@@ -72,6 +72,10 @@
 						<img src="" alt="banner" class="banner-image">
 					</div>
 
+                    <button class="next slick-arrow">
+						<i class="icon icon-arrow-right"></i>
+					</button>
+
                 </div>
             </div>
         </div>
