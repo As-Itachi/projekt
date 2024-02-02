@@ -81,6 +81,24 @@
         </div>
 
     </section>
+
+    <section id="client-holder" data-aos="fade-up">
+		<div class="container">
+			<div class="row">
+				<div class="inner-content">
+					<div class="logo-wrap">
+						<div class="grid">
+							<a href="#"><img src="" alt="client"></a>
+							<a href="#"><img src="" alt="client"></a>
+							<a href="#"><img src="" alt="client"></a>
+							<a href="#"><img src="" alt="client"></a>
+							<a href="#"><img src="" alt="client"></a>
+						</div>
+					</div><!--image-holder-->
+				</div>
+			</div>
+		</div>
+	</section>
     
 </body>
 
