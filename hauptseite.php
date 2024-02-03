@@ -203,15 +203,18 @@
 
                         <div class="col-md-6">
                             <div class="product-entry">
-                                <h3 class="section-titel divider">Meistverkauftesten Bücher</h3>
+                                <h2 class="section-titel divider">Meistverkauftesten Bücher</h2>
 
-                                <div class="products">
+                                <div class="products-content">
                                     <div class="author-name">test</div>
                                     <h3 class="item-title">test</h3>
                                     <p>
                                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla velit tempora recusandae aperiam corrupti facilis, fugiat error veritatis provident id excepturi porro quidem laborum eaque eum perferendis at dolorum sequi.
                                     </p>
-                                    
+                                    <div class="item-price">20€ </div>
+                                    <div class="btn-wrap">
+                                        <a href="#" class="btn-accent-arrow">Kaufen Sie jetzt<i class="icon icon-ns-arrow-right"></i></a>
+                                    </div>
  
                                 </div>
 
