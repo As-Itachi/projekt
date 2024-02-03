@@ -376,7 +376,7 @@
                                 </div>
 
                                 </div>
-                                <div id="romantic" data-tab-content>
+                                <div id="fictional" data-tab-content>
                                     <div class="row">
                                         <div class="col-md-3">
                                             <div class="product-item">
@@ -421,13 +421,15 @@
                                         </div>
 
                                     </div>
-                                </div> <!-- ende Romantik -->
+                                </div> <!-- ende fictional -->
                                 
 
-                            </div> <!-- row
+                            </div> <!-- row -->
 
                         </div>
-                    </div>  <!-- tab content -->
+
+                    </div>  
+
                 </div>
             </div>
         </div>
