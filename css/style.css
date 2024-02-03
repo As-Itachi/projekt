@@ -1,0 +1,76 @@
+
+
+.tab-content {
+    position: relative;
+  }
+  
+  [data-tab-content] {
+    opacity: 0;
+    visibility: hidden;
+    height: 0;
+    overflow: hidden;
+  }
+  
+  .active[data-tab-content] {
+    opacity: 1;
+    visibility: visible;
+    height: auto;
+  }
+  
+  .tabs {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 55px 0;
+    justify-content: center;
+    list-style: none;
+  }
+  
+  .tabs .tab {
+    font-weight: 600;
+    color: #999;
+    margin-right: 50px;
+    cursor: pointer;
+  }
+  
+  .tabs .tab.active,
+  .tabs .tab:hover {
+    color: #111;
+    border-bottom: 2px solid #9A884C;
+  }
+  
+  img.books-image {
+    /*height: 290px;*/
+    margin-right: 10px;
+    margin-bottom: 20px;
+    object-fit: cover;
+  }
+  
+  
+  
+  #quotation .section-title.divider,
+  #quotation .section-title.divider:after {
+    margin: 0 auto;
+  }
+  
+  #quotation blockquote {
+    width: 40%;
+    margin: 0 auto;
+  }
+  
+  #quotation q {
+    display: block;
+    font-size: 1.6em;
+    padding: 40px 0;
+  }
+  
+  #quotation .author-name {
+    font-family: "Prata", Georgia, serif;
+    font-size: 1.4em;
+  }
+  
+  @media screen and (max-width: 768px) {
+    #quotation blockquote {
+      width: 80%;
+    }
+  }
+  
