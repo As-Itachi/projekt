@@ -182,7 +182,33 @@
                 </div> <!-- inner container -->
             </div>
         </div>
-        
+
+    </section>
+
+    <!-- Zweite Abschnitt -->
+    <section id="best-selling" class="leaf-pattern-overlay">
+        <div class="corner-pattern-overlay"></div>
+        <div class="container">
+            <div class="row justify-content-center">
+
+                <div class="col-md-8">
+
+                    <div class="row">
+
+                        <div class="col-md-6">
+                            <figure class="products-thumb">
+                                <img src="" alt="book" class="singel-image">
+                            </figure>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>      
+
+        </div>
+
     </section>
     
 </body>
