@@ -420,13 +420,11 @@
                                             </div>
                                         </div>
 
-                                        
-
                                     </div>
-
                                 </div> <!-- ende Romantik -->
+                                
 
-                            </div>
+                            </div> <!-- row
 
                         </div>
                     </div>  <!-- tab content -->
