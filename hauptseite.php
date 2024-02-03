@@ -175,18 +175,14 @@
                                 </div>
                             </div>
 
-                            
-
                         </div>
 
                     </div>
 
-                </div>
-
+                </div> <!-- inner container -->
             </div>
-
         </div>
-
+        
     </section>
     
 </body>
