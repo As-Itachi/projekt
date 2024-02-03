@@ -250,6 +250,29 @@
                         <li data-tab-target="#adventure" class="active tab">Abenteuer</li>
                     </ur>
 
+                    <div class="tab-content">
+                        <div id="all-genre" data-tab-content class="active">
+                            <div class="row">
+
+                                <!-- Buchvorlage -->
+                                <div class="col-md-3">
+                                    <div class="product-item">
+                                        <figure class="product-style">
+                                            <img src="bilder/1.jpg" alt="book" class="product-item">
+                                            <button type="button" class="add-to-cart" data-product-tile="add-to-cart">Warenkorb</button>
+                                        </figure>
+                                        <figcaption>
+                                            <h3>Lolita</h3>
+                                            <span>Vladimir Nabokov</span>
+                                            <div class="item-price">17 €</div>
+                                        </figcaption>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
