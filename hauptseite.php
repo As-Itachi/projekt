@@ -117,7 +117,7 @@
 
                             <!-- Erste Reihe -->
                             <div class="col-md-3">
-                                <div class="porduct-item">
+                                <div class="product-item">
                                     <figure class="product-style">
                                         <img src="bilder/1.jpg" alt="book" class="porduct-item">
                                         <button type="button" class="add-to-cart" data-product-tile="add-to-cart">Warenkorb</button>
@@ -129,6 +129,52 @@
                                     </figcaption>
                                 </div>
                             </div>
+                            
+                            <!-- Zweite Reihe -->
+                            <div class="col-md-3">
+                                <div class="product-item">
+                                    <figure class="product-style">
+                                        <img src="bilder/1.jpg" alt="book" class="porduct-item">
+                                        <button type="button" class="add-to-cart" data-product-tile="add-to-cart">Warenkorb</button>
+                                    </figure>
+                                    <figcaption>
+                                        <h3>Lolita</h3>
+                                        <span>Vladimir Nabokov</span>
+                                        <div class="item-price">17 €</div>
+                                    </figcaption>
+                                </div>
+                            </div>
+
+                            <!-- Dritte Reihe -->
+                            <div class="col-md-3">
+                                <div class="product-item">
+                                    <figure class="product-style">
+                                        <img src="bilder/1.jpg" alt="book" class="porduct-item">
+                                        <button type="button" class="add-to-cart" data-product-tile="add-to-cart">Warenkorb</button>
+                                    </figure>
+                                    <figcaption>
+                                        <h3>Lolita</h3>
+                                        <span>Vladimir Nabokov</span>
+                                        <div class="item-price">17 €</div>
+                                    </figcaption>
+                                </div>
+                            </div>
+
+                            <!-- Vierte Reihe -->
+                            <div class="col-md-3">
+                                <div class="product-item">
+                                    <figure class="product-style">
+                                        <img src="bilder/1.jpg" alt="book" class="porduct-item">
+                                        <button type="button" class="add-to-cart" data-product-tile="add-to-cart">Warenkorb</button>
+                                    </figure>
+                                    <figcaption>
+                                        <h3>Lolita</h3>
+                                        <span>Vladimir Nabokov</span>
+                                        <div class="item-price">17 €</div>
+                                    </figcaption>
+                                </div>
+                            </div>
+
                             
 
                         </div>
