@@ -230,6 +230,30 @@
         </div>
 
     </section>
+
+    <section id="popular-books" class="bookshelf py-5 my-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    
+                    <div class="section-header align-center">
+                        <div class="title">
+                            <span>Exklusive</span>
+                        </div>
+                        <h2 class="section-title">Beliebte Bücher</h2>
+                    </div>
+
+                    <ur class="tabs">
+                        <li data-tab-target="#all-genre" class="active tab">Alle Kategorien</li>
+                        <li data-tab-target="#romantic" class="active tab">Romantik</li>
+                        <li data-tab-target="#fictional" class="active tab">Fanatasy</li>
+                        <li data-tab-target="#adventure" class="active tab">Abenteuer</li>
+                    </ur>
+
+                </div>
+            </div>
+        </div>
+    </section>
     
 </body>
 
