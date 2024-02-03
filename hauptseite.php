@@ -115,6 +115,7 @@
                     <div class="product-list" data-aos="fade-up">
                         <div class="row">
 
+                            <!-- Erste Reihe -->
                             <div class="col-md-3">
                                 <div class="porduct-item">
                                     <figure class="product-style">
@@ -127,6 +128,8 @@
                                         <div class="item-price">17 €</div>
                                     </figcaption>
                                 </div>
+                            </div>
+                            
 
                         </div>
 
