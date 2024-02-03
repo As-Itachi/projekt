@@ -497,7 +497,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                         </div> <!-- ende fictional -->
 
                     </div> <!-- tab content --> 
@@ -507,6 +507,25 @@
             </div>
         </div>
     </section>
+
+    <section id="quotation" class="align-center pb-5 mb-5">
+        <div class="inner-content">
+            <h2 class="section-title diver">Zitat des Tages</h2>
+            <blockquote data-aos="fade-up">
+                <q>
+                    "Mathe ist super"
+                </q>
+                <div class="author-name">Tyler</div>
+            </blockquote>
+        </div>
+
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
+    <?php
+        require_once("footer/footer.php");
+    ?>
     
 </body>
 
