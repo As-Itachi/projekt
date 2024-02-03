@@ -201,6 +201,23 @@
                             </figure>
                         </div>
 
+                        <div class="col-md-6">
+                            <div class="product-entry">
+                                <h3 class="section-titel divider">Meistverkauftesten Bücher</h3>
+
+                                <div class="products">
+                                    <div class="author-name">test</div>
+                                    <h3 class="item-title">test</h3>
+                                    <p>
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla velit tempora recusandae aperiam corrupti facilis, fugiat error veritatis provident id excepturi porro quidem laborum eaque eum perferendis at dolorum sequi.
+                                    </p>
+                                    
+ 
+                                </div>
+
+                            </div>
+                        </div>
+
                     </div>
 
                 </div>
