@@ -99,6 +99,46 @@
 			</div>
 		</div>
 	</section>
+
+    <section id="featured-books" class="py-5 my-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+
+                    <div class="section-header align-center">
+                        <div class="title">
+                            <span>Qulitäts Bücher</span>
+					    </div>
+						<h2 class="section-title">Kürzlich Veröffentlich</h2>
+                    </div>
+
+                    <div class="product-list" data-aos="fade-up">
+                        <div class="row">
+
+                            <div class="col-md-3">
+                                <div class="porduct-item">
+                                    <figure class="product-style">
+                                        <img src="bilder/1.jpg" alt="book" class="porduct-item">
+                                        <button type="button" class="add-to-cart" data-product-tile="add-to-cart">Warenkorb</button>
+                                    </figure>
+                                    <figcaption>
+                                        <h3>Lolita</h3>
+                                        <span>Vladimir Nabokov</span>
+                                        <div class="item-price">17 €</div>
+                                    </figcaption>
+                                </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
     
 </body>
 
