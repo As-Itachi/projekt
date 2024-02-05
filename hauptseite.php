@@ -69,7 +69,7 @@
                                         auch, weil sie glaubt, dort endlich sicher vor den Lügen zu sein, die ihr Leben in einen Albtraum verwandelt haben.
                                     </p>
                                     <div class="btn-wrap">
-                                        <a href="#" class="btn btn-outline-accent btn-accent-arrow">Read More<i
+                                        <a href="#" class="btn btn-outline-accent btn-accent-arrow">Informationen<i
                                             class="icon icon-ns-arrow-right"></i></a>
                                     </div>
                                 </div>
