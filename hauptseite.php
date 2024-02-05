@@ -43,39 +43,39 @@
             <div class="row">
                 <div class="col-md-12">
 
-                <button class="prev slick-arrow">
-						<i class="icon icon-arrow-left"></i>
-				</button>
+                    <button class="prev slick-arrow">
+                            <i class="icon icon-arrow-left"></i>
+                    </button>
 
-                <div class="main-slider pattern-overlay">
-                    <div class="slider-item">
-                        <div class="banner-content">
-                            <h2 class="banner-title">The Ruby Circle</h2>
-                            <p>
-                            Als Louisa eines der seltenen Stipendien für die Highclare Academy erhält, erhofft sie sich einen Neuanfang. Nicht nur, weil sie als Studentin automatisch zum elitären Kreis des Ruby Circles zählt und ihr jeder Wunsch von den Augen abgelesen wird. Sondern auch, weil sie glaubt, dort endlich sicher vor den Lügen zu sein, die ihr Leben in einen Albtraum verwandelt haben.
-                            </p>
+                    <div class="main-slider pattern-overlay">
+                        <div class="slider-item">
+                            <div class="banner-content">
+                                <h2 class="banner-title">The Ruby Circle</h2>
+                                <p>
+                                Als Louisa eines der seltenen Stipendien für die Highclare Academy erhält, erhofft sie sich einen Neuanfang. Nicht nur, weil sie als Studentin automatisch zum elitären Kreis des Ruby Circles zählt und ihr jeder Wunsch von den Augen abgelesen wird. Sondern auch, weil sie glaubt, dort endlich sicher vor den Lügen zu sein, die ihr Leben in einen Albtraum verwandelt haben.
+                                </p>
 
+                            </div>
+                            <img src="bilder/1.jpg" alt="banner" class="banner-image">
                         </div>
-                        <img src="bilder/1.jpg" alt="banner" class="banner-image">
-                    </div>
 
-                    <div class="slider-item">
-						<div class="banner-content">
-							<h2 class="banner-title">test</h2>
-							<p>
-                            Als Louisa eines der seltenen Stipendien für die Highclare Academy erhält, erhofft sie sich einen Neuanfang. Nicht nur, weil sie als Studentin automatisch zum elitären Kreis des Ruby Circles zählt und ihr jeder Wunsch von den Augen abgelesen wird. Sondern auch, weil sie glaubt, dort endlich sicher vor den Lügen zu sein, die ihr Leben in einen Albtraum verwandelt haben.
-                            </p>
-							<div class="btn-wrap">
-								<a href="#" class="btn btn-outline-accent btn-accent-arrow">Read More<i
-								        class="icon icon-ns-arrow-right"></i></a>
-							</div>
-						</div>
-						<img src="" alt="banner" class="banner-image">
-					</div>
+                        <div class="slider-item">
+                            <div class="banner-content">
+                                <h2 class="banner-title">test</h2>
+                                <p>
+                                Als Louisa eines der seltenen Stipendien für die Highclare Academy erhält, erhofft sie sich einen Neuanfang. Nicht nur, weil sie als Studentin automatisch zum elitären Kreis des Ruby Circles zählt und ihr jeder Wunsch von den Augen abgelesen wird. Sondern auch, weil sie glaubt, dort endlich sicher vor den Lügen zu sein, die ihr Leben in einen Albtraum verwandelt haben.
+                                </p>
+                                <div class="btn-wrap">
+                                    <a href="#" class="btn btn-outline-accent btn-accent-arrow">Read More<i
+                                            class="icon icon-ns-arrow-right"></i></a>
+                                </div>
+                            </div>
+                            <img src="" alt="banner" class="banner-image">
+                        </div>
 
-                    <button class="next slick-arrow">
-						<i class="icon icon-arrow-right"></i>
-					</button>
+                        <button class="next slick-arrow">
+                            <i class="icon icon-arrow-right"></i>
+                        </button>
 
                 </div>
             </div>
