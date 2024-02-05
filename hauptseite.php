@@ -37,7 +37,7 @@
             </div>
         </header>
 
-    <section id="billborad">
+    <section id="billboard">
 
         <div class="container">
             <div class="row">
