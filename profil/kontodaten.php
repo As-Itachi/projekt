@@ -86,8 +86,6 @@ require_once('../include/dbConnection.php');
 
 
                                 echo "<script>location.href = '../login.php?delete=true';</script>";
-
-
                             } catch (PDOException $e) {
 
                                 echo "Fehler beim Löschen des Kontos";
