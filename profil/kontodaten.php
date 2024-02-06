@@ -85,7 +85,8 @@ require_once('../include/dbConnection.php');
                                 $delete->execute();
 
                                 
-                                header("Location: ./hauptseite.php");
+                                echo "<script>location.href = '../login.php?delete=true';</script>";
+
 
                             } catch (PDOException $e) {
 
