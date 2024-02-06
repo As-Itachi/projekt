@@ -130,7 +130,7 @@
                                 <div class="col-md-3">
                                     <div class="product-item">
                                         <figure class="product-style">
-                                            <img src="bilder/1.jpg" alt="book" class="porduct-item">
+                                            <img src="bilder/12.png" alt="book" class="porduct-item">
                                             <button type="button" class="add-to-cart" data-product-tile="add-to-cart">Warenkorb</button>
                                         </figure>
                                         <figcaption>
