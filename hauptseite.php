@@ -137,6 +137,7 @@
                                             $beschreibung = $zeile['beschreibung'];
                                             $id = $zeile['idBuecher'];
                                             $preis = $zeile['preis'];
+                                            $autor = $zeile['autor'];
                                             ?>
                                             <div class="col-md-3">
                                                 <div class="product-item">
@@ -146,7 +147,7 @@
                                                     </figure>
                                                     <figcaption>
                                                         <h3><?php echo $titel ?></h3>
-                                                        <span>Vladimir Nabokov</span>
+                                                        <span><?php echo $autor ?></span>
                                                         <div class="item-price"><?php echo $preis ?>€</div>
                                                     </figcaption>
                                                 </div>
@@ -167,52 +168,6 @@
                     </div>
                     <!-- inner container -->
                 </div>
-            </div>
-
-        </section>
-
-        <!-- Zweite Abschnitt -->
-        <section id="best-selling" class="leaf-pattern-overlay">
-            <div class="corner-pattern-overlay"></div>
-            <div class="container">
-                <div class="row justify-content-center">
-
-                    <div class="col-md-8">
-
-                        <div class="row">
-
-                            <div class="col-md-6">
-                                <figure class="products-thumb">
-                                    <img src="" alt="book" class="singel-image">
-                                </figure>
-                            </div>
-
-                            <div class="col-md-6">
-                                <div class="product-entry">
-                                    <h2 class="section-titel divider">Meistverkauftesten Bücher</h2>
-
-                                    <div class="products-content">
-                                        <div class="author-name">test</div>
-                                        <h3 class="item-title">test</h3>
-                                        <p>
-                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla velit tempora recusandae aperiam corrupti facilis, fugiat error veritatis provident id excepturi porro quidem laborum eaque eum perferendis at dolorum sequi.
-                                        </p>
-                                        <div class="item-price">20€ </div>
-                                        <div class="btn-wrap">
-                                            <a href="#" class="btn-accent-arrow">Kaufen Sie jetzt<i class="icon icon-ns-arrow-right"></i></a>
-                                        </div>
-
-                                    </div>
-
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
             </div>
 
         </section>
@@ -244,6 +199,7 @@
                                             $beschreibung = $zeile['beschreibung'];
                                             $id = $zeile['idBuecher'];
                                             $preis = $zeile['preis'];
+                                            $autor = $zeile['autor'];
                                             ?>
                                             <div class="col-md-3">
                                                 <div class="product-item">
@@ -253,7 +209,7 @@
                                                     </figure>
                                                     <figcaption>
                                                         <h3><?php echo $titel ?></h3>
-                                                        <span>Vladimir Nabokov</span>
+                                                        <span><?php echo $autor ?></span>
                                                         <div class="item-price"><?php echo $preis ?>€</div>
                                                     </figcaption>
                                                 </div>
@@ -275,16 +231,6 @@
 
                 </div>
             </div>
-        </section>
-
-        <section id="quotation" class="align-center pb-5 mb-5">
-            <div class="inner-content">
-                <h2 class="section-title diver">Zitat des Tages</h2>
-                <blockquote data-aos="fade-up">
-                    
-                </blockquote>
-            </div>
-
         </section>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
