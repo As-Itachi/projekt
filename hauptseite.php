@@ -120,7 +120,7 @@
                             <div class="title">
                                 <span>Qualitäts Bücher</span>
                             </div>
-                            <h2 class="section-title">Kürzlich Veröffentlich</h2>
+                            <h2 class="section-title">Kürzlich Veröffentlicht</h2>
                         </div>
 
                         <div class="product-list" data-aos="fade-up">
