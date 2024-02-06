@@ -528,10 +528,7 @@
             <div class="inner-content">
                 <h2 class="section-title diver">Zitat des Tages</h2>
                 <blockquote data-aos="fade-up">
-                    <q>
-                    "Mathe ist super"
-                </q>
-                    <div class="author-name">Tyler</div>
+                    
                 </blockquote>
             </div>
 
