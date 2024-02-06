@@ -62,7 +62,7 @@ require_once('../include/dbConnection.php');
                     ?>
                         <form action="<?php echo $_SERVER['SCRIPT_NAME'] ?>" method="post">
 
-                            <label style="font-size: large;">Wollen Sie wirklich ihr Profil löschen? </label>
+                            <label style="font-size: large; ">Wollen Sie wirklich ihr Profil löschen? </label>
 
                             <br> Ja <input type="radio" name="button" value="1">
                             Nein <input type="radio" name="button" value="0"> <br>
@@ -84,7 +84,7 @@ require_once('../include/dbConnection.php');
 
                                 $delete->execute();
 
-                                
+
                                 echo "<script>location.href = '../login.php?delete=true';</script>";
 
 
