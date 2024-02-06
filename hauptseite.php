@@ -118,73 +118,47 @@
 
                         <div class="section-header align-center">
                             <div class="title">
-                                <span>Qulitäts Bücher</span>
+                                <span>Qualitäts Bücher</span>
                             </div>
                             <h2 class="section-title">Kürzlich Veröffentlich</h2>
                         </div>
 
                         <div class="product-list" data-aos="fade-up">
                             <div class="row">
-
-                                <!-- Erste Reihe -->
-                                <div class="col-md-3">
-                                    <div class="product-item">
-                                        <figure class="product-style">
-                                            <img src="bilder/12.png" alt="book" class="porduct-item">
-                                            <button type="button" class="add-to-cart" data-product-tile="add-to-cart">Warenkorb</button>
-                                        </figure>
-                                        <figcaption>
-                                            <h3>Lolita</h3>
-                                            <span>Vladimir Nabokov</span>
-                                            <div class="item-price">17 €</div>
-                                        </figcaption>
-                                    </div>
-                                </div>
-
-                                <!-- Zweite Reihe -->
-                                <div class="col-md-3">
-                                    <div class="product-item">
-                                        <figure class="product-style">
-                                            <img src="bilder/1.jpg" alt="book" class="porduct-item">
-                                            <button type="button" class="add-to-cart" data-product-tile="add-to-cart">Warenkorb</button>
-                                        </figure>
-                                        <figcaption>
-                                            <h3>Lolita</h3>
-                                            <span>Vladimir Nabokov</span>
-                                            <div class="item-price">17 €</div>
-                                        </figcaption>
-                                    </div>
-                                </div>
-
-                                <!-- Dritte Reihe -->
-                                <div class="col-md-3">
-                                    <div class="product-item">
-                                        <figure class="product-style">
-                                            <img src="bilder/1.jpg" alt="book" class="porduct-item">
-                                            <button type="button" class="add-to-cart" data-product-tile="add-to-cart">Warenkorb</button>
-                                        </figure>
-                                        <figcaption>
-                                            <h3>Lolita</h3>
-                                            <span>Vladimir Nabokov</span>
-                                            <div class="item-price">17 €</div>
-                                        </figcaption>
-                                    </div>
-                                </div>
-
-                                <!-- Vierte Reihe -->
-                                <div class="col-md-3">
-                                    <div class="product-item">
-                                        <figure class="product-style">
-                                            <img src="bilder/1.jpg" alt="book" class="porduct-item">
-                                            <button type="button" class="add-to-cart" data-product-tile="add-to-cart">Warenkorb</button>
-                                        </figure>
-                                        <figcaption>
-                                            <h3>Lolita</h3>
-                                            <span>Vladimir Nabokov</span>
-                                            <div class="item-price">17 €</div>
-                                        </figcaption>
-                                    </div>
-                                </div>
+                            <?php
+                                require_once('include/dbConnection.php');
+                                try {
+                                    $statement = $pdo->prepare("SELECT * FROM buecher ORDER BY erscheinungsjahr DESC LIMIT 4");
+                                    $statement->execute();
+                                    echo "<table class='table'>";
+                                    if ($statement->rowCount() > 0) {
+                                        while ($zeile = $statement->fetch()) {
+                                            $titel = $zeile['titel'];
+                                            $beschreibung = $zeile['beschreibung'];
+                                            $id = $zeile['idBuecher'];
+                                            $preis = $zeile['preis'];
+                                            ?>
+                                            <div class="col-md-3">
+                                                <div class="product-item">
+                                                    <figure class="product-style">
+                                                        <img src="bilder/<?php echo $id ?>.jpg" alt="book" class="product-item">
+                                                        <button type="button" class="add-to-cart" data-product-tile="add-to-cart">Warenkorb</button>
+                                                    </figure>
+                                                    <figcaption>
+                                                        <h3><?php echo $titel ?></h3>
+                                                        <span>Vladimir Nabokov</span>
+                                                        <div class="item-price"><?php echo $preis ?>€</div>
+                                                    </figcaption>
+                                                </div>
+                                            </div>
+                                        <?php
+                                        }
+                                    }
+                                    echo "</table>";
+                                } catch (PDOException $ex) {
+                                    die("Fehler beim Einfügen der Tabelle");
+                                }
+                                ?>
 
                             </div>
 
@@ -255,265 +229,44 @@
                             <h2 class="section-title">Beliebte Bücher</h2>
                         </div>
 
-                        <ur class="tabs">
-                            <li data-tab-target="#all-genre" class="active tab">Alle Kategorien</li>
-                            <li data-tab-target="#romantic" class="active tab">Romantik</li>
-                            <li data-tab-target="#fictional" class="active tab">Fanatasy</li>
-                            <li data-tab-target="#adventure" class="active tab">Abenteuer</li>
-                        </ur>
-
                         <div class="tab-content">
                             <div id="all-genre" data-tab-content class="active">
                                 <div class="row">
-
-                                    <!-- Buchvorlage -->
-                                    <div class="col-md-3">
-                                        <div class="product-item">
-                                            <figure class="product-style">
-                                                <img src="bilder/1.jpg" alt="book" class="product-item">
-                                                <button type="button" class="add-to-cart" data-product-tile="add-to-cart">Warenkorb</button>
-                                            </figure>
-                                            <figcaption>
-                                                <h3>Lolita</h3>
-                                                <span>Vladimir Nabokov</span>
-                                                <div class="item-price">17 €</div>
-                                            </figcaption>
-                                        </div>
-                                    </div>
-
-                                    <!-- zweite Genre -->
-
-                                    <div class="col-md-3">
-                                        <div class="product-item">
-                                            <figure class="product-style">
-                                                <img src="bilder/1.jpg" alt="book" class="product-item">
-                                                <button type="button" class="add-to-cart" data-product-tile="add-to-cart">Warenkorb</button>
-                                            </figure>
-                                            <figcaption>
-                                                <h3>Lolita</h3>
-                                                <span>Vladimir Nabokov</span>
-                                                <div class="item-price">17 €</div>
-                                            </figcaption>
-                                        </div>
-                                    </div>
-
-                                    <!-- dritte -->
-                                    <div class="col-md-3">
-                                        <div class="product-item">
-                                            <figure class="product-style">
-                                                <img src="bilder/1.jpg" alt="book" class="product-item">
-                                                <button type="button" class="add-to-cart" data-product-tile="add-to-cart">Warenkorb</button>
-                                            </figure>
-                                            <figcaption>
-                                                <h3>Lolita</h3>
-                                                <span>Vladimir Nabokov</span>
-                                                <div class="item-price">17 €</div>
-                                            </figcaption>
-                                        </div>
-                                    </div>
-
-                                    <!-- vierte -->
-                                    <div class="col-md-3">
-                                        <div class="product-item">
-                                            <figure class="product-style">
-                                                <img src="bilder/1.jpg" alt="book" class="product-item">
-                                                <button type="button" class="add-to-cart" data-product-tile="add-to-cart">Warenkorb</button>
-                                            </figure>
-                                            <figcaption>
-                                                <h3>Lolita</h3>
-                                                <span>Vladimir Nabokov</span>
-                                                <div class="item-price">17 €</div>
-                                            </figcaption>
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <div class="row">
-
-                                    <div class="col-md-3">
-                                        <div class="product-item">
-                                            <figure class="product-style">
-                                                <img src="bilder/1.jpg" alt="book" class="product-item">
-                                                <button type="button" class="add-to-cart" data-product-tile="add-to-cart">Warenkorb</button>
-                                            </figure>
-                                            <figcaption>
-                                                <h3>Lolita</h3>
-                                                <span>Vladimir Nabokov</span>
-                                                <div class="item-price">17 €</div>
-                                            </figcaption>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="col-md-3">
-                                        <div class="product-item">
-                                            <figure class="product-style">
-                                                <img src="bilder/1.jpg" alt="book" class="product-item">
-                                                <button type="button" class="add-to-cart" data-product-tile="add-to-cart">Warenkorb</button>
-                                            </figure>
-                                            <figcaption>
-                                                <h3>Lolita</h3>
-                                                <span>Vladimir Nabokov</span>
-                                                <div class="item-price">17 €</div>
-                                            </figcaption>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-3">
-                                        <div class="product-item">
-                                            <figure class="product-style">
-                                                <img src="bilder/1.jpg" alt="book" class="product-item">
-                                                <button type="button" class="add-to-cart" data-product-tile="add-to-cart">Warenkorb</button>
-                                            </figure>
-                                            <figcaption>
-                                                <h3>Lolita</h3>
-                                                <span>Vladimir Nabokov</span>
-                                                <div class="item-price">17 €</div>
-                                            </figcaption>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-3">
-                                        <div class="product-item">
-                                            <figure class="product-style">
-                                                <img src="bilder/1.jpg" alt="book" class="product-item">
-                                                <button type="button" class="add-to-cart" data-product-tile="add-to-cart">Warenkorb</button>
-                                            </figure>
-                                            <figcaption>
-                                                <h3>Lolita</h3>
-                                                <span>Vladimir Nabokov</span>
-                                                <div class="item-price">17 €</div>
-                                            </figcaption>
-                                        </div>
-                                    </div>
-
-                                </div>
-
+                                <?php
+                                require_once('include/dbConnection.php');
+                                try {
+                                    $statement = $pdo->prepare("SELECT * FROM buecher");
+                                    $statement->execute();
+                                    echo "<table class='table'>";
+                                    if ($statement->rowCount() > 0) {
+                                        while ($zeile = $statement->fetch()) {
+                                            $titel = $zeile['titel'];
+                                            $beschreibung = $zeile['beschreibung'];
+                                            $id = $zeile['idBuecher'];
+                                            $preis = $zeile['preis'];
+                                            ?>
+                                            <div class="col-md-3">
+                                                <div class="product-item">
+                                                    <figure class="product-style">
+                                                        <img src="bilder/<?php echo $id ?>.jpg" alt="book" class="product-item">
+                                                        <button type="button" class="add-to-cart" data-product-tile="add-to-cart">Warenkorb</button>
+                                                    </figure>
+                                                    <figcaption>
+                                                        <h3><?php echo $titel ?></h3>
+                                                        <span>Vladimir Nabokov</span>
+                                                        <div class="item-price"><?php echo $preis ?>€</div>
+                                                    </figcaption>
+                                                </div>
+                                            </div>
+                                        <?php
+                                        }
+                                    }
+                                    echo "</table>";
+                                } catch (PDOException $ex) {
+                                    die("Fehler beim Einfügen der Tabelle");
+                                }
+                                ?>
                             </div>
-                            <div id="fictional" data-tab-content>
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <div class="product-item">
-                                            <figure class="product-style">
-                                                <img src="bilder/1.jpg" alt="book" class="product-item">
-                                                <button type="button" class="add-to-cart" data-product-tile="add-to-cart">Warenkorb</button>
-                                            </figure>
-                                            <figcaption>
-                                                <h3>Lolita</h3>
-                                                <span>Vladimir Nabokov</span>
-                                                <div class="item-price">17 €</div>
-                                            </figcaption>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-3">
-                                        <div class="product-item">
-                                            <figure class="product-style">
-                                                <img src="bilder/1.jpg" alt="book" class="product-item">
-                                                <button type="button" class="add-to-cart" data-product-tile="add-to-cart">Warenkorb</button>
-                                            </figure>
-                                            <figcaption>
-                                                <h3>Lolita</h3>
-                                                <span>Vladimir Nabokov</span>
-                                                <div class="item-price">17 €</div>
-                                            </figcaption>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-3">
-                                        <div class="product-item">
-                                            <figure class="product-style">
-                                                <img src="bilder/1.jpg" alt="book" class="product-item">
-                                                <button type="button" class="add-to-cart" data-product-tile="add-to-cart">Warenkorb</button>
-                                            </figure>
-                                            <figcaption>
-                                                <h3>Lolita</h3>
-                                                <span>Vladimir Nabokov</span>
-                                                <div class="item-price">17 €</div>
-                                            </figcaption>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-3">
-                                        <div class="product-item">
-                                            <figure class="product-style">
-                                                <img src="bilder/1.jpg" alt="book" class="product-item">
-                                                <button type="button" class="add-to-cart" data-product-tile="add-to-cart">Warenkorb</button>
-                                            </figure>
-                                            <figcaption>
-                                                <h3>Lolita</h3>
-                                                <span>Vladimir Nabokov</span>
-                                                <div class="item-price">17 €</div>
-                                            </figcaption>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                            <!-- ende fictional -->
-
-                            <div id="adventure" data-tab-content>
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <div class="product-item">
-                                            <figure class="product-style">
-                                                <img src="bilder/1.jpg" alt="book" class="product-item">
-                                                <button type="button" class="add-to-cart" data-product-tile="add-to-cart">Warenkorb</button>
-                                            </figure>
-                                            <figcaption>
-                                                <h3>Lolita</h3>
-                                                <span>Vladimir Nabokov</span>
-                                                <div class="item-price">17 €</div>
-                                            </figcaption>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-3">
-                                        <div class="product-item">
-                                            <figure class="product-style">
-                                                <img src="bilder/1.jpg" alt="book" class="product-item">
-                                                <button type="button" class="add-to-cart" data-product-tile="add-to-cart">Warenkorb</button>
-                                            </figure>
-                                            <figcaption>
-                                                <h3>Lolita</h3>
-                                                <span>Vladimir Nabokov</span>
-                                                <div class="item-price">17 €</div>
-                                            </figcaption>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-3">
-                                        <div class="product-item">
-                                            <figure class="product-style">
-                                                <img src="bilder/1.jpg" alt="book" class="product-item">
-                                                <button type="button" class="add-to-cart" data-product-tile="add-to-cart">Warenkorb</button>
-                                            </figure>
-                                            <figcaption>
-                                                <h3>Lolita</h3>
-                                                <span>Vladimir Nabokov</span>
-                                                <div class="item-price">17 €</div>
-                                            </figcaption>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-3">
-                                        <div class="product-item">
-                                            <figure class="product-style">
-                                                <img src="bilder/1.jpg" alt="book" class="product-item">
-                                                <button type="button" class="add-to-cart" data-product-tile="add-to-cart">Warenkorb</button>
-                                            </figure>
-                                            <figcaption>
-                                                <h3>Lolita</h3>
-                                                <span>Vladimir Nabokov</span>
-                                                <div class="item-price">17 €</div>
-                                            </figcaption>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <!-- ende fictional -->
-
                         </div>
                         <!-- tab content -->
 
