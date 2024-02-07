@@ -16,11 +16,11 @@
 <body>
     
 <?php
-
-include_once('./navbar/navbar.php');
-
+    include_once('./navbar/navbar.php');
 ?>
 
-
+<?php
+    include_once('./footer/footer.php');
+?>
 </body>
 </html>
