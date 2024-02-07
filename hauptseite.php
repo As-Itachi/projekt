@@ -179,7 +179,6 @@ include_once("navbar/navbar.php");
 
     </section>
 
-<<<<<<< HEAD
         <section id="popular-books" class="bookshelf py-5 my-5">
             <div class="container">
                 <div class="row">
@@ -190,17 +189,8 @@ include_once("navbar/navbar.php");
                                 <span></span>
                             </div>
                             <h2 class="section-title">Beliebte Bücher</h2>
-=======
-    <section id="popular-books" class="bookshelf py-5 my-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="section-header align-center">
-                        <div class="title">
-                            <span>Exklusive</span>
->>>>>>> 18dab59635f9a2e24b5cc2e38e0f9f382aa0ac92
                         </div>
-                        <h2 class="section-title">Beliebte Bücher</h2>
+                        
                     </div>
                     <div class="tab-content">
                         <div id="all-genre" data-tab-content class="active">
