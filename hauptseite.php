@@ -174,7 +174,7 @@ include_once("navbar/navbar.php");
                             <div class="title">
                                 <span></span>
                             </div>
-                            <h2 class="section-title">Beliebte Bücher</h2>
+                           
                         </div>
                         <h2 class="section-title">Beliebte Bücher</h2>
                     </div>
