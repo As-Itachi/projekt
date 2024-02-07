@@ -91,13 +91,6 @@ include_once("navbar/navbar.php");
 
     </section>
 
-
-                        <div class="section-header align-center">
-                            <div class="title">
-                              <span></span>
-                            </div>
-                            
-
     <section id="client-holder" data-aos="fade-up">
         <div class="container">
             <div class="row">
@@ -109,7 +102,6 @@ include_once("navbar/navbar.php");
                             <a href="#"><img src="" alt="client"></a>
                             <a href="#"><img src="" alt="client"></a>
                             <a href="#"><img src="" alt="client"></a>
-
                         </div>
                     </div>
                     <!--image-holder-->
@@ -123,12 +115,6 @@ include_once("navbar/navbar.php");
             <div class="row">
                 <div class="col-md-12">
 
-                    <div class="section-header align-center">
-                        <div class="title">
-                            <span>Qualitäts Bücher</span>
-                        </div>
-                        <h2 class="section-title">Kürzlich Veröffentlicht</h2>
-                    </div>
 
                     <div class="product-list" data-aos="fade-up">
                         <div class="row">
@@ -190,7 +176,7 @@ include_once("navbar/navbar.php");
                             </div>
                             <h2 class="section-title">Beliebte Bücher</h2>
                         </div>
-                        
+                        <h2 class="section-title">Beliebte Bücher</h2>
                     </div>
                     <div class="tab-content">
                         <div id="all-genre" data-tab-content class="active">
