@@ -91,13 +91,13 @@ include_once("navbar/navbar.php");
 
     </section>
 
-<<<<<<< HEAD
+
                         <div class="section-header align-center">
                             <div class="title">
                               <span></span>
                             </div>
                             <h2 class="section-title">Kürzlich Veröffentlicht</h2>
-=======
+
     <section id="client-holder" data-aos="fade-up">
         <div class="container">
             <div class="row">
@@ -109,7 +109,7 @@ include_once("navbar/navbar.php");
                             <a href="#"><img src="" alt="client"></a>
                             <a href="#"><img src="" alt="client"></a>
                             <a href="#"><img src="" alt="client"></a>
->>>>>>> 18dab59635f9a2e24b5cc2e38e0f9f382aa0ac92
+
                         </div>
                     </div>
                     <!--image-holder-->
