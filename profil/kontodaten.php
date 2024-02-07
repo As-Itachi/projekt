@@ -58,7 +58,7 @@ require_once('../include/dbConnection.php');
                         <input class="btn btn-danger " name="loeschen" type="submit" value="Konto löschen">
                     </form>
                     <?php
-                    if (isset($_POST['loeschen']) || isset($_POST['bestaetigen'])) {
+                    if ((isset($_POST['loeschen']) || isset($_POST['bestaetigen'])) && $_POST['button'] != "0") {
                     ?>
                         <form action="<?php echo $_SERVER['SCRIPT_NAME'] ?>" method="post">
 
@@ -67,7 +67,7 @@ require_once('../include/dbConnection.php');
                             <br> Ja <input type="radio" name="button" value="1">
                             Nein <input type="radio" name="button" value="0"> <br>
 
-                            <input class="btn btn-danger" name="bestaetigen" type="submit" value="bestätigen">
+                            <input class="btn btn-danger" name="bestaetigen" type="submit" value="Bestätigen">
 
                         </form>
 
