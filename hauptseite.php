@@ -24,7 +24,7 @@ include_once("navbar/navbar.php");
 
 ?>
 
-<body data-bs-spy="scroll" data-bs-target="#header" tabindex="0">
+<body tabindex="0">
 
     <header id="header">
         <div class="container-fluid">
