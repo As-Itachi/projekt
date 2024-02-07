@@ -136,7 +136,23 @@ include_once("navbar/navbar.php");
                                             <div class="product-item">
                                                 <figure class="product-style">
                                                     <img src="bilder/<?php echo $id ?>.jpg" alt="book" class="product-item">
-                                                    <button type="button" class="add-to-cart" data-product-tile="add-to-cart">Warenkorb</button>
+                                                    <input type="submit" class="add-to-cart" data-product-tile="add-to-cart" name="<?php echo $id ?>" value="warenkorb">
+                                                    <?php if (isset($_POST[$id])) {
+
+
+                                                        try {
+
+                                                            $stmt = $pdo->prepare("INSERT INTO warenkorb (idBenutzer, idBuecher) VALUES (:idBenutzer,:idBuecher )");
+
+                                                            $stmt->bindParam(":idBenutzer",$id);
+
+                                                            $stmt->execute();
+
+                                                        } catch (PDOException $ex) {
+                                                            die("Buch konnte nicht im Warenkorb gespeichert werden!");
+                                                        }
+                                                    } ?>
+
                                                 </figure>
                                                 <figcaption>
                                                     <h3><?php echo $titel ?></h3>
@@ -165,62 +181,62 @@ include_once("navbar/navbar.php");
 
     </section>
 
-        <section id="popular-books" class="bookshelf py-5 my-5">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
+    <section id="popular-books" class="bookshelf py-5 my-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
 
-                        <div class="section-header align-center">
-                            <div class="title">
-                                <span></span>
-                            </div>
-                           
+                    <div class="section-header align-center">
+                        <div class="title">
+                            <span></span>
                         </div>
-                        <h2 class="section-title">Beliebte Bücher</h2>
+
                     </div>
-                    <div class="tab-content">
-                        <div id="all-genre" data-tab-content class="active">
-                            <div class="row">
-                                <?php
-                                require_once('include/dbConnection.php');
-                                try {
-                                    $statement = $pdo->prepare("SELECT * FROM buecher");
-                                    $statement->execute();
-                                    echo "<table class='table'>";
-                                    if ($statement->rowCount() > 0) {
-                                        while ($zeile = $statement->fetch()) {
-                                            $titel = $zeile['titel'];
-                                            $beschreibung = $zeile['beschreibung'];
-                                            $id = $zeile['idBuecher'];
-                                            $preis = $zeile['preis'];
-                                            $autor = $zeile['autor'];
-                                ?>
-                                            <div class="col-md-3">
-                                                <div class="product-item">
-                                                    <figure class="product-style">
-                                                        <img src="bilder/<?php echo $id ?>.jpg" alt="book" class="product-item">
-                                                        <button type="button" class="add-to-cart" data-product-tile="add-to-cart">Warenkorb</button>
-                                                    </figure>
-                                                    <figcaption>
-                                                        <h3><?php echo $titel ?></h3>
-                                                        <span><?php echo $autor ?></span>
-                                                        <div class="item-price"><?php echo $preis ?>€</div>
-                                                    </figcaption>
-                                                </div>
+                    <h2 class="section-title">Beliebte Bücher</h2>
+                </div>
+                <div class="tab-content">
+                    <div id="all-genre" data-tab-content class="active">
+                        <div class="row">
+                            <?php
+                            require_once('include/dbConnection.php');
+                            try {
+                                $statement = $pdo->prepare("SELECT * FROM buecher");
+                                $statement->execute();
+                                echo "<table class='table'>";
+                                if ($statement->rowCount() > 0) {
+                                    while ($zeile = $statement->fetch()) {
+                                        $titel = $zeile['titel'];
+                                        $beschreibung = $zeile['beschreibung'];
+                                        $id = $zeile['idBuecher'];
+                                        $preis = $zeile['preis'];
+                                        $autor = $zeile['autor'];
+                            ?>
+                                        <div class="col-md-3">
+                                            <div class="product-item">
+                                                <figure class="product-style">
+                                                    <img src="bilder/<?php echo $id ?>.jpg" alt="book" class="product-item">
+                                                    <button type="button" class="add-to-cart" data-product-tile="add-to-cart">Warenkorb</button>
+                                                </figure>
+                                                <figcaption>
+                                                    <h3><?php echo $titel ?></h3>
+                                                    <span><?php echo $autor ?></span>
+                                                    <div class="item-price"><?php echo $preis ?>€</div>
+                                                </figcaption>
                                             </div>
-                                <?php
-                                        }
+                                        </div>
+                            <?php
                                     }
-                                    echo "</table>";
-                                } catch (PDOException $ex) {
-                                    die("Fehler beim Einfügen der Tabelle");
                                 }
-                                ?>
-                            </div>
+                                echo "</table>";
+                            } catch (PDOException $ex) {
+                                die("Fehler beim Einfügen der Tabelle");
+                            }
+                            ?>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
         </div>
     </section>
 
