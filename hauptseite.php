@@ -118,7 +118,7 @@
 
                         <div class="section-header align-center">
                             <div class="title">
-                                <span>Qualitäts Bücher</span>
+                              <span></span>
                             </div>
                             <h2 class="section-title">Kürzlich Veröffentlicht</h2>
                         </div>
@@ -179,7 +179,7 @@
 
                         <div class="section-header align-center">
                             <div class="title">
-                                <span>Exklusive</span>
+                                <span></span>
                             </div>
                             <h2 class="section-title">Beliebte Bücher</h2>
                         </div>
