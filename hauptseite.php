@@ -96,7 +96,7 @@ include_once("navbar/navbar.php");
                             <div class="title">
                               <span></span>
                             </div>
-                            <h2 class="section-title">Kürzlich Veröffentlicht</h2>
+                            
 
     <section id="client-holder" data-aos="fade-up">
         <div class="container">
