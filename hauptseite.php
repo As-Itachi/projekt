@@ -2,33 +2,27 @@
 session_start();
 require_once('include/dbConnection.php');
 
-// Check if the user has clicked the "Warenkorb" button
 if (isset($_POST['add_to_cart'])) {
     $productId = $_POST['product_id'];
     $userId = $_SESSION['idBenutzer'];
 
-    // Insert the data into the `warenkorb` table
     $stmt = $pdo->prepare("INSERT INTO warenkorb (idBenutzer, idBuecher) VALUES (:idBenutzer, :idBuecher)");
     $stmt->bindParam(':idBenutzer', $userId);
     $stmt->bindParam(':idBuecher', $productId);
     $stmt->execute();
 
-    // Redirect the user back to the main page
     header('Location: hauptseite.php');
     exit;
 }
 
-// Fetch the latest books from the `buecher` table
 $stmt = $pdo->prepare("SELECT * FROM buecher ORDER BY erscheinungsjahr DESC LIMIT 4");
 $stmt->execute();
 $latestBooks = $stmt->fetchAll();
 
-// Fetch all books from the `buecher` table
 $stmt = $pdo->prepare("SELECT * FROM buecher");
 $stmt->execute();
 $allBooks = $stmt->fetchAll();
 
-// Include the header
 include_once("navbar/navbar.php");
 ?>
 
