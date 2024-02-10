@@ -2,6 +2,16 @@
 session_start();
 require_once('include/dbConnection.php');
 
+
+if (isset($_POST['remove_from_cart'])) {
+    $productId = $_POST['product_id'];
+    $userId = $_SESSION['idBenutzer'];
+    $stmt = $pdo->prepare("DELETE FROM warenkorb WHERE idBenutzer = :idBenutzer AND idBuecher = :idBuecher");
+    $stmt->bindParam(':idBenutzer', $userId);
+    $stmt->bindParam(':idBuecher', $productId);
+    $stmt->execute();
+}
+
 $userId = $_SESSION['idBenutzer'];
 $stmt = $pdo->prepare("SELECT idBuecher FROM warenkorb WHERE idBenutzer = :idBenutzer");
 $stmt->bindParam(':idBenutzer', $userId);
@@ -56,6 +66,7 @@ include_once("navbar/navbar.php");
                         <form method="post">
                             <input type="hidden" name="product_id" value="<?php echo $book['idBuecher'] ?>">
                             <button type="submit" name="remove_from_cart" class="btn btn-danger">Aus Warenkorb entfernen</button>
+                            
                         </form>
                     </td>
                 </tr>
