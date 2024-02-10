@@ -18,9 +18,15 @@ $stmt->bindParam(':idBenutzer', $userId);
 $stmt->execute();
 $booksInCart = $stmt->fetchAll(PDO::FETCH_COLUMN);
 
-$stmt = $pdo->prepare("SELECT * FROM buecher WHERE idBuecher IN (" . implode(',', array_fill(0, count($booksInCart), '?')) . ")");
-$stmt->execute($booksInCart);
-$cartBooks = $stmt->fetchAll();
+try{
+    $stmt = $pdo->prepare("SELECT * FROM buecher WHERE idBuecher IN (" . implode(',', array_fill(0, count($booksInCart), '?')) . ")");
+    $stmt->execute($booksInCart);
+    $cartBooks = $stmt->fetchAll();
+} catch(Exception $e){
+    echo $e->getMessage(); echo "<br>";
+    echo $stmt->queryString;
+}
+
 
 include_once("navbar/navbar.php");
 ?>
