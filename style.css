@@ -321,3 +321,24 @@ body[data-bs-spy="scroll"] > .container {
   transition: all .3s ease-out;
 }
 
+.buttons {
+  display: flex;
+}
+
+.buttons button,
+.buttons .menge {
+  margin: 0 5px;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.buttons button {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.buttons .menge {
+  width: 50px;
+  text-align: center;
+}
