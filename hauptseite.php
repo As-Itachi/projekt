@@ -72,10 +72,15 @@ include_once("navbar/navbar.php");
                                     <div class="product-item">
                                         <figure class="product-style">
                                             <img src="bilder/<?php echo $book['idBuecher'] ?>.jpg" alt="book" class="product-item">
+
                                             <form method="post">
                                                 <input type="hidden" name="product_id" value="<?php echo $book['idBuecher'] ?>">
-                                                <button type="submit" name="add_to_cart" class="add-to-cart">Warenkorb</button>
+                                                <div class="buttons">
+                                                    <button type="submit" name="add_to_cart" class="add-to-cart">Warenkorb</button>
+                                                    <input type="number" name="menge" class="menge" min="1" max="10" value="1">
+                                                </div>
                                             </form>
+
                                         </figure>
                                         <figcaption>
                                             <h3><?php echo $book['titel'] ?></h3>
