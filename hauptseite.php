@@ -118,6 +118,7 @@ include_once("navbar/navbar.php");
                                                 <form method="post">
                                                     <input type="hidden" name="product_id" value="<?php echo $book['idBuecher'] ?>">
                                                     <button type="submit" name="add_to_cart" class="add-to-cart">Warenkorb</button>
+                                                    <input type="number" name="quantity" id="quantity" class="form-control" value="1" min="1" max="10">
                                                 </form>
                                             </figure>
                                             <figcaption>
