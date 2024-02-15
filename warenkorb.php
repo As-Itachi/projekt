@@ -10,7 +10,6 @@ if (isset($_POST['remove_from_cart'])) {
     $stmt->bindParam(':idBuecher', $productId);
     $stmt->execute();
 
-    // Aktualisiere die Warenkorb-Session
     if (isset($_SESSION['warenkorb'][$productId])) {
         unset($_SESSION['warenkorb'][$productId]);
     }
@@ -49,11 +48,32 @@ include_once("./navbar/navbar.php");
     <title>Knjižara - Template</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9Tneoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="./css/warenkorb.css">
+    <script>
+        function removeFromCart(bookId) {
+            if (confirm("Möchten Sie dieses Buch wirklich aus dem Warenkorb entfernen?")) {
+                const form = document.createElement('form');
+                form.method = 'post';
+                form.action = '';
 
-</head>
+                const input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = 'idBuecher';
+                input.value = bookId;
+                form.appendChild(input);
 
-<body>
+                const button = document.createElement('button');
+                button.type = 'submit';
+                button.name = 'remove_from_cart';
+                button.value = 'true';
+                button.textContent = 'Entfernen';
+                form.appendChild(button);
+
+                document.body.appendChild(form);
+                form.submit();
+            }
+        }
+    </script>
+
     <?php
     // Calculate the total price
     $totalPrice = 0;
@@ -72,26 +92,62 @@ include_once("./navbar/navbar.php");
                 <th scope="col">Aktion</th>
             </tr>
         </thead>
-        <tbody> <?php foreach ($cartBooks as $book) : ?> <tr>
-                    <td><?php echo $book['titel'] ?></td>
-                    <td><?php echo $book['autor'] ?></td>
-                    <td><?php echo $book['preis'] ?>€</td>
-                    <td> <?php $quantity = ($quantities[$book['idBuecher']] ?? 1);
-                            echo $quantity; ?> </td>
+        <tbody>
+            <?php foreach ($cartBooks as $book) : ?>
+                <tr>
+                    <td><?php echo htmlspecialchars($book['titel']); ?></td>
+                    <td><?php echo htmlspecialchars($book['autor']); ?></td>
+                    <td><?php echo htmlspecialchars($book['preis']); ?> €</td>
                     <td>
-                        <form method="post"> <input type="hidden" name="idBuecher" value="<?php echo $book['idBuecher'] ?>"> <button type="submit" name="remove_from_cart" class="btn btn-danger">Aus Warenkorb entfernen</button> </form>
+                        <?php $quantity = ($quantities[$book['idBuecher']] ?? 1);
+                        echo htmlspecialchars($quantity); ?>
                     </td>
-                </tr> <?php endforeach; ?> </tbody>
+                    <td>
+                        <form method="post" action="">
+                            <input type="hidden" name="idBuecher" value="<?php echo htmlspecialchars($book['idBuecher']); ?>">
+                            <button type="button" class="btn btn-danger" onclick="removeFromCart(<?php echo htmlspecialchars($book['idBuecher']); ?>)">Aus Warenkorb entfernen</button>
+                        </form>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
     </table>
     <div class="total-price">
-        <h3>Gesamtpreis: <?php echo $totalPrice ?>€</h3>
+        <h3>Gesamtpreis: <?php echo $totalPrice; ?> €</h3>
     </div>
-    <div class="checkout"> <button class="btn btn-primary">Zur Kasse gehen</button> </div>
+    <div class="checkout">
+        <button class="btn btn-primary">Zur Kasse gehen</button>
+    </div>
 
     <?php
-        include_once("./footer/footer.php");
+    include_once("./footer/footer.php");
     ?>
 
-</body>
+    <script>
+        function removeFromCart(bookId) {
+            if (confirm("Möchten Sie dieses Buch wirklich aus dem Warenkorb entfernen?")) {
+                const form = document.createElement('form');
+                form.method = 'post';
+                form.action = '';
+
+                const input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = 'remove_from_cart';
+                input.value = 'true';
+                form.appendChild(input);
+
+                const bookInput = document.createElement('input');
+                bookInput.type = 'hidden';
+                bookInput.name = 'idBuecher';
+                bookInput.value = bookId;
+                form.appendChild(bookInput);
+
+                document.body.appendChild(form);
+                form.submit();
+            }
+        }
+    </script>
+
+    </body>
 
 </html>
