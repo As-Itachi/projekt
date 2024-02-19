@@ -181,20 +181,6 @@ footer a:hover {
   }
 }
 
-/* Erforderliche Stile für die Scrollspy-Funktionalität */
-body {
-  position: relative;
-  padding-top: var(--header-height);
-}
-
-body[data-bs-spy="scroll"] {
-  position: relative;
-  padding-top: var(--header-height);
-}
-
-body[data-bs-spy="scroll"] > .container {
-  padding-top: calc(var(--header-height) + 2rem);
-}
 
 #header nav ul li a[data-bs-target]:after {
   display: block;
