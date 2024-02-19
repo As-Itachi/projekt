@@ -21,10 +21,13 @@ if (isset($_POST['remove_from_cart'])) {
     $stmt = $pdo->prepare("DELETE FROM warenkorb WHERE idBenutzer = :idBenutzer AND idBuecher = :idBuecher");
     $stmt->bindParam(':idBenutzer', $userId);
     $stmt->bindParam(':idBuecher', $productId);
-    $stmt->execute();
 
-    if (isset($_SESSION['warenkorb'][$productId])) {
-        unset($_SESSION['warenkorb'][$productId]);
+    if (!$stmt->execute()) {
+        echo $stmt->errorInfo();
+    } else {
+        if (isset($_SESSION['warenkorb'][$productId])) {
+            unset($_SESSION['warenkorb'][$productId]);
+        }
     }
 } elseif (isset($_POST['checkout'])) {
     $userId = $_SESSION['idBenutzer'];
@@ -78,32 +81,9 @@ include_once("./navbar/navbar.php");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Knjižara - Template</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9Tneoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <script src="https://cdn.jsdeldeliver.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    <script>
-        function removeFromCart(bookId) {
-            if (confirm("Möchten Sie dieses Buch wirklich aus dem Warenkorb entfernen?")) {
-                const form = document.createElement('form');
-                form.method = 'post';
-                form.action = '';
-                const input = document.createElement('input');
-                input.type = 'hidden';
-                input.name = 'idBuecher';
-                input.value = bookId;
-                form.appendChild(input);
-
-                const button = document.createElement('button');
-                button.type = 'submit';
-                button.name = 'remove_from_cart';
-                button.value = 'true';
-                button.textContent = 'Entfernen';
-                form.appendChild(button);
-
-                document.body.appendChild(form);
-                form.submit();
-            }
-        }
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9Tneoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz4fnFO9gybBud7TlRbs/ic4AwGcFZOxg5DpPt8EgeUIgIwzjWfXQKWA3" crossorigin="anonymous">
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-ZhuHct6XZuQ/yQJ3XI6tj+Py6gf+QB1+/vv71GmVIz81n8N+X5gyAxWp/2X55D+U" crossorigin="anonymous"></script>
 
     <?php
     // Calculate the total price
@@ -135,16 +115,26 @@ include_once("./navbar/navbar.php");
                             echo htmlspecialchars($quantity); ?>
                         </td>
                         <td>
-                            <button type="button" class="btn btn-danger" onclick="removeFromCart(<?php echo htmlspecialchars($book['idBuecher']); ?>)">Aus Warenkorb entfernen</button>
+                            <form method="post" action="">
+                                <input type="hidden" name="idBuecher" value="<?php echo htmlspecialchars($book['idBuecher']); ?>">
+                                <input type="hidden" name="remove_from_cart">
+                                <button type="submit" class="btn btn-danger">Aus Warenkorb entfernen</button>
+                            </form>
                         </td>
                     </tr>
                 <?php endforeach; ?>
+
             </tbody>
         </table>
     </form>
     <div class="total-price">
         <h3>Gesamtpreis: <?php echo $totalPrice; ?> €</h3>
     </div>
+
+    <form id="remove-form" method="post" action="">
+        <input type="hidden" name="idBuecher">
+        <input type="hidden" name="remove_from_cart">
+    </form>
 
     <div class="checkout">
         <?php if ($userFilled) : ?>
@@ -171,7 +161,6 @@ include_once("./navbar/navbar.php");
                 input.name = 'idBuecher';
                 input.value = bookId;
                 form.appendChild(input);
-
                 const button = document.createElement('button');
                 button.type = 'submit';
                 button.name = 'remove_from_cart';
