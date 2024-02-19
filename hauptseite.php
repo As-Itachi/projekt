@@ -78,8 +78,10 @@ $allBooks = $stmt->fetchAll();
 
                                             <form method="post">
                                                 <input type="hidden" name="product_id" value="<?php echo $book['idBuecher'] ?>">
-                                                <div class="buttons"> <button type="submit" name="add_to_cart" class="add-to-cart">Warenkorb</button>
-                                                <input type="number" name="menge" class="menge" min="1" max="10" value="1"> </div>
+                                                <div class="buttons"> 
+                                                    <button type="submit" name="add_to_cart" class="add-to-cart">Warenkorb</button>
+                                                    <input type="number" name="menge" class="menge" min="1" max="10" value="1"> 
+                                                </div>
                                             </form>
 
                                         </figure>
@@ -102,7 +104,7 @@ $allBooks = $stmt->fetchAll();
                         <div class="section-header align-center">
                             <div class="title"> <span></span> </div>
                         </div>
-                        <h2 class="section-title">Beliebte Bücher</h2>
+                        <h2 style="text-align: center;font-size:100px; margin-bottom:20px;" class="section-title"  >Beliebte Bücher</h2>
                     </div>
                     <div class="tab-content">
                         <div id="all-genre" data-tab-content class="active">

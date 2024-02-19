@@ -14,6 +14,13 @@
   --secondary-font: "Playfair Display", Georgia, serif;
 }
 
+/* Erforderliche Media-Abfrage */
+@media screen and (max-width: 600px) {
+  :root {
+    --header-height: 100px;
+    --header-height-min: 80px;
+  }
+}
 
 /* Erforderliche Stile für den Header */
 #header {
@@ -164,6 +171,34 @@ footer a:hover {
   color: var(--accent-color);
 }
 
+/* Erforderliche Variablen für die Scrollspy-Funktionalität */
+:root {
+  --header-height: 160px;
+  --header-height-min: 80px;
+}
+
+@media screen and (max-width: 600px) {
+  :root {
+    --header-height: 100px;
+    --header-height-min: 80px;
+  }
+}
+
+/* Erforderliche Stile für die Scrollspy-Funktionalität */
+body {
+  position: relative;
+  padding-top: var(--header-height);
+}
+
+body[data-bs-spy="scroll"] {
+  position: relative;
+  padding-top: var(--header-height);
+}
+
+body[data-bs-spy="scroll"] > .container {
+  padding-top: calc(var(--header-height) + 2rem);
+}
+
 #header nav ul li a[data-bs-target]:after {
   display: block;
   content: "";
@@ -304,13 +339,19 @@ footer a:hover {
 .buttons button {
   background-color: #007bff;
   color: #fff;
+  text-align: center;
   
+}
+.buttons {
+  display: flex;
+  justify-content: left;
 }
 
 .buttons .menge {
   width: 50px;
-  text-align: center;
+  
 }
+
 img {
   margin-top: 10px;
   margin-bottom: 10px;
