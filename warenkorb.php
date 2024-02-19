@@ -21,19 +21,25 @@ $stmt->bindParam(':idBenutzer', $userId);
 $stmt->execute();
 $booksInCart = $stmt->fetchAll(PDO::FETCH_COLUMN);
 
-try {
-    $stmt = $pdo->prepare("SELECT * FROM buecher WHERE idBuecher IN (" . implode(',', array_fill(0, count($booksInCart), '?')) . ")");
-    $stmt->execute($booksInCart);
-    $cartBooks = $stmt->fetchAll();
+if (!empty($booksInCart)) {
+    try {
+        $stmt = $pdo->prepare("SELECT * FROM buecher WHERE idBuecher IN (" . implode(',', array_fill(0, count($booksInCart), '?')) . ")");
+        $stmt->execute($booksInCart);
+        $cartBooks = $stmt->fetchAll();
 
-    $quantities = $pdo->prepare("SELECT idBuecher, SUM(menge) as quantity FROM warenkorb WHERE idBenutzer = :idBenutzer GROUP BY idBuecher");
-    $quantities->bindParam(':idBenutzer', $userId);
-    $quantities->execute();
-    $quantities = $quantities->fetchAll(PDO::FETCH_KEY_PAIR);
-} catch (Exception $e) {
-    echo $e->getMessage();
-    echo "<br>";
-    echo $stmt->queryString;
+        $quantities = $pdo->prepare("SELECT idBuecher, SUM(menge) as quantity FROM warenkorb WHERE idBenutzer = :idBenutzer GROUP BY idBuecher");
+        $quantities->bindParam(':idBenutzer', $userId);
+        $quantities->execute();
+        $quantities = $quantities->fetchAll(PDO::FETCH_KEY_PAIR);
+    } catch (Exception $e) {
+        echo $e->getMessage();
+        echo "<br>";
+        echo $stmt->queryString;
+    }
+} else {
+
+    $cartBooks = [];
+    $quantities = [];
 }
 
 include_once("./navbar/navbar.php");
