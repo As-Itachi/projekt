@@ -25,7 +25,6 @@ $stmt = $pdo->prepare("SELECT * FROM buecher");
 $stmt->execute();
 $allBooks = $stmt->fetchAll();
 
-include_once("navbar/navbar.php");
 ?>
 
 <!DOCTYPE html>
@@ -37,11 +36,13 @@ include_once("navbar/navbar.php");
     <title>Knjižara - Template</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6C6RzynM0/CUGx8H2nA81rJR7aYnKagocF2jKuOXg9FfGeT8W1uQW7LGcL7q" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="style.css">
-
+    <link href="./style.css" rel="stylesheet">
 </head>
 
 <body tabindex="0">
+    <?php
+    include_once("navbar/navbar.php");
+    ?>
     <!-- Header -->
     <header id="header">
         <!-- Navbar -->

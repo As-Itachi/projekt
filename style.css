@@ -127,12 +127,14 @@ a {
   width: 100%;
   height: 200px;
   object-fit: cover;
+  margin-bottom: 10px;
 }
 
 .book-title {
   padding: 10px;
   font-size: 1.2rem;
   font-weight: 500;
+  
 }
 
 .book-author {
@@ -147,6 +149,7 @@ a {
   font-size: 1.1rem;
   font-weight: 500;
   color: var(--accent-color);
+  
 }
 
 /* Erforderliche Stile für den Footer */
@@ -322,9 +325,15 @@ footer a:hover {
 .buttons button {
   background-color: #007bff;
   color: #fff;
+  
 }
 
 .buttons .menge {
   width: 50px;
   text-align: center;
 }
+img {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
