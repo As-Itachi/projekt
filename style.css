@@ -134,7 +134,7 @@ a {
   padding: 10px;
   font-size: 1.2rem;
   font-weight: 500;
-  
+
 }
 
 .book-author {
@@ -149,7 +149,7 @@ a {
   font-size: 1.1rem;
   font-weight: 500;
   color: var(--accent-color);
-  
+
 }
 
 /* Erforderliche Stile für den Footer */
@@ -195,7 +195,7 @@ body[data-bs-spy="scroll"] {
   padding-top: var(--header-height);
 }
 
-body[data-bs-spy="scroll"] > .container {
+body[data-bs-spy="scroll"]>.container {
   padding-top: calc(var(--header-height) + 2rem);
 }
 
@@ -330,6 +330,7 @@ body[data-bs-spy="scroll"] > .container {
 
 .buttons button,
 .buttons .menge {
+
   margin: 0 5px;
   padding: 5px 10px;
   border: 1px solid #ccc;
@@ -337,11 +338,13 @@ body[data-bs-spy="scroll"] > .container {
 }
 
 .buttons button {
+
   background-color: #007bff;
   color: #fff;
   text-align: center;
-  
+
 }
+
 .buttons {
   display: flex;
   justify-content: left;
@@ -349,11 +352,10 @@ body[data-bs-spy="scroll"] > .container {
 
 .buttons .menge {
   width: 50px;
-  
+
 }
 
 img {
   margin-top: 10px;
   margin-bottom: 10px;
 }
-
