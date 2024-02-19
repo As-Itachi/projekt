@@ -39,7 +39,7 @@ $allBooks = $stmt->fetchAll();
     <link href="./style.css" rel="stylesheet">
 </head>
 
-<body tabindex="0">
+<body>
     <?php
     include_once("navbar/navbar.php");
     ?>
