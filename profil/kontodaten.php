@@ -79,13 +79,11 @@ require_once('../include/dbConnection.php');
                                 require_once('../include/dbConnection.php');
 
                                 $delete = $pdo->prepare("DELETE FROM benutzer WHERE idBenutzer = :id");
-
                                 $delete->bindParam(':id', $_SESSION['idBenutzer']);
-
                                 $delete->execute();
 
-
                                 echo "<script>location.href = '../login.php?delete=true';</script>";
+                                
                             } catch (PDOException $e) {
 
                                 echo "Fehler beim Löschen des Kontos";
