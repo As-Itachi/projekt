@@ -1,7 +1,7 @@
 /* Erforderliche Variablen */
 :root {
-  --header-height: 160px;
-  --header-height-min: 80px;
+  --header-height: 80px;
+  --header-height-min: 40px;
   --accent-color: #C5A992;
   --secondary-color: #C5A992;
   --dark-color: #2f2f2f;
@@ -162,12 +162,6 @@ footer a {
 
 footer a:hover {
   color: var(--accent-color);
-}
-
-/* Erforderliche Variablen für die Scrollspy-Funktionalität */
-:root {
-  --header-height: 160px;
-  --header-height-min: 80px;
 }
 
 #header nav ul li a[data-bs-target]:after {
