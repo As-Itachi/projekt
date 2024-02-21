@@ -82,7 +82,7 @@ require_once('../include/dbConnection.php');
                                 $delete->bindParam(':id', $_SESSION['idBenutzer']);
                                 $delete->execute();
 
-                                echo "<script>location.href = '../login.php?delete=true';</script>";
+                                echo "<script>location.href = '../register.php?delete=true';</script>";
                                 
                             } catch (PDOException $e) {
 
