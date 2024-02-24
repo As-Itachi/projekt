@@ -13,6 +13,32 @@ if (isset($_POST['remove_from_cart'])) {
     if (isset($_SESSION['warenkorb'][$productId])) {
         unset($_SESSION['warenkorb'][$productId]);
     }
+} elseif (isset($_POST['order'])) {
+
+    $userId = $_SESSION['idBenutzer'];
+    $booksInCart = $_SESSION['warenkorb'];
+
+    try {
+        $pdo->beginTransaction();
+
+        foreach ($booksInCart as $bookId => $quantity) {
+
+            $stmt = $pdo->prepare("INSERT INTO bestellungen (preis, idBenutzer) VALUES (?, ?)");
+            $stmt->execute([$quantity, $userId]);
+            $orderId = $pdo->lastInsertId();
+
+            $stmt = $pdo->prepare("INSERT INTO zt_bestellungen (idBestellungen, idBuecher) VALUES (?, ?)");
+            $stmt->execute([$orderId, $bookId]);
+        }
+
+        unset($_SESSION['warenkorb']);
+
+        $pdo->commit();
+        echo "Die Bestellung wurde erfolgreich aufgegeben!";
+    } catch (Exception $e) {
+        $pdo->rollBack();
+        echo "Es gab ein Problem beim Aufgeben der Bestellung: " . $e->getMessage();
+    }
 }
 
 $userId = $_SESSION['idBenutzer'];
@@ -121,9 +147,11 @@ include_once("./navbar/navbar.php");
     <div class="total-price">
         <h3>Gesamtpreis: <?php echo $totalPrice; ?> €</h3>
     </div>
-    <div class="checkout">
-        <button class="btn btn-primary">Zur Kasse gehen</button>
-    </div>
+    <form method="post"> <!-- Add the action attribute pointing to the correct PHP file -->
+        <div class="checkout">
+            <button type="submit" class="btn btn-primary" name="order">Bestellen</button>
+        </div>
+    </form>
 
     <?php
     include_once("./footer/footer.php");
