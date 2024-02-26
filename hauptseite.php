@@ -41,7 +41,7 @@ $allBooks = $stmt->fetchAll();
 
 
     <style>
-        
+
         figcaption {
             color: black;
             font-style: italic;
@@ -55,14 +55,14 @@ $allBooks = $stmt->fetchAll();
             display: block;
             margin: 0 auto;
             margin-bottom: 10px;
-
+            
         }
 
         .buttons {
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-top: 10px;
+            margin-top: 15px;
       
         }
 
@@ -145,7 +145,8 @@ $allBooks = $stmt->fetchAll();
                         <div class="section-header align-center">
                             <div class="title"> <span></span> </div>
                         </div>
-                        <h2 style="text-align: center;font-size:78px; margin-bottom:20px;" class="section-title">Beliebte Bücher</h2>
+                        <h2 style="text-align: center;font-size:78px; margin-bottom:10px;" class="section-title">Beliebte Bücher</h2>
+                        <hr style="border: 1px solid #000;">
                     </div>
                     <div class="tab-content">
                         <div id="all-genre" data-tab-content class="active">
@@ -155,6 +156,7 @@ $allBooks = $stmt->fetchAll();
                                             <figcaption>
                                                 <h3><?php echo $book['titel'] ?></h3> <span><?php echo $book['autor'] ?></span>
                                                 <div class="item-price"><?php echo $book['preis'] ?>€</div>
+                                                
                                             </figcaption>
 
                                             <figure class="product-style"> <img src="bilder/<?php echo $book['idBuecher'] ?>.jpg" alt="book" class="product-item">
