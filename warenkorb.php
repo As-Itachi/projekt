@@ -2,15 +2,14 @@
 session_start();
 require_once('include/dbConnection.php');
 
-try{
+try {
 
-$userId = $_SESSION['idBenutzer'];
-$stmt = $pdo->prepare("SELECT idBuecher FROM warenkorb WHERE idBenutzer = :idBenutzer");
-$stmt->bindParam(':idBenutzer', $userId);
-$stmt->execute();
-$_SESSION['warenkorb']= $stmt->fetchAll(PDO::FETCH_COLUMN);
-
-}catch(PDOException $x){
+    $userId = $_SESSION['idBenutzer'];
+    $stmt = $pdo->prepare("SELECT idBuecher FROM warenkorb WHERE idBenutzer = :idBenutzer");
+    $stmt->bindParam(':idBenutzer', $userId);
+    $stmt->execute();
+    $_SESSION['warenkorb'] = $stmt->fetchAll(PDO::FETCH_COLUMN);
+} catch (PDOException $x) {
     die("Konnte nicht gespeichert werden");
 }
 
@@ -190,4 +189,5 @@ include_once("./navbar/navbar.php");
     </script>
 
     </body>
+
 </html>
