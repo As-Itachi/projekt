@@ -2,6 +2,18 @@
 session_start();
 require_once('include/dbConnection.php');
 
+try{
+
+$userId = $_SESSION['idBenutzer'];
+$stmt = $pdo->prepare("SELECT idBuecher FROM warenkorb WHERE idBenutzer = :idBenutzer");
+$stmt->bindParam(':idBenutzer', $userId);
+$stmt->execute();
+$_SESSION['warenkorb']= $stmt->fetchAll(PDO::FETCH_COLUMN);
+
+}catch(PDOException $x){
+    die("Konnte nicht gespeichert werden");
+}
+
 if (isset($_POST['remove_from_cart'])) {
     $productId = $_POST['idBuecher'];
     $userId = $_SESSION['idBenutzer'];
@@ -41,11 +53,6 @@ if (isset($_POST['remove_from_cart'])) {
     }
 }
 
-$userId = $_SESSION['idBenutzer'];
-$stmt = $pdo->prepare("SELECT idBuecher FROM warenkorb WHERE idBenutzer = :idBenutzer");
-$stmt->bindParam(':idBenutzer', $userId);
-$stmt->execute();
-$booksInCart = $stmt->fetchAll(PDO::FETCH_COLUMN);
 
 if (!empty($booksInCart)) {
     try {
