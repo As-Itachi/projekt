@@ -17,6 +17,17 @@
 <body>
     <?php include('navbar/navbar.php'); ?>
     <?php
+        if(isset($_GET['admin-required'])){
+            if($_GET['admin-required'] == true){
+                ?>
+                <div class="container-fluid w-25">
+                    <div class="mt-4 p-3 bg-danger border rounded text-white d-flex flex-column justify-content-center">
+                        <span class="text-center text-white">Sie müssen ein Administrator sein um diesen Bereich zu nutzen!</span>
+                    </div>
+                </div>
+                <?php
+            }
+        }
         if(isset($_GET['logout'])){
             if($_GET['logout'] == true){
                 ?>
