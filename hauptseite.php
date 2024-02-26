@@ -41,6 +41,7 @@ $allBooks = $stmt->fetchAll();
 
 
     <style>
+        
         figcaption {
             color: black;
             font-style: italic;
@@ -61,7 +62,6 @@ $allBooks = $stmt->fetchAll();
             display: flex;
             align-items: center;
             justify-content: center;
-          
             margin-top: 10px;
       
         }
@@ -75,7 +75,7 @@ $allBooks = $stmt->fetchAll();
             width: 50px;
           
         }
-        
+
     </style>
 </head>
 
