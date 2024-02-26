@@ -37,9 +37,50 @@ $allBooks = $stmt->fetchAll();
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6C6RzynM0/CUGx8H2nA81rJR7aYnKagocF2jKuOXg9FfGeT8W1uQW7LGcL7q" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"></script>
     <link href="./style.css" rel="stylesheet">
+
+
+
+    <style>
+        figcaption {
+            color: black;
+            font-style: italic;
+            padding: 1px;
+            text-align: center;
+        }
+
+
+        img {
+
+            display: block;
+            margin: 0 auto;
+            margin-bottom: 10px;
+
+        }
+
+        .buttons {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          
+            margin-top: 10px;
+      
+        }
+
+        .add-to-cart {
+            margin-right: 5px;
+          
+        }
+
+        .menge {
+            width: 50px;
+          
+        }
+        
+    </style>
 </head>
 
 <body>
+
     <?php
     include_once("navbar/navbar.php");
     ?>
@@ -78,9 +119,9 @@ $allBooks = $stmt->fetchAll();
 
                                             <form method="post">
                                                 <input type="hidden" name="product_id" value="<?php echo $book['idBuecher'] ?>">
-                                                <div class="buttons"> 
+                                                <div class="buttons">
                                                     <button type="submit" name="add_to_cart" class="add-to-cart">Warenkorb</button>
-                                                    <input type="number" name="menge" class="menge" min="1" max="10" value="1"> 
+                                                    <input type="number" name="menge" class="menge" min="1" max="10" value="1">
                                                 </div>
                                             </form>
 
@@ -104,24 +145,28 @@ $allBooks = $stmt->fetchAll();
                         <div class="section-header align-center">
                             <div class="title"> <span></span> </div>
                         </div>
-                        <h2 style="text-align: center;font-size:100px; margin-bottom:20px;" class="section-title"  >Beliebte Bücher</h2>
+                        <h2 style="text-align: center;font-size:78px; margin-bottom:20px;" class="section-title">Beliebte Bücher</h2>
                     </div>
                     <div class="tab-content">
                         <div id="all-genre" data-tab-content class="active">
                             <div class="row"> <?php foreach ($allBooks as $book) : ?> <div class="col-md-3">
                                         <div class="product-item">
-                                            <figure class="product-style"> <img src="bilder/<?php echo $book['idBuecher'] ?>.jpg" alt="book" class="product-item">
 
-                                                <form method="post"> <input type="hidden" name="product_id" value="<?php echo $book['idBuecher'] ?>">
-                                                    <div class="buttons"> <button type="submit" name="add_to_cart" class="add-to-cart">Warenkorb</button>
-                                                    <input type="number" name="menge" class="menge" min="1" max="10" value="1"> </div>
-                                                </form>
-                                                
-                                            </figure>
                                             <figcaption>
                                                 <h3><?php echo $book['titel'] ?></h3> <span><?php echo $book['autor'] ?></span>
                                                 <div class="item-price"><?php echo $book['preis'] ?>€</div>
                                             </figcaption>
+
+                                            <figure class="product-style"> <img src="bilder/<?php echo $book['idBuecher'] ?>.jpg" alt="book" class="product-item">
+
+                                                <form method="post"> <input type="hidden" name="product_id" value="<?php echo $book['idBuecher'] ?>">
+                                                    <div class="buttons"> <button type="submit" name="add_to_cart" class="add-to-cart">Warenkorb</button>
+                                                        <input type="number" name="menge" class="menge" min="1" max="10" value="1">
+                                                    </div>
+                                                </form>
+
+                                            </figure>
+
                                         </div>
                                     </div> <?php endforeach; ?> </div>
                         </div>
