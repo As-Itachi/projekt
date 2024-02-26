@@ -183,5 +183,4 @@ include_once("./navbar/navbar.php");
     </script>
 
     </body>
-
 </html>
