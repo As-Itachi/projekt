@@ -27,6 +27,13 @@
                         <a class="nav-link" href="../login.php">Anmelden</a>
                     </li>
                 <?php } ?>
+                <?php if(isset($_SESSION['istAdmin'])) {
+                    if($_SESSION['istAdmin'] == 1) { ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../admin/">Adminbereich</a>
+                        </li>
+                    <?php }
+                } ?>
             </ul>
             <a class="nav-link" href="../logout.php">Abmelden</a>
         </div>
