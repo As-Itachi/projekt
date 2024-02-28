@@ -26,6 +26,7 @@ require_once('../include/dbConnection.php');
         li.active a {
             color: white;
         }
+        
     </style>
     
 </head>

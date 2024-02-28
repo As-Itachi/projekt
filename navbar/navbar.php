@@ -27,7 +27,7 @@
                 <?php if(isset($_SESSION['istAdmin'])) {
                     if($_SESSION['istAdmin'] == 1) { ?>
                         <li class="nav-item">
-                            <a class="nav-link" href="./admin/">Adminbereich</a>
+                            <a class="nav-link" href="./admin/" style="font-size: 20px;">Adminbereich</a>
                         </li>
                     <?php }
                 } ?>

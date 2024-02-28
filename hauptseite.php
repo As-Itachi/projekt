@@ -20,7 +20,6 @@ if (isset($_POST['add_to_cart'])) {
 $stmt = $pdo->prepare("SELECT * FROM buecher ORDER BY erscheinungsjahr DESC LIMIT 4");
 $stmt->execute();
 $latestBooks = $stmt->fetchAll();
-
 $stmt = $pdo->prepare("SELECT * FROM buecher");
 $stmt->execute();
 $allBooks = $stmt->fetchAll();
