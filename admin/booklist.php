@@ -57,7 +57,7 @@ try {
                     "<th>Erscheinungsjahr: </th>" .
                     "<td>" . $zeile['erscheinungsjahr'] . "</td>" .
                     "</tr>"
-                    ."<td>". "<input type='submit' name='loeschen' value='löschen'> <br>'" ."</td>" ;
+                    ."<td>". "<input type='submit' name='loeschen' value='löschen'> <br>" ."</td>" ;
             
                     
         }
