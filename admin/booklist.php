@@ -56,15 +56,18 @@ try {
                     "</tr>" .
                     "<th>Erscheinungsjahr: </th>" .
                     "<td>" . $zeile['erscheinungsjahr'] . "</td>" .
-                    "</tr>";
+                    "</tr>"
+                    ."<td>". "<input type='submit' name='loeschen' value='löschen'> <br>'" ."</td>" ;
             
+                    
         }
     }
 
-    
+   
+
     echo "</table>";
 
-    <input type="submit" name="senden" value="submit"> <br>
+   
 
 
 } catch (PDOException $ex) {
