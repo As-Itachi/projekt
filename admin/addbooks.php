@@ -36,24 +36,28 @@ include_once('../include/dbConnection.php');
 
         $titel = $_POST['titel'];
         $beschreibung = $_POST['beschreibung'];
-        $seitenanzahl = $_POST['seitenanzahl'];
-        $erscheinungsjahr = $_POST['erscheinungsjahr'];
+        $seitenzahl = $_POST['seitenzahl'];
+        $erscheinungsdatum = $_POST['erscheinungsdatum'];
         $preis = $_POST['preis'];
         $genre = $_POST['genre'];
         $autor = $_POST['autor'];
         
-        $statement = $pdo->prepare("INSERT INTO buecher ( titel, beschreibung, seitenanzahl, erscheinungsjahr, preis, genre, autor) 
+        $stmt = $pdo->prepare("INSERT INTO buecher ( titel, beschreibung, seitenanzahl, erscheinungsjahr, preis, genre, autor) 
             VALUES ( :titel, :beschreibung, :seitenanzahl, :erscheinungsjahr, :preis, :genre, :autor)");
 
         $stmt->bindParam(':titel', $titel);
         $stmt->bindParam(':beschreibung', $beschreibung);
-        $stmt->bindParam(':seitenanzahl', $seitenanzahl);
-        $stmt->bindParam(':erscheinungsjahr', $erscheinungsjahr);
+        $stmt->bindParam(':seitenanzahl', $seitenzahl);
+        $stmt->bindParam(':erscheinungsjahr', $erscheinungsdatum);
         $stmt->bindParam(':preis', $preis);
         $stmt->bindParam(':genre', $genre);
         $stmt->bindParam(':autor', $autor);
 
         $stmt->execute();
+
+
+
+        echo "<font color='#FF0000'> <h1>Bücher wurden hinzugefügt! </h1> </font>";
 
     }
 
