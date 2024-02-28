@@ -25,10 +25,11 @@
     </style>
 <body>
 
-<div class="loeschen">
+
 
 <?php
 
+echo "<div class ='loeschen'>";
 
 
 try {
@@ -60,19 +61,22 @@ try {
         }
     }
 
+    
     echo "</table>";
+
+    <input type="submit" name="senden" value="submit"> <br>
+
 
 } catch (PDOException $ex) {
     die("Fehler beim Ausgeben der Daten von der Datenbank!");
 }
 
-
+echo "</div>";
 
 ?>
 
-<input type="submit" name="senden" value="submit"> <br>
 
-</div>
+
 
 
 
