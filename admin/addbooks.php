@@ -31,12 +31,20 @@ include_once('../include/dbConnection.php');
 
     <?php
 
-    if (isset($_POST['Buch hinzufügen'])) {
 
-        $statement = $pdo->prepare("INSERT INTO buecher (idBuecher, titel, beschreibung, seitenanzahl, erscheinungsjahr, preis, genre, autor) 
-            VALUES (:idBuecher, :titel, :beschreibung, :seitenanzahl, :erscheinungsjahr, :preis, :genre, :autor)");
+    if (isset($_POST['submit'])) {
 
-        $stmt->bindParam(':idBuecher', $idBuecher);
+        $titel = $_POST['titel'];
+        $beschreibung = $_POST['beschreibung'];
+        $seitenanzahl = $_POST['seitenanzahl'];
+        $erscheinungsjahr = $_POST['erscheinungsjahr'];
+        $preis = $_POST['preis'];
+        $genre = $_POST['genre'];
+        $autor = $_POST['autor'];
+        
+        $statement = $pdo->prepare("INSERT INTO buecher ( titel, beschreibung, seitenanzahl, erscheinungsjahr, preis, genre, autor) 
+            VALUES ( :titel, :beschreibung, :seitenanzahl, :erscheinungsjahr, :preis, :genre, :autor)");
+
         $stmt->bindParam(':titel', $titel);
         $stmt->bindParam(':beschreibung', $beschreibung);
         $stmt->bindParam(':seitenanzahl', $seitenanzahl);
@@ -47,7 +55,6 @@ include_once('../include/dbConnection.php');
 
         $stmt->execute();
 
-     
     }
 
     ?>
