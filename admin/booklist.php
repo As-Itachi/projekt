@@ -25,9 +25,11 @@
     </style>
 <body>
 
+<div class="loeschen">
+
 <?php
 
-<div class ="loeschen">
+
 
 try {
     $statement = $pdo->prepare("SELECT * FROM buecher");
@@ -64,10 +66,13 @@ try {
     die("Fehler beim Ausgeben der Daten von der Datenbank!");
 }
 
-</div>
+
 
 ?>
 
+<input type="submit" name="senden" value="submit"> <br>
+
+</div>
 
 
 
@@ -96,7 +101,7 @@ try {
         </div>
     </div>
 
-    <input type="submit" name="loeschen" value="Löschen"> <br>
+   
 
 </body>
 </html>
