@@ -123,6 +123,11 @@ if (isset($_POST['remove_from_cart'])) {
     echo isset($_SESSION['idBenutzer']) ? $_SESSION['idBenutzer'] : 0;
     include_once("./navbar/navbar.php");
 
+    $totalPrice = 0;
+    foreach ($cartBooks as $book) {
+        $totalPrice += $book['preis'] * ($quantities[$book['idBuecher']] ?? 1);
+    }
+
     ?>
 
     <table class="table">
