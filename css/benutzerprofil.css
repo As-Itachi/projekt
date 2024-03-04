@@ -1,0 +1,29 @@
+.button{
+    border: 1px solid mediumpurple;
+    color: mediumpurple;
+    padding: 5px 10px;
+    background: white;
+    transition: ease-in-out 0.25s;
+}
+.button:hover{
+    background: mediumpurple;
+    color: white;
+    transition: ease-in-out 0.25s;
+}
+.button-red{
+    border: 1px solid red;
+    color: red;
+    padding: 5px 10px;
+    background: white;
+    transition: ease-in-out 0.25s;
+}
+.button-red:hover{
+    background: red;
+    color: white;
+    transition: ease-in-out 0.25s;
+}
+.active{
+    background: mediumpurple!important;
+    border: 1px solid mediumpurple!important;
+    transition: ease-in-out 0.25s;
+}
