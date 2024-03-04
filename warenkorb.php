@@ -2,11 +2,38 @@
 session_start();
 require_once('include/dbConnection.php');
 
+$userId = isset($_SESSION['idBenutzer']) ? $_SESSION['idBenutzer'] : 0;
+$stmt = $pdo->prepare("SELECT idBuecher FROM warenkorb WHERE idBenutzer = :idBenutzer");
+$stmt->bindParam(':idBenutzer', $userId);
+$stmt->execute();
+$booksInCart = $stmt->fetchAll(PDO::FETCH_COLUMN);
+
+if (!empty($booksInCart)) {
+    try {
+        $stmt = $pdo->prepare("SELECT * FROM buecher WHERE idBuecher IN (" . implode(',', array_fill(0, count($booksInCart), '?')) . ")");
+        $stmt->execute($booksInCart);
+        $cartBooks = $stmt->fetchAll();
+
+        $quantities = $pdo->prepare("SELECT idBuecher, SUM(menge) as quantity FROM warenkorb WHERE idBenutzer = :idBenutzer GROUP BY idBuecher");
+        $quantities->bindParam(':idBenutzer', $userId);
+        $quantities->execute();
+        $quantities = $quantities->fetchAll(PDO::FETCH_KEY_PAIR);
+    } catch (Exception $e) {
+        echo $e->getMessage();
+        echo "<br>";
+        echo $stmt->queryString;
+    }
+} else {
+
+    $cartBooks = [];
+    $quantities = [];
+}
+
 if (isset($_POST['remove_from_cart'])) {
     $productId = $_POST['idBuecher'];
     $userId = $_SESSION['idBenutzer'];
     $stmt = $pdo->prepare("DELETE FROM warenkorb WHERE idBenutzer = :idBenutzer AND idBuecher = :idBuecher");
-    $stmt->bindParam(':idBenutzer',$userId);
+    $stmt->bindParam(':idBenutzer', $userId);
     $stmt->bindParam(':idBuecher', $productId);
     $stmt->execute();
 
@@ -14,6 +41,8 @@ if (isset($_POST['remove_from_cart'])) {
         unset($_SESSION['warenkorb'][$productId]);
     }
 } elseif (isset($_POST['order']) && isset($_SESSION['idBenutzer'])) {
+
+
 
     try {
         $userId = isset($_SESSION['idBenutzer']) ? $_SESSION['idBenutzer'] : 0;
@@ -45,32 +74,9 @@ if (isset($_POST['remove_from_cart'])) {
         echo $stmt->queryString;
     }
 }
-$userId = isset($_SESSION['idBenutzer']) ? $_SESSION['idBenutzer'] : 0;
-$stmt = $pdo->prepare("SELECT idBuecher FROM warenkorb WHERE idBenutzer = :idBenutzer");
-$stmt->bindParam(':idBenutzer', $userId);
-$stmt->execute();
-$booksInCart = $stmt->fetchAll(PDO::FETCH_COLUMN);
 
-if (!empty($booksInCart)) {
-    try {
-        $stmt = $pdo->prepare("SELECT * FROM buecher WHERE idBuecher IN (" . implode(',', array_fill(0, count($booksInCart), '?')) . ")");
-        $stmt->execute($booksInCart);
-        $cartBooks = $stmt->fetchAll();
 
-        $quantities = $pdo->prepare("SELECT idBuecher, SUM(menge) as quantity FROM warenkorb WHERE idBenutzer = :idBenutzer GROUP BY idBuecher");
-        $quantities->bindParam(':idBenutzer', $userId);
-        $quantities->execute();
-        $quantities = $quantities->fetchAll(PDO::FETCH_KEY_PAIR);
-    } catch (Exception $e) {
-        echo $e->getMessage();
-        echo "<br>";
-        echo $stmt->queryString;
-    }
-} else {
 
-    $cartBooks = [];
-    $quantities = [];
-}
 
 
 ?>
@@ -110,17 +116,13 @@ if (!empty($booksInCart)) {
         }
     </script>
 </head>
+
 <body>
 
     <?php
     echo isset($_SESSION['idBenutzer']) ? $_SESSION['idBenutzer'] : 0;
     include_once("./navbar/navbar.php");
 
-    // Calculate the total price
-    $totalPrice = 0;
-    foreach ($cartBooks as $book) {
-        $totalPrice += $book['preis'] * ($quantities[$book['idBuecher']] ?? 1);
-    }
     ?>
 
     <table class="table">
@@ -156,7 +158,7 @@ if (!empty($booksInCart)) {
     <div class="total-price">
         <h3>Gesamtpreis: <?php echo $totalPrice; ?> €</h3>
     </div>
-    <form method="post"> 
+    <form method="post">
         <div class="checkout">
             <button type="submit" class="btn btn-primary" name="order">Bestellen</button>
         </div>
@@ -164,6 +166,10 @@ if (!empty($booksInCart)) {
 
     <?php
     include_once("./footer/footer.php");
+    $totalPrice = 0;
+    foreach ($cartBooks as $book) {
+        $totalPrice += $book['preis'] * ($quantities[$book['idBuecher']] ?? 1);
+    }
     ?>
 
     <script>
@@ -191,6 +197,6 @@ if (!empty($booksInCart)) {
         }
     </script>
 
-    </body>
+</body>
 
 </html>
