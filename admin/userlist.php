@@ -46,50 +46,101 @@ include_once('../include/dbConnection.php');
                     </ul>
                 </div>
                 <div class="col-md-10 d-flex flex-column align-items-center">
-                <?php
-    try {
-        $statement = $pdo->prepare("SELECT * FROM benutzer");
+                    <?php
+                      
 
-        $statement->execute();
+                      echo "<div class ='loeschen'>";
+  
+  
+                      if (
+                          isset($_GET['idBenutzer']) && isset($_GET['name']) && isset($_GET['email']) 
+                          && isset($_GET['geburtstag']) && isset($_GET['wohnort']) && isset($_GET['plz']) && isset($_GET['nname'])
+                      ) {
+  
+                          $userId = $_GET['idBenutzer'];
+                          $email = $_GET['email'];
+                          $name = $_GET['name'];
+                          $nname = $_GET['nname'];
+                          $plz = $_GET['plz'];
+                          $wohnort = $_GET['wohnort'];
+                          $geburtstag = $_GET['geburtstag'];
+                         
+                      }
+  
+  
+  
+                      if (isset($_POST['loeschen'])) {
+  
+  
+                          try {
+  
+  
+  
+                              $delete = $pdo->prepare("DELETE FROM buecher WHERE idBenutzer = :idBenutzer");
+  
+                              $delete->bindParam(':idBenutzer', $_POST['idBenutzer']);
+  
+                              $delete->execute();
+  
+  
+                              echo "Konto wurde gelöscht";
+                          } catch (PDOException $e) {
+                              die("Das Konto konnte nicht gelöscht werden!");
+                          }
+                        }
+                     
 
-        echo "<table>";
+                    try {
+                        $statement = $pdo->prepare("SELECT * FROM benutzer");
+
+                        $statement->execute();
+
+                        echo "<table>";
 
 
-        if ($statement->rowCount() > 0) {
-            while ($zeile = $statement->fetch()) {
-                echo 
-                    "<tr>" ."<td>". "<th>Vorname: </th>". $zeile['name'] . "</td>" .
-                    "</tr>" .
+                        if ($statement->rowCount() > 0) {
+                            while ($zeile = $statement->fetch()) {
+                                echo
+                                "<tr>" . "<th>Vorname: </th>" . "<td>" . $zeile['name'] . "</td>" .
+                                    "</tr>" .
 
-                    "<tr>" ."<td>". "<th>Nachname: </th>". $zeile['nname']. "</td>".
-                    "</tr>" .
+                                    "<tr>" .  "<th>Nachname: </th>" . "<td>" . $zeile['nname'] . "</td>" .
+                                    "</tr>" .
 
-                    "<tr>" ."<td>". "<th>Email: </th>". $zeile['email']. "</td>".
-                    "</tr>" .
+                                    "<tr>" .  "<th>Email: </th>" . "<td>" . $zeile['email'] . "</td>" .
+                                    
+                                    "</tr>" .
+                                    
 
-                    "<tr>" ."<td>". "<th>Geburtstag: </th>". $zeile['geburtstag']. "</td>".
-                    "</tr>" .
+                                    "<tr>" .  "<th>Geburtstag: </th>" . "<td>" . $zeile['geburtstag'] . "</td>" .
+                                    "</tr>" .
 
-                    "<tr>" ."<td>". "<th>Wohnort: </th>". $zeile['wohnort']. "</td>".
-                    "</tr>" .
+                                    "<tr>" .  "<th>Wohnort: </th>" . "<td>" . $zeile['wohnort'] . "</td>" .
+                                    "</tr>" .
 
-                    "<tr>" ."<td>". "<th>PLZ: </th>". $zeile['plz']. "</td>".
-                    "</tr>" ;
-                    
-                
-            }
-        }
-        echo "</table>";
-        
-    } catch (PDOException $ex) {
-        die("Fehler beim Ausgeben der Daten von der Datenbank!");
-    }
+                                    "<tr>" . "<th>PLZ: </th>" . "<td>" . $zeile['plz'] . "</td>" .  "</tr>". "<tr>".
 
-    echo "</div>";
+                                    "<form method='POST'>" . //Formular zum löschen erstellt
+                                    "<input type='hidden' name='idBenutzer' value='" . $zeile['idBenutzer'] . "'>" .
+                                    "<td>" .  "<input class='btn btn-danger' name='loeschen' type='submit' value='Konto löschen'>" . "</td>" .
+                                    "</form>" . "</tr>";
+
+                                    
+
+                                  
+                            }
+                            
+                        }
+                        echo "</table>";
+                    } catch (PDOException $ex) {
+                        die("Fehler beim Ausgeben der Daten von der Datenbank!");
+                    }
+
+                    echo "</div>";
 
 
 
-    ?>
+                    ?>
                 </div>
             </div>
         </div>
@@ -97,8 +148,8 @@ include_once('../include/dbConnection.php');
 
 
 
-    
-    
+
+
 
 </body>
 
