@@ -36,6 +36,42 @@
         } catch (PDOException $ex) {
             die("Fehler beim Ausgeben der Daten von der Datenbank!");
         }
+        if (
+            isset($_GET['idBuecher']) && isset($_GET['seitenanzahl']) && isset($_GET['erscheinungsjahr']) && isset($_GET['titel'])
+            && isset($_GET['beschreibung']) && isset($_GET['preis']) && isset($_GET['genre']) && isset($_GET['autor'])
+        ) {
+
+            $id = $_GET['idBuecher'];
+            $seitenzahl = $_GET['seitenanzahl'];
+            $erscheinungsdatum = $_GET['erscheinungsjahr'];
+            $titel = $_GET['titel'];
+            $beschreibung = $_GET['beschreibung'];
+            $preis = $_GET['preis'];
+            $genre = $_GET['genre'];
+            $autor = $_GET['autor'];
+        }
+
+
+
+        if (isset($_POST['loeschen'])) {
+
+
+            try {
+
+
+
+                $delete = $pdo->prepare("DELETE FROM buecher WHERE idBuecher = :idBuecher");
+
+                $delete->bindParam(':idBuecher', $_POST['idBuecher']);
+
+                $delete->execute();
+
+
+                echo "Buch wurde gelöscht";
+            } catch (PDOException $e) {
+                die("Das Buch konnte nicht gelöscht werden!");
+            }
+        }
     ?>
 
     <?php include_once('../navbar/navbar-admin.php'); ?>
