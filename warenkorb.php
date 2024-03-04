@@ -42,24 +42,20 @@ if (isset($_POST['remove_from_cart'])) {
     }
 } elseif (isset($_POST['order']) && isset($_SESSION['idBenutzer'])) {
 
-
-
+    $totalPrice = 0;
+    foreach ($cartBooks as $book) {
+        $totalPrice += $book['preis'] * ($quantities[$book['idBuecher']] ?? 1);
+        echo $totalPrice;
+    }
     try {
-        $userId = isset($_SESSION['idBenutzer']) ? $_SESSION['idBenutzer'] : 0;
+        
 
         $pdo->beginTransaction();
 
-        $stmt = $pdo->prepare("INSERT INTO bestellungen (preis, idBenutzer) VALUES (:totalPrice, :idBenutzer)");
-        $stmt->bindParam(':totalPrice', $totalPrice);
-        $stmt->bindParam(':idBenutzer', $userId);
-        $stmt->execute();
-        $orderId = $pdo->lastInsertId();
-
         foreach ($cartBooks as $book) {
-            $stmt = $pdo->prepare("INSERT INTO zt_bestellungen (idBestellungen, idBuecher, preis) VALUES (:idBestellungen, :idBuecher, :preis)");
-            $stmt->bindParam(':idBestellungen', $orderId);
+            $stmt = $pdo->prepare("INSERT INTO bestellungen (idBenutzer, preis) VALUES (:idBenutzer,:preis)");
+            $stmt->bindParam(':idBenutzer', $_SESSION['idBenutzer']);
             $stmt->bindParam(':preis', $totalPrice);
-            $stmt->bindParam(':idBuecher', $book['idBuecher']);
             $stmt->execute();
         }
 
@@ -74,9 +70,6 @@ if (isset($_POST['remove_from_cart'])) {
         echo $stmt->queryString;
     }
 }
-
-
-
 
 
 ?>
@@ -123,11 +116,6 @@ if (isset($_POST['remove_from_cart'])) {
     echo isset($_SESSION['idBenutzer']) ? $_SESSION['idBenutzer'] : 0;
     include_once("./navbar/navbar.php");
 
-    $totalPrice = 0;
-    foreach ($cartBooks as $book) {
-        $totalPrice += $book['preis'] * ($quantities[$book['idBuecher']] ?? 1);
-    }
-
     ?>
 
     <table class="table">
@@ -161,7 +149,7 @@ if (isset($_POST['remove_from_cart'])) {
         </tbody>
     </table>
     <div class="total-price">
-        <h3>Gesamtpreis: <?php echo $totalPrice; ?> €</h3>
+        <h3>Gesamtpreis: <?php //echo $totalPrice; ?> €</h3>
     </div>
     <form method="post">
         <div class="checkout">
