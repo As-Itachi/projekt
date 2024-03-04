@@ -27,7 +27,32 @@
 
 
 
-<?php
+
+
+
+
+
+
+
+    <?php include_once('../navbar/navbar-admin.php'); ?>
+    <div class="p-5 h-100 d-flex align-items-center justify-content-center">
+        <div class="container p-3 border">
+        <div class="row d-flex align-items-center">
+                <div class="col-sm-2 pt-5 pb-5 h-100 nav-list">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <a href="./addbooks.php">Bücher hinzufügen</a>
+                        </li>
+                        <li class="list-group-item active">
+                            <a href="./booklist.php">Bücherliste</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="./userlist.php">Benutzerliste</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-10 d-flex flex-column align-items-center">
+                <?php
 
 echo "<div class ='loeschen'>";
 
@@ -38,7 +63,6 @@ try {
     $statement->execute();
 
     echo "<table>";
-    echo "<hr>";
 
     
 
@@ -78,31 +102,6 @@ echo "</div>";
 
 ?>
 
-
-
-
-
-
-
-    <?php include_once('../navbar/navbar-admin.php'); ?>
-    <div class="p-5 h-100 d-flex align-items-center justify-content-center">
-        <div class="container p-3 border">
-        <div class="row d-flex align-items-center">
-                <div class="col-sm-2 pt-5 pb-5 h-100 nav-list">
-                    <ul class="list-group">
-                        <li class="list-group-item">
-                            <a href="./addbooks.php">Bücher hinzufügen</a>
-                        </li>
-                        <li class="list-group-item active">
-                            <a href="./booklist.php">Bücherliste</a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="./userlist.php">Benutzerliste</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-md-10 d-flex flex-column align-items-center">
-                   <?php #TODO: Bücherliste Hinzufügen, mit Lösch und Bearbeitungsoptionen [Tyler] ?>
                 </div>
             </div>
         </div>
