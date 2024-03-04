@@ -25,65 +25,6 @@
     </style>
 <body>
 
-
-<?php
-
-echo "<div class ='loeschen'>";
-
-
-try {
-    $statement = $pdo->prepare("SELECT * FROM buecher");
-
-    $statement->execute();
-
-    echo "<table>";
-    echo "<hr>";
-
-    
-
-    if ($statement->rowCount() > 0) {
-        while ($zeile = $statement->fetch()) {
-            
-                echo "<tr style='font-size:20px'>" .
-                    "<td style='color: purple'>" . $zeile['titel'] . "</td>" .
-                    "</tr>" .
-                    "<tr>" .
-                   
-                    "<tr>" .
-                    "<th>Seitenanzahl: </th>" .
-                    "<td>" . $zeile['seitenanzahl'] . "</td>" .
-                    "</tr>" .
-                    "<th>Erscheinungsjahr: </th>" .
-                    "<td>" . $zeile['erscheinungsjahr'] . "</td>" .
-                    "</tr>"
-                    ."<td>". "<input type='submit' name='loeschen' value='löschen'> <br>" ."</td>" ;
-            
-                    
-        }
-    }
-
-   
-
-    echo "</table>";
-
-   
-
-
-} catch (PDOException $ex) {
-    die("Fehler beim Ausgeben der Daten von der Datenbank!");
-}
-
-echo "</div>";
-
-?>
-
-
-
-
-
-
-
-
     <?php include_once('../navbar/navbar-admin.php'); ?>
     <div class="p-5 h-100 d-flex align-items-center justify-content-center">
         <div class="container p-3 border">
@@ -104,7 +45,54 @@ echo "</div>";
                     </ul>
                 </div>
                 <div class="col-md-10 d-flex flex-column align-items-center">
-                   <?php #TODO: Bücherliste Hinzufügen, mit Lösch und Bearbeitungsoptionen [Tyler] ?>
+                    <?php
+
+                    echo "<div class ='loeschen'>";
+
+
+                    try {
+                        $statement = $pdo->prepare("SELECT * FROM buecher");
+
+                        $statement->execute();
+
+                        echo "<table>";
+                        
+
+                        if ($statement->rowCount() > 0) {
+                            while ($zeile = $statement->fetch()) {
+                                
+                                    echo "<tr style='font-size:20px'>" .
+                                        "<td style='color: purple'>" . $zeile['titel'] . "</td>" .
+                                        "</tr>" .
+                                        "<tr>" .
+                                    
+                                        "<tr>" .
+                                        "<th>Seitenanzahl: </th>" .
+                                        "<td>" . $zeile['seitenanzahl'] . "</td>" .
+                                        "</tr>" .
+                                        "<th>Erscheinungsjahr: </th>" .
+                                        "<td>" . $zeile['erscheinungsjahr'] . "</td>" .
+                                        "</tr>"
+                                        ."<td>". "<input type='submit' name='loeschen' value='löschen'> <br>" ."</td>" ;
+                                
+                                        
+                            }
+                        }
+
+                    
+
+                        echo "</table>";
+
+                    
+
+
+                    } catch (PDOException $ex) {
+                        die("Fehler beim Ausgeben der Daten von der Datenbank!");
+                    }
+
+                    echo "</div>";
+
+                    ?>
                 </div>
             </div>
         </div>
