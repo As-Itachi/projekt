@@ -56,6 +56,13 @@ $allBooks = $stmt->fetchAll();
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
+                    <div class="col-md-12">
+                        <div class="section-header align-center">
+                            <div class="title"> <span></span> </div>
+                        </div>
+                        <h3 style="text-align: center;font-size:78px; margin-bottom:10px;" class="section-title">Top-Seller</h2>
+                        <hr style="border: 1px solid #000;">
+                    </div>
                     <div class="product-list" data-aos="fade-up">
                         <div class="row">
                             <?php foreach ($latestBooks as $book) : ?>
@@ -78,7 +85,8 @@ $allBooks = $stmt->fetchAll();
                                             <div class="item-price"><?php echo $book['preis'] ?>€</div>
                                         </figcaption>
                                     </div>
-                                </div> <?php endforeach; ?>
+                                </div> 
+                                <?php endforeach; ?>
                         </div>
                     </div>
                 </div>
@@ -92,7 +100,7 @@ $allBooks = $stmt->fetchAll();
                         <div class="section-header align-center">
                             <div class="title"> <span></span> </div>
                         </div>
-                        <h2 style="text-align: center;font-size:78px; margin-bottom:10px;" class="section-title">Beliebte Bücher</h2>
+                        <h3 style="text-align: center;font-size:78px; margin-bottom:10px;" class="section-title">Beliebte Bücher</h2>
                         <hr style="border: 1px solid #000;">
                     </div>
                     <div class="tab-content">

@@ -1,0 +1,14 @@
+.account-notif{
+    background: mediumpurple;
+}
+.button{
+    border: 1px solid mediumpurple;
+    color: mediumpurple;
+    padding: 5px 10px;
+    background: white;
+    transition: ease-in-out 0.25s;
+}
+.button:hover{
+    background: mediumpurple;
+    color: white;
+}

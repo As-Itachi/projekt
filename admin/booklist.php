@@ -10,6 +10,8 @@
     <title>Knjižara - Admin</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../css/admin.css">
+
 </head>
 <style>
         .nav-list{
@@ -24,6 +26,17 @@
         }
     </style>
 <body>
+    <?php 
+        try {
+            $statement = $pdo->prepare("SELECT * FROM buecher");
+            $statement->execute();
+            $books = $statement->fetchAll();
+
+
+        } catch (PDOException $ex) {
+            die("Fehler beim Ausgeben der Daten von der Datenbank!");
+        }
+    ?>
 
     <?php include_once('../navbar/navbar-admin.php'); ?>
     <div class="p-5 h-100 d-flex align-items-center justify-content-center">
@@ -44,56 +57,25 @@
                         </li>
                     </ul>
                 </div>
-                <div class="col-md-10 d-flex flex-column align-items-center">
-                    <?php
-
-                    echo "<div class ='loeschen'>";
-
-
-                    try {
-                        $statement = $pdo->prepare("SELECT * FROM buecher");
-
-                        $statement->execute();
-
-                        echo "<table>";
-                        
-
-                        if ($statement->rowCount() > 0) {
-                            while ($zeile = $statement->fetch()) {
-                                
-                                    echo "<tr style='font-size:20px'>" .
-                                        "<td style='color: purple'>" . $zeile['titel'] . "</td>" .
-                                        "</tr>" .
-                                        "<tr>" .
-                                    
-                                        "<tr>" .
-                                        "<th>Seitenanzahl: </th>" .
-                                        "<td>" . $zeile['seitenanzahl'] . "</td>" .
-                                        "</tr>" .
-                                        "<th>Erscheinungsjahr: </th>" .
-                                        "<td>" . $zeile['erscheinungsjahr'] . "</td>" .
-                                        "</tr>"
-                                        ."<td>". "<input type='submit' name='loeschen' value='Löschen'> <br>" ."</td>" ;
-                                
-                                        
-                            }
-                        }
-
+                <div class="col-md-10 d-flex flex-column ">
+                    <div class="row">
+                    <?php foreach ($books as $book) : ?>
+                    <div class="col-md-6">
+                        <div class="book">
+                            <p class="title">Titel: <?php echo $book['titel'] ?></p> 
+                            <p>Autor: <?php echo $book['autor'] ?></p>
+                            <p>Preis: <?php echo $book['preis'] ?>€</p>
+                            <p>Seitenanzahl: <?php echo $book['seitenanzahl'] ?></p>
+                            <p>Erscheinungsjahr: <?php echo $book['erscheinungsjahr'] ?></p>
+                            <input type='submit' class='button' name='loeschen' value='Löschen'>
+                            <hr>
+                        </div>
+                    </div>
+                    <?php endforeach; ?>
+                    </div>
                     
-
-                        echo "</table>";
-
-                    
-
-
-                    } catch (PDOException $ex) {
-                        die("Fehler beim Ausgeben der Daten von der Datenbank!");
-                    }
-
-                    echo "</div>";
-
-                    ?>
                 </div>
+                
             </div>
         </div>
     </div>

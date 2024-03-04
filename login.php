@@ -11,6 +11,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Knjižara - Login</title>
+    <link rel="stylesheet" href="./css/login.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </head>
@@ -74,7 +75,7 @@
         }
     ?>
     <div class="container-fluid w-25">
-        <div class="mt-4 p-3 bg-primary border rounded text-white d-flex flex-column justify-content-center">
+        <div class="mt-4 p-3 account-notif border rounded text-white d-flex flex-column justify-content-center">
             <span class="text-center text-white">Haben Sie noch kein Konto?</span>
             <a href="./register.php" class="text-center link-light">Registrieren</a>
         </div>
@@ -98,7 +99,7 @@
                     <label for="pwd" class="form-label">Passwort:</label>
                     <input type="password" class="form-control" id="pwd" placeholder="Passwort eingeben" name="pswd">
                 </div>
-                <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" name="submit" class="button">Submit</button>
             </form>
         </div>
     </div>
