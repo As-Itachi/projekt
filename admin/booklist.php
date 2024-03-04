@@ -26,7 +26,6 @@
 <body>
 
 
-
 <?php
 
 echo "<div class ='loeschen'>";
@@ -84,6 +83,7 @@ echo "</div>";
 
 
 
+
     <?php include_once('../navbar/navbar-admin.php'); ?>
     <div class="p-5 h-100 d-flex align-items-center justify-content-center">
         <div class="container p-3 border">
@@ -94,8 +94,10 @@ echo "</div>";
                             <a href="./addbooks.php">Bücher hinzufügen</a>
                         </li>
                         <li class="list-group-item active">
-                            <a href="./booklist.php">Bücherliste</a>
+                            <a href="./booklist.php">Bücherliste</a> 
+                            
                         </li>
+                        
                         <li class="list-group-item">
                             <a href="./userlist.php">Benutzerliste</a>
                         </li>
@@ -108,6 +110,7 @@ echo "</div>";
         </div>
     </div>
 
+    
    
 
 </body>
