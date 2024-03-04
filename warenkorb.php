@@ -52,12 +52,12 @@ if (isset($_POST['remove_from_cart'])) {
 
         $pdo->beginTransaction();
 
-        foreach ($cartBooks as $book) {
+        
             $stmt = $pdo->prepare("INSERT INTO bestellungen (idBenutzer, preis) VALUES (:idBenutzer,:preis)");
             $stmt->bindParam(':idBenutzer', $_SESSION['idBenutzer']);
             $stmt->bindParam(':preis', $totalPrice);
             $stmt->execute();
-        }
+        
 
         $pdo->commit();
         unset($_SESSION['warenkorb']);
