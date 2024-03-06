@@ -2,20 +2,7 @@
 session_start();
 require_once('include/dbConnection.php');
 
-if (isset($_POST['remove_from_cart'])) {
-    $productId = $_POST['idBuecher'];
-    $userId = $_SESSION['idBenutzer'];
-    $stmt = $pdo->prepare("DELETE FROM warenkorb WHERE idBenutzer = :idBenutzer AND idBuecher = :idBuecher");
-    $stmt->bindParam(':idBenutzer', $userId);
-    $stmt->bindParam(':idBuecher', $productId);
-    $stmt->execute();
-
-    if (isset($_SESSION['warenkorb'][$productId])) {
-        unset($_SESSION['warenkorb'][$productId]);
-    }
-}
-
-$userId = $_SESSION['idBenutzer'];
+$userId = isset($_SESSION['idBenutzer']) ? $_SESSION['idBenutzer'] : 0;
 $stmt = $pdo->prepare("SELECT idBuecher FROM warenkorb WHERE idBenutzer = :idBenutzer");
 $stmt->bindParam(':idBenutzer', $userId);
 $stmt->execute();
@@ -42,7 +29,53 @@ if (!empty($booksInCart)) {
     $quantities = [];
 }
 
-include_once("./navbar/navbar.php");
+if (isset($_POST['remove_from_cart'])) {
+    $productId = $_POST['idBuecher'];
+    $userId = $_SESSION['idBenutzer'];
+    $stmt = $pdo->prepare("DELETE FROM warenkorb WHERE idBenutzer = :idBenutzer AND idBuecher = :idBuecher");
+    $stmt->bindParam(':idBenutzer', $userId);
+    $stmt->bindParam(':idBuecher', $productId);
+    $stmt->execute();
+
+    if (isset($_SESSION['warenkorb'][$productId])) {
+        unset($_SESSION['warenkorb'][$productId]);
+    }
+} elseif (isset($_POST['order']) && isset($_SESSION['idBenutzer'])) {
+
+    echo "T";
+    $totalPrice = 0;
+    foreach ($cartBooks as $book) {
+        $quantity = ($quantities[$book['idBuecher']] ?? 1);
+        $totalPrice += $book['preis'] * $quantity;
+    }
+    try {
+
+        $pdo->beginTransaction();
+
+        $stmt = $pdo->prepare("INSERT INTO bestellungen (idBenutzer, preis) VALUES (:idBenutzer,:preis)");
+        $stmt->bindParam(':idBenutzer', $_SESSION['idBenutzer']);
+        $stmt->bindParam(':preis', $totalPrice);
+        $stmt->execute();
+
+
+        $pdo->commit();
+        //unset($_SESSION['warenkorb']);
+        $stmt = $pdo->prepare("DELETE FROM warenkorb WHERE idBenutzer = :idBenutzer");
+        $stmt->bindParam(':idBenutzer', $_SESSION['idBenutzer']);
+        $stmt->execute();
+
+        $cartBooks = [];
+
+        echo "Bestellung erfolgreich aufgegeben!";
+    } catch (Exception $e) {
+
+        $pdo->rollback();
+        echo "Fehler bei der Bestellung: " . $e->getMessage();
+        echo $stmt->queryString;
+    }
+}
+
+
 ?>
 
 <!DOCTYPE html>
@@ -52,7 +85,7 @@ include_once("./navbar/navbar.php");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Knjižara - Template</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9Tneoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script>
         function removeFromCart(bookId) {
@@ -79,13 +112,14 @@ include_once("./navbar/navbar.php");
             }
         }
     </script>
+</head>
+
+<body>
 
     <?php
-    // Calculate the total price
-    $totalPrice = 0;
-    foreach ($cartBooks as $book) {
-        $totalPrice += $book['preis'] * ($quantities[$book['idBuecher']] ?? 1);
-    }
+    echo isset($_SESSION['idBenutzer']) ? $_SESSION['idBenutzer'] : 0;
+    include_once("./navbar/navbar.php");
+
     ?>
 
     <table class="table">
@@ -119,14 +153,21 @@ include_once("./navbar/navbar.php");
         </tbody>
     </table>
     <div class="total-price">
-        <h3>Gesamtpreis: <?php echo $totalPrice; ?> €</h3>
+        <h3>Gesamtpreis: <?php //echo $totalPrice; 
+                            ?> €</h3>
     </div>
-    <div class="checkout">
-        <button class="btn btn-primary">Zur Kasse gehen</button>
-    </div>
+    <form method="post">
+        <div class="checkout">
+            <button type="submit" class="btn btn-primary" name="order">Bestellen</button>
+        </div>
+    </form>
 
     <?php
     include_once("./footer/footer.php");
+    $totalPrice = 0;
+    foreach ($cartBooks as $book) {
+        $totalPrice += $book['preis'] * ($quantities[$book['idBuecher']] ?? 1);
+    }
     ?>
 
     <script>
@@ -154,6 +195,6 @@ include_once("./navbar/navbar.php");
         }
     </script>
 
-    </body>
+</body>
 
 </html>
