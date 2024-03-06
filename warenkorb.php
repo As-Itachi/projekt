@@ -44,20 +44,20 @@ if (isset($_POST['remove_from_cart'])) {
 
     $totalPrice = 0;
     foreach ($cartBooks as $book) {
-        $totalPrice += $book['preis'] * ($quantities[$book['idBuecher']] ?? 1);
-        echo $totalPrice;
+        $quantity = ($quantities[$book['idBuecher']] ?? 1);
+        $totalPrice += $book['preis'] * $quantity;
     }
     try {
-        
+
 
         $pdo->beginTransaction();
 
-        
-            $stmt = $pdo->prepare("INSERT INTO bestellungen (idBenutzer, preis) VALUES (:idBenutzer,:preis)");
-            $stmt->bindParam(':idBenutzer', $_SESSION['idBenutzer']);
-            $stmt->bindParam(':preis', $totalPrice);
-            $stmt->execute();
-        
+
+        $stmt = $pdo->prepare("INSERT INTO bestellungen (idBenutzer, preis) VALUES (:idBenutzer,:preis)");
+        $stmt->bindParam(':idBenutzer', $_SESSION['idBenutzer']);
+        $stmt->bindParam(':preis', $totalPrice);
+        $stmt->execute();
+
 
         $pdo->commit();
         unset($_SESSION['warenkorb']);
@@ -149,7 +149,8 @@ if (isset($_POST['remove_from_cart'])) {
         </tbody>
     </table>
     <div class="total-price">
-        <h3>Gesamtpreis: <?php //echo $totalPrice; ?> €</h3>
+        <h3>Gesamtpreis: <?php //echo $totalPrice; 
+                            ?> €</h3>
     </div>
     <form method="post">
         <div class="checkout">
