@@ -44,17 +44,20 @@ if (isset($_POST['remove_from_cart'])) {
 
     echo "T";
     $totalPrice = 0;
+    $titelBuch;
     foreach ($cartBooks as $book) {
         $quantity = ($quantities[$book['idBuecher']] ?? 1);
         $totalPrice += $book['preis'] * $quantity;
+        $titelBuch = $book['titel'];
     }
     try {
 
         $pdo->beginTransaction();
 
-        $stmt = $pdo->prepare("INSERT INTO bestellungen (idBenutzer, preis) VALUES (:idBenutzer,:preis)");
+        $stmt = $pdo->prepare("INSERT INTO bestellungen (idBenutzer, preis, titel) VALUES (:idBenutzer,:preis, :titel)");
         $stmt->bindParam(':idBenutzer', $_SESSION['idBenutzer']);
         $stmt->bindParam(':preis', $totalPrice);
+        $stmt->bindParam(':titel', $titelBuch);
         $stmt->execute();
 
 
@@ -84,9 +87,8 @@ if (isset($_POST['remove_from_cart'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Knjižara - Warenkorb</title>
-    <link rel="stylesheet" href="./css/warenkorb.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9Tneoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <title>Knjižara - Template</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script>
         function removeFromCart(bookId) {
@@ -116,55 +118,52 @@ if (isset($_POST['remove_from_cart'])) {
 </head>
 
 <body>
-    
+
     <?php
+    echo isset($_SESSION['idBenutzer']) ? $_SESSION['idBenutzer'] : 0;
     include_once("./navbar/navbar.php");
-    // Calculate the total price
-    $totalPrice = 0;
-    foreach ($cartBooks as $book) {
-        $totalPrice += $book['preis'] * ($quantities[$book['idBuecher']] ?? 1);
-    }
+
     ?>
-    <div class="wrap-group">
-        <table class="table">
-            <thead>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Titel</th>
+                <th scope="col">Autor</th>
+                <th scope="col">Preis</th>
+                <th scope="col">Menge</th>
+                <th scope="col">Aktion</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($cartBooks as $book) : ?>
                 <tr>
-                    <th scope="col">Titel</th>
-                    <th scope="col">Autor</th>
-                    <th scope="col">Preis</th>
-                    <th scope="col">Menge</th>
-                    <th scope="col">Aktion</th>
+                    <td><?php echo htmlspecialchars($book['titel']); ?></td>
+                    <td><?php echo htmlspecialchars($book['autor']); ?></td>
+                    <td><?php echo htmlspecialchars($book['preis']); ?> €</td>
+                    <td>
+                        <?php $quantity = ($quantities[$book['idBuecher']] ?? 1);
+                        echo htmlspecialchars($quantity); ?>
+                    </td>
+                    <td>
+                        <form method="post" action="">
+                            <input type="hidden" name="idBuecher" value="<?php echo htmlspecialchars($book['idBuecher']); ?>">
+                            <button type="button" class="btn btn-danger" onclick="removeFromCart(<?php echo htmlspecialchars($book['idBuecher']); ?>)">Aus Warenkorb entfernen</button>
+                        </form>
+                    </td>
                 </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($cartBooks as $book) : ?>
-                    <tr>
-                        <td><?php echo htmlspecialchars($book['titel']); ?></td>
-                        <td><?php echo htmlspecialchars($book['autor']); ?></td>
-                        <td><?php echo htmlspecialchars($book['preis']); ?> €</td>
-                        <td>
-                            <?php $quantity = ($quantities[$book['idBuecher']] ?? 1);
-                            echo htmlspecialchars($quantity); ?>
-                        </td>
-                        <td class="action">
-                            <form method="post" action="">
-                                <input type="hidden" name="idBuecher" value="<?php echo htmlspecialchars($book['idBuecher']); ?>">
-                                <button type="button" class="button-crit" onclick="removeFromCart(<?php echo htmlspecialchars($book['idBuecher']); ?>)">Aus Warenkorb entfernen</button>
-                            </form>
-                        </td>
-                    </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
-        <div class="price-group">
-            <div class="total-price">
-                <h3>Gesamtpreis: <?php echo $totalPrice; ?> €</h3>
-            </div>
-            <div class="checkout">
-                <button class="button">Zur Kasse gehen</button>
-            </div>
-        </div>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+    <div class="total-price">
+        <h3>Gesamtpreis: <?php //echo $totalPrice; 
+                            ?> €</h3>
     </div>
+    <form method="post">
+        <div class="checkout">
+            <button type="submit" class="btn btn-primary" name="order">Bestellen</button>
+        </div>
+    </form>
 
     <?php
     include_once("./footer/footer.php");
