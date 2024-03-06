@@ -44,17 +44,20 @@ if (isset($_POST['remove_from_cart'])) {
 
     echo "T";
     $totalPrice = 0;
+    $titelBuch;
     foreach ($cartBooks as $book) {
         $quantity = ($quantities[$book['idBuecher']] ?? 1);
         $totalPrice += $book['preis'] * $quantity;
+        $titelBuch = $book['titel'];
     }
     try {
 
         $pdo->beginTransaction();
 
-        $stmt = $pdo->prepare("INSERT INTO bestellungen (idBenutzer, preis) VALUES (:idBenutzer,:preis)");
+        $stmt = $pdo->prepare("INSERT INTO bestellungen (idBenutzer, preis, titel) VALUES (:idBenutzer,:preis, :titel)");
         $stmt->bindParam(':idBenutzer', $_SESSION['idBenutzer']);
         $stmt->bindParam(':preis', $totalPrice);
+        $stmt->bindParam(':titel', $titelBuch);
         $stmt->execute();
 
 
