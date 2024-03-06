@@ -61,6 +61,11 @@ if (isset($_POST['remove_from_cart'])) {
 
         $pdo->commit();
         unset($_SESSION['warenkorb']);
+        $stmt = $pdo->prepare("DELETE FROM warenkorb WHERE idBenutzer = :idBenutzer");
+        $stmt->bindParam(':idBenutzer', $_SESSION['idBenutzer']);
+        $stmt->execute();
+
+
 
         echo "Bestellung erfolgreich aufgegeben!";
     } catch (Exception $e) {
