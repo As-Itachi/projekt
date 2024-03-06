@@ -25,6 +25,8 @@ include_once('../include/dbConnection.php');
     li.active a {
         color: white;
     }
+
+    
 </style>
 
 <body>
@@ -118,7 +120,7 @@ include_once('../include/dbConnection.php');
                                     "<form method='POST'>" . //Formular zum löschen erstellt
                                     "<input type='hidden' name='idBuecher' value='" . $zeile['idBuecher'] . "'>" .
                                     "<td>" . "<input type='submit' name='loeschen' value='löschen'>" . "</td>" .
-                                    "</form>" .
+                                    "</form>" . 
                                     "</tr>";
                             }
                         }
