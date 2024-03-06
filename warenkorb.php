@@ -116,8 +116,9 @@ if (isset($_POST['remove_from_cart'])) {
 </head>
 
 <body>
-
+    
     <?php
+    include_once("./navbar/navbar.php");
     // Calculate the total price
     $totalPrice = 0;
     foreach ($cartBooks as $book) {
