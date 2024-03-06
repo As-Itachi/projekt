@@ -42,6 +42,7 @@ if (isset($_POST['remove_from_cart'])) {
     }
 } elseif (isset($_POST['order']) && isset($_SESSION['idBenutzer'])) {
 
+    echo "T";
     $totalPrice = 0;
     foreach ($cartBooks as $book) {
         $quantity = ($quantities[$book['idBuecher']] ?? 1);
@@ -49,9 +50,7 @@ if (isset($_POST['remove_from_cart'])) {
     }
     try {
 
-
         $pdo->beginTransaction();
-
 
         $stmt = $pdo->prepare("INSERT INTO bestellungen (idBenutzer, preis) VALUES (:idBenutzer,:preis)");
         $stmt->bindParam(':idBenutzer', $_SESSION['idBenutzer']);
@@ -60,12 +59,12 @@ if (isset($_POST['remove_from_cart'])) {
 
 
         $pdo->commit();
-        unset($_SESSION['warenkorb']);
+        //unset($_SESSION['warenkorb']);
         $stmt = $pdo->prepare("DELETE FROM warenkorb WHERE idBenutzer = :idBenutzer");
         $stmt->bindParam(':idBenutzer', $_SESSION['idBenutzer']);
         $stmt->execute();
 
-
+        $cartBooks = [];
 
         echo "Bestellung erfolgreich aufgegeben!";
     } catch (Exception $e) {
