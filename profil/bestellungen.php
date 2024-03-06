@@ -55,7 +55,7 @@ require_once('../include/dbConnection.php');
                             <?php
 
                             try {
-                                $statement = $pdo->prepare("SELECT * FROM buecher, bestellungen");
+                                $statement = $pdo->prepare("SELECT * FROM bestellungen");
 
                                 $statement->execute();
 
