@@ -47,48 +47,48 @@ include_once('../include/dbConnection.php');
                 </div>
                 <div class="col-md-10 d-flex flex-column align-items-center">
                     <?php
-                      
 
-                      echo "<div class ='loeschen'>";
-  
-  
-                      if (
-                          isset($_GET['idBenutzer']) && isset($_GET['name']) && isset($_GET['email']) 
-                          && isset($_GET['geburtstag']) && isset($_GET['wohnort']) && isset($_GET['plz']) && isset($_GET['nname'])
-                      ) {
-  
-                          $userId = $_GET['idBenutzer'];
-                          $email = $_GET['email'];
-                          $name = $_GET['name'];
-                          $nname = $_GET['nname'];
-                          $plz = $_GET['plz'];
-                          $wohnort = $_GET['wohnort'];
-                          $geburtstag = $_GET['geburtstag'];
-                         
-                      }
-  
-  
-  
-                      if (isset($_POST['loeschen'])) {
-  
-  
-                          try {
-  
-  
-  
-                              $delete = $pdo->prepare("DELETE FROM buecher WHERE idBenutzer = :idBenutzer");
-  
-                              $delete->bindParam(':idBenutzer', $_POST['idBenutzer']);
-  
-                              $delete->execute();
-  
-  
-                              echo "Konto wurde gelöscht";
-                          } catch (PDOException $e) {
-                              die("Das Konto konnte nicht gelöscht werden!");
-                          }
+
+                    echo "<div class ='loeschen'>";
+
+
+                    if (
+                        isset($_GET['idBenutzer']) && isset($_GET['name']) && isset($_GET['email'])
+                        && isset($_GET['geburtstag']) && isset($_GET['wohnort']) && isset($_GET['plz']) && isset($_GET['nname'])
+                    ) {
+
+                        $userId = $_GET['idBenutzer'];
+                        $email = $_GET['email'];
+                        $name = $_GET['name'];
+                        $nname = $_GET['nname'];
+                        $plz = $_GET['plz'];
+                        $wohnort = $_GET['wohnort'];
+                        $geburtstag = $_GET['geburtstag'];
+                    }
+
+
+
+                    if (isset($_POST['loeschen'])) {
+
+
+                        try {
+
+
+
+                            $delete = $pdo->prepare("DELETE FROM benutzer WHERE idBenutzer = :idBenutzer");
+
+                            $delete->bindParam(':idBenutzer', $_POST['idBenutzer']);
+
+                            $delete->execute();
+
+
+                            echo "Konto wurde gelöscht";
+                        } catch (PDOException $e) {
+                            
+                            die("Das Konto konnte nicht gelöscht werden!");
                         }
-                     
+                    }
+
 
                     try {
                         $statement = $pdo->prepare("SELECT * FROM benutzer");
@@ -108,9 +108,9 @@ include_once('../include/dbConnection.php');
                                     "</tr>" .
 
                                     "<tr>" .  "<th>Email: </th>" . "<td>" . $zeile['email'] . "</td>" .
-                                    
+
                                     "</tr>" .
-                                    
+
 
                                     "<tr>" .  "<th>Geburtstag: </th>" . "<td>" . $zeile['geburtstag'] . "</td>" .
                                     "</tr>" .
@@ -118,18 +118,13 @@ include_once('../include/dbConnection.php');
                                     "<tr>" .  "<th>Wohnort: </th>" . "<td>" . $zeile['wohnort'] . "</td>" .
                                     "</tr>" .
 
-                                    "<tr>" . "<th>PLZ: </th>" . "<td>" . $zeile['plz'] . "</td>" .  "</tr>". "<tr>".
+                                    "<tr>" . "<th>PLZ: </th>" . "<td>" . $zeile['plz'] . "</td>" .  "</tr>" . "<tr>" .
 
                                     "<form method='POST'>" . //Formular zum löschen erstellt
                                     "<input type='hidden' name='idBenutzer' value='" . $zeile['idBenutzer'] . "'>" .
                                     "<td>" .  "<input class='btn btn-danger' name='loeschen' type='submit' value='Konto löschen'>" . "</td>" .
                                     "</form>" . "</tr>";
-
-                                    
-
-                                  
                             }
-                            
                         }
                         echo "</table>";
                     } catch (PDOException $ex) {
