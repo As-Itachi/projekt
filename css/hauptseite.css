@@ -1,3 +1,19 @@
+
+:root {
+  --header-height: 80px;
+  --header-height-min: 40px;
+  --accent-color: mediumpurple;
+  --secondary-color: rgb(101, 77, 150);
+  --dark-color: #2f2f2f;
+  --light-color: #F3F2EC;
+  --body-text-color: #757575;
+  --light-text-color: #afafaf;
+  --dark-text-color: #2f2f2f;
+  --body-font: "Raleway", sans-serif;
+  --heading-font: "Prata", Georgia, serif;
+  --secondary-font: "Playfair Display", Georgia, serif;
+}
+
 body {
   font-family: sans-serif;
   margin: 0;
@@ -129,4 +145,73 @@ h6{
 #new .one img{
   width: 100%;
   height: 100%;
+}
+
+figcaption {
+  height:8.5em;
+  margin-bottom:20px;
+  color: black;
+  font-style: italic;
+  padding: 1px;
+  text-align: center;
+}
+
+
+img {
+
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 10px;
+  
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 15px;
+
+}
+
+.add-to-cart {
+  margin-right: 5px;
+  
+}
+
+.product-item {
+  margin-bottom: 20px;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+}
+
+.add-to-cart{
+  background:white;
+  border:1px solid mediumpurple;
+  color: mediumpurple;
+  padding: 5px 10px;   
+  transition: ease-in-out 0.25s;
+}
+.add-to-cart:hover{
+  background: mediumpurple;
+  color: white;
+  transition: ease-in-out 0.25s;
+}
+.menge{
+  border: 1px solid mediumpurple;
+  color: mediumpurple;
+  padding: 5px 10px;
+  width: 50px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--heading-font);
+  font-weight: 400;
+  line-height: 1.1;
 }

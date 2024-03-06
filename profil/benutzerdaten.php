@@ -10,6 +10,7 @@ require_once('../include/dbConnection.php');
     <title>Knjižara - Profil</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../css/benutzerprofil.css">
     <style>
         .nav-list{
             border-right : 1px solid lightgray;
@@ -62,7 +63,7 @@ require_once('../include/dbConnection.php');
                             <label for="geburtstag" class="form-label">Geburtstag:</label>
                             <input type="date" <?php if (!is_null($_SESSION['plz'])) { ?> required <?php } ?> min="1950-01-01" max="<?php echo date("Y-m-d"); ?>" class="form-control" name="geburtstag" id="geburtstag" value="<?php echo $_SESSION['geburtstag']?>">
                         </div>
-                    <input class="btn btn-primary" name="submit" type="submit" value="Benutzerdaten ändern">
+                    <input class="button" name="submit" type="submit" value="Benutzerdaten ändern">
                     </form>
                 </div>
             </div>

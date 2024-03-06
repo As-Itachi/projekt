@@ -17,19 +17,16 @@ body {
   
   .table td {
     padding: 10px;
+    vertical-align: middle;
   }
-  
-  .total-price {
-    background-color: #eee;
-    padding: 20px;
-    text-align: right;
-    margin-top: 20px;
+  .table form{
+    margin: 0;
   }
-  
-  .btn-danger {
-    background-color: #dc3545;
+
+  .button-crit {
+    background-color: white;
     border: none;
-    color: white;
+    color: red;
     padding: 5px 10px;
     text-align: center;
     text-decoration: none;
@@ -37,8 +34,51 @@ body {
     font-size: 14px;
     margin: 4px 2px;
     cursor: pointer;
+    border: 1px solid red;
+    transition: ease-in-out 0.25s;
   }
   
-  .btn-danger:hover {
-    background-color: #c82333;
+  .button-crit:hover {
+    background-color: red;
+    transition: ease-in-out 0.25s;
+    color: white;
+  }
+
+  .button{
+    background-color: white;
+    border: none;
+    color: mediumpurple;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border: 1px solid mediumpurple;
+    transition: ease-in-out 0.25s;
+  }
+  
+  .button:hover {
+    background-color: mediumpurple;
+    transition: ease-in-out 0.25s;
+    color: white;
+  }
+
+
+  .wrap-group{
+    width: 85%!important;
+    margin: 0 auto;
+    border-collapse: collapse;
+  }
+  
+  .price-group{
+    display: flex;
+    justify-content: space-between;
+  }
+  .action{
+    text-align: right;
+  }
+  th:last-of-type{
+    text-align: right;
   }

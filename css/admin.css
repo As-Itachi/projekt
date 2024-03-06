@@ -1,0 +1,40 @@
+.button{
+    border: 1px solid mediumpurple;
+    color: mediumpurple;
+    padding: 5px 10px;
+    background: white;
+    transition: ease-in-out 0.25s;
+}
+.button:hover{
+    background: mediumpurple;
+    color: white;
+    transition: ease-in-out 0.25s;
+}
+.button-red{
+    border: 1px solid red;
+    color: red;
+    padding: 5px 10px;
+    background: white;
+    transition: ease-in-out 0.25s;
+}
+.button-red:hover{
+    background: red;
+    color: white;
+    transition: ease-in-out 0.25s;
+}
+.active{
+    background: mediumpurple!important;
+    border: 1px solid mediumpurple!important;
+    transition: ease-in-out 0.25s;
+}
+.title{
+    font-weight: bold;
+}
+
+.book{
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+    background-color: #fff;
+}

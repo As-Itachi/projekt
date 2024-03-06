@@ -32,49 +32,16 @@ $allBooks = $stmt->fetchAll();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Knjižara - Template</title>
+    <title>Knjižara - Hauptseite</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6C6RzynM0/CUGx8H2nA81rJR7aYnKagocF2jKuOXg9FfGeT8W1uQW7LGcL7q" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"></script>
-    <link href="./style.css" rel="stylesheet">
+    <link href="./css/hauptseite.css" rel="stylesheet">
 
 
 
     <style>
 
-        figcaption {
-            color: black;
-            font-style: italic;
-            padding: 1px;
-            text-align: center;
-        }
-
-
-        img {
-
-            display: block;
-            margin: 0 auto;
-            margin-bottom: 10px;
-            
-        }
-
-        .buttons {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-top: 15px;
-      
-        }
-
-        .add-to-cart {
-            margin-right: 5px;
-          
-        }
-
-        .menge {
-            width: 50px;
-          
-        }
-
+        
     </style>
 </head>
 
@@ -83,38 +50,26 @@ $allBooks = $stmt->fetchAll();
     <?php
     include_once("navbar/navbar.php");
     ?>
-    <!-- Header -->
-    <header id="header">
-        <!-- Navbar -->
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-10">
-                    <nav id="navbar">
-                        <div class="main-menu stellarnav">
-                            <div class="hamburger">
-                                <span class="bar"></span>
-                                <span class="bar"></span>
-                                <span class="bar"></span>
-                            </div>
-                        </div>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </header>
 
     <!-- Section for the latest books -->
     <section id="featured-books" class="py-5 my-5">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
+                    <div class="col-md-12">
+                        <div class="section-header align-center">
+                            <div class="title"> <span></span> </div>
+                        </div>
+                        <h3 style="text-align: center;font-size:78px; margin-bottom:10px;" class="section-title">Top-Seller</h2>
+                        <hr style="border: 1px solid #000;">
+                    </div>
                     <div class="product-list" data-aos="fade-up">
                         <div class="row">
                             <?php foreach ($latestBooks as $book) : ?>
-                                <div class="col-md-3">
+                                <div class="col-md-3 d-xl-inline-flex">
                                     <div class="product-item">
                                         <figure class="product-style">
-                                            <img src="bilder/<?php echo $book['idBuecher'] ?>.jpg" alt="book" class="product-item">
+                                            <img src="bilder/<?php echo $book['idBuecher'] ?>.jpg" alt="book" class="product-image">
 
                                             <form method="post">
                                                 <input type="hidden" name="product_id" value="<?php echo $book['idBuecher'] ?>">
@@ -130,7 +85,8 @@ $allBooks = $stmt->fetchAll();
                                             <div class="item-price"><?php echo $book['preis'] ?>€</div>
                                         </figcaption>
                                     </div>
-                                </div> <?php endforeach; ?>
+                                </div> 
+                                <?php endforeach; ?>
                         </div>
                     </div>
                 </div>
@@ -144,7 +100,7 @@ $allBooks = $stmt->fetchAll();
                         <div class="section-header align-center">
                             <div class="title"> <span></span> </div>
                         </div>
-                        <h2 style="text-align: center;font-size:78px; margin-bottom:10px;" class="section-title">Beliebte Bücher</h2>
+                        <h3 style="text-align: center;font-size:78px; margin-bottom:10px;" class="section-title">Beliebte Bücher</h2>
                         <hr style="border: 1px solid #000;">
                     </div>
                     <div class="tab-content">
@@ -158,7 +114,7 @@ $allBooks = $stmt->fetchAll();
                                                 
                                             </figcaption>
 
-                                            <figure class="product-style"> <img src="bilder/<?php echo $book['idBuecher'] ?>.jpg" alt="book" class="product-item">
+                                            <figure class="product-style"> <img src="bilder/<?php echo $book['idBuecher'] ?>.jpg" alt="book" class="product-image">
 
                                                 <form method="post"> <input type="hidden" name="product_id" value="<?php echo $book['idBuecher'] ?>">
                                                     <div class="buttons"> <button type="submit" name="add_to_cart" class="add-to-cart">Warenkorb</button>
