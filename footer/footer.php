@@ -1,7 +1,6 @@
 <!doctype html>
 <html lang="en">
     <head>
-        <title>Title</title>
         <!-- Required meta tags -->
         <meta charset="utf-8" />
         <meta
@@ -18,39 +17,10 @@
     </head>
 
     <footer class="text-center text-lg-start bg-body-tertiary text-muted fixed-bottom">
-        <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
-            <!-- Left -->
-            <!--
-            <div class="me-5 d-none d-lg-block">
-                <span>Get connected with us on social networks:</span>
-            </div> -->
-            
-            <div>
-            <a href="" class="me-4 text-reset">
-                <i class="fab fa-facebook-f"></i>
-            </a>
-            <a href="" class="me-4 text-reset">
-                <i class="fab fa-twitter"></i>
-            </a>
-            <a href="" class="me-4 text-reset">
-                <i class="fab fa-google"></i>
-            </a>
-            <a href="" class="me-4 text-reset">
-                <i class="fab fa-instagram"></i>
-            </a>
-            <a href="" class="me-4 text-reset">
-                <i class="fab fa-linkedin"></i>
-            </a>
-            <a href="" class="me-4 text-reset">
-                <i class="fab fa-github"></i>
-            </a>
-            </div>
-            <!-- Right -->
-        </section>
 
         <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
             © Књижара
-            
+
             </div>
 
     </footer>
