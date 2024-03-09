@@ -80,7 +80,7 @@
                     <label for="pwd" class="form-label">Passwort wiederholen:</label>
                     <input type="password" class="form-control" id="pwd" placeholder="Passwort wiederholen" name="pswd2">
                 </div>
-                <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" name="submit" class="btn btn-primary">Registrieren</button>
             </form>
         </div>
     </div>
