@@ -97,7 +97,7 @@
                     <label for="pwd" class="form-label">Passwort:</label>
                     <input type="password" class="form-control" id="pwd" placeholder="Passwort eingeben" name="pswd">
                 </div>
-                <button type="submit" name="submit" class="button">Submit</button>
+                <button type="submit" name="submit"  class="button">Anmelden</button>
             </form>
         </div>
     </div>
