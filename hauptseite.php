@@ -60,7 +60,7 @@ $allBooks = $stmt->fetchAll();
                         <div class="section-header align-center">
                             <div class="title"> <span></span> </div>
                         </div>
-                        <h3 style="text-align: center;font-size:78px; margin-bottom:10px;" class="section-title">Top-Seller</h2>
+                        <h3 style="text-align: center;font-size:78px; margin-bottom:10px;" class="section-title">Top-Seller</h3>
                         <hr style="border: 1px solid #000;">
                     </div>
                     <div class="product-list" data-aos="fade-up">
@@ -100,14 +100,13 @@ $allBooks = $stmt->fetchAll();
                         <div class="section-header align-center">
                             <div class="title"> <span></span> </div>
                         </div>
-                        <h3 style="text-align: center;font-size:78px; margin-bottom:10px;" class="section-title">Beliebte Bücher</h2>
+                        <h3 style="text-align: center;font-size:78px; margin-bottom:10px;" class="section-title">Beliebte Bücher</h3>
                         <hr style="border: 1px solid #000;">
                     </div>
                     <div class="tab-content">
                         <div id="all-genre" data-tab-content class="active">
                             <div class="row"> <?php foreach ($allBooks as $book) : ?> <div class="col-md-3">
                                         <div class="product-item">
-
                                             <figcaption>
                                                 <h3><?php echo $book['titel'] ?></h3> <span><?php echo $book['autor'] ?></span>
                                                 <div class="item-price"><?php echo $book['preis'] ?>€</div>
@@ -121,11 +120,11 @@ $allBooks = $stmt->fetchAll();
                                                         <input type="number" name="menge" class="menge" min="1" max="10" value="1">
                                                     </div>
                                                 </form>
-
                                             </figure>
-
                                         </div>
-                                    </div> <?php endforeach; ?> </div>
+                                    </div>
+                                <?php endforeach; ?>
+                            </div>
                         </div>
                     </div>
                 </div>
