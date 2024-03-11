@@ -42,22 +42,25 @@ if (isset($_POST['remove_from_cart'])) {
     }
 } elseif (isset($_POST['order']) && isset($_SESSION['idBenutzer'])) {
 
-    echo "T";
+  
     $totalPrice = 0;
-    $titelBuch;
+    $titelBuch = "";
     foreach ($cartBooks as $book) {
         $quantity = ($quantities[$book['idBuecher']] ?? 1);
         $totalPrice += $book['preis'] * $quantity;
-        $titelBuch = $book['titel'];
+        $titelBuch = $book['titel'] . ", " . $titelBuch;
     }
+
     try {
 
         $pdo->beginTransaction();
 
+        $cleanStringTitel = substr_replace($titelBuch, "", -2);
+
         $stmt = $pdo->prepare("INSERT INTO bestellungen (idBenutzer, preis, titel) VALUES (:idBenutzer,:preis, :titel)");
         $stmt->bindParam(':idBenutzer', $_SESSION['idBenutzer']);
         $stmt->bindParam(':preis', $totalPrice);
-        $stmt->bindParam(':titel', $titelBuch);
+        $stmt->bindParam(':titel', $cleanStringTitel);
         $stmt->execute();
 
 
@@ -70,6 +73,8 @@ if (isset($_POST['remove_from_cart'])) {
         $cartBooks = [];
 
         echo "Bestellung erfolgreich aufgegeben!";
+
+        
     } catch (Exception $e) {
 
         $pdo->rollback();
@@ -163,9 +168,9 @@ if (isset($_POST['remove_from_cart'])) {
             <div class="total-price">
                 <h3>Gesamtpreis: <?php echo $totalPrice; ?> €</h3>
             </div>
-            <div class="checkout">
-                <button class="button">Zur Kasse gehen</button>
-            </div>
+            <form action="<?php echo $_SERVER['SCRIPT_NAME'] ?>" method="post" class="checkout">
+                <input type="submit" name="order" value="Zur Kasse gehen" class="button">
+            </form>
         </div>
     </div>
 
