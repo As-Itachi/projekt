@@ -1,4 +1,5 @@
 <?php 
+ob_start();
 session_start();
 require_once('../include/dbConnection.php');
 ?>
@@ -98,7 +99,7 @@ require_once('../include/dbConnection.php');
             die();
         }
     }
-    
+    ob_end_flush();
     ?>
 </body>
 </html>

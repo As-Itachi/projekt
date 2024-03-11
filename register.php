@@ -15,6 +15,19 @@
             <a href="./login.php" class="text-center link-light">Anmelden</a>
         </div>
     </div>
+    <?php 
+        if(isset($_GET['delete'])){
+            if($_GET['delete'] == true){
+                ?>
+                <div class="container-fluid w-25">
+                    <div class="mt-4 p-3 bg-success border rounded text-white d-flex flex-column justify-content-center">
+                        <span class="text-center text-white">Ihr Konto wurde erfolgreich gelöscht!</span>
+                    </div>
+                </div>
+                <?php
+            }
+        }
+    ?>
     <?php if(isset($_GET['fields'])) { ?>
         <div class="container-fluid w-25">
                     <div class="mt-4 p-3 bg-danger border rounded text-white d-flex flex-column justify-content-center">
