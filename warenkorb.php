@@ -71,8 +71,9 @@ if (isset($_POST['remove_from_cart'])) {
         $stmt->execute();
 
         $cartBooks = [];
+        
+        echo "Bestellung erfolgreich";
 
-        echo "Bestellung erfolgreich aufgegeben!";
     } catch (Exception $e) {
 
         $pdo->rollback();
