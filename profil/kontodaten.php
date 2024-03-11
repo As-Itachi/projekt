@@ -72,7 +72,7 @@ require_once('../include/dbConnection.php');
                             <br> Ja <input type="radio" name="button" value="1">
                             Nein <input type="radio" name="button" value="0"> <br>
 
-                            <input class="btn btn-danger" name="bestaetigen" type="submit" value="Bestätigen">
+                            <input class="button" name="bestaetigen" type="submit" value="Bestätigen">
 
                         </form>
 

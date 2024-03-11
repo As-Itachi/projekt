@@ -102,6 +102,7 @@
                         if ($statement->rowCount() > 0) {
                             while ($zeile = $statement->fetch()) {
                                 echo
+                                "<div class='col-md-10 d-flex flex-column '>" .
                                 "<tr>" . "<th>Vorname: </th>" . "<td>" . $zeile['name'] . "</td>" .
                                     "</tr>" .
 
@@ -123,8 +124,9 @@
 
                                     "<form method='POST'>" . //Formular zum löschen erstellt
                                     "<input type='hidden' name='idBenutzer' value='" . $zeile['idBenutzer'] . "'>" .
-                                    "<td>" .  "<input class='btn btn-danger' name='loeschen' type='submit' value='Konto löschen'>" . "</td>" .
-                                    "</form>" . "</tr>";
+                                    "<td>" .  "<input class='button' name='loeschen' type='submit' value='Konto löschen'>" . "</td>" .
+                                    "</form>" . "</tr>"
+                                    . "</div>";
                             }
                         }
                         echo "</table>";

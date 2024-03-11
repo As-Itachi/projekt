@@ -1,7 +1,7 @@
 <?php
 session_start();
 if(!isset($_SESSION['email'])){
-    echo "Du bist nicht angemeldet!";
+    header("Location: login.php");
 } else{
     $_SESSION = array();
     session_destroy();
