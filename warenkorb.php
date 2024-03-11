@@ -4,17 +4,6 @@ require_once('include/dbConnection.php');
 
 $userId = isset($_SESSION['idBenutzer']) ? $_SESSION['idBenutzer'] : 0;
 
-// Check if all required columns in the benutzer table have values
-$stmt = $pdo->prepare("SELECT COUNT(*) FROM benutzer WHERE idBenutzer = :idBenutzer AND name IS NOT NULL AND email IS NOT NULL AND passwort IS NOT NULL AND geburtstag IS NOT NULL AND wohnort IS NOT NULL AND plz IS NOT NULL AND nname IS NOT NULL");
-$stmt->bindParam(':idBenutzer', $userId);
-$stmt->execute();
-$count = $stmt->fetchColumn();
-
-if ($count == 0) {
-    echo "Fehler: Benutzerdaten sind nicht vollständig.";
-    exit;
-}
-
 // Rest of the code
 $stmt = $pdo->prepare("SELECT idBuecher FROM warenkorb WHERE idBenutzer = :idBenutzer");
 $stmt->bindParam(':idBenutzer', $userId);
@@ -55,7 +44,16 @@ if (isset($_POST['remove_from_cart'])) {
     }
 } elseif (isset($_POST['order']) && isset($_SESSION['idBenutzer'])) {
 
-    
+    // Check if all required columns in the benutzer table have values
+    $stmt = $pdo->prepare("SELECT COUNT(*) FROM benutzer WHERE idBenutzer = :idBenutzer AND name IS NOT NULL AND email IS NOT NULL AND passwort IS NOT NULL AND geburtstag IS NOT NULL AND wohnort IS NOT NULL AND plz IS NOT NULL AND nname IS NOT NULL");
+    $stmt->bindParam(':idBenutzer', $userId);
+    $stmt->execute();
+    $count = $stmt->fetchColumn();
+
+    if ($count == 0) {
+        echo "Fehler: Benutzerdaten sind nicht vollständig.";
+        exit;
+    }
 
     $totalPrice = 0;
     $titelBuch = "";
@@ -64,7 +62,6 @@ if (isset($_POST['remove_from_cart'])) {
         $totalPrice += $book['preis'] * $quantity;
         $titelBuch = $book['titel'] . ", " . $titelBuch;
     }
-    
 
     try {
 
@@ -76,6 +73,7 @@ if (isset($_POST['remove_from_cart'])) {
         $stmt->bindParam(':idBenutzer', $_SESSION['idBenutzer']);
         $stmt->bindParam(':preis', $totalPrice);
         $stmt->bindParam(':titel', $cleanStringTitel);
+       
         $stmt->execute();
 
         $pdo->commit();
@@ -163,7 +161,8 @@ if (isset($_POST['remove_from_cart'])) {
                         <td><?php echo htmlspecialchars($book['autor']); ?></td>
                         <td><?php echo htmlspecialchars($book['preis']); ?> €</td>
                         <td>
-                            <?php $quantity = ($quantities[$book['idBuecher']] ?? 1);
+
+                        <?php $quantity = ($quantities[$book['idBuecher']] ?? 1);
                             echo htmlspecialchars($quantity); ?>
                         </td>
                         <td class="action">
