@@ -4,6 +4,7 @@ require_once('include/dbConnection.php');
 
 $userId = isset($_SESSION['idBenutzer']) ? $_SESSION['idBenutzer'] : 0;
 
+// Check if all required columns in the benutzer table have values
 $stmt = $pdo->prepare("SELECT COUNT(*) FROM benutzer WHERE idBenutzer = :idBenutzer AND name IS NOT NULL AND email IS NOT NULL AND passwort IS NOT NULL AND geburtstag IS NOT NULL AND wohnort IS NOT NULL AND plz IS NOT NULL AND nname IS NOT NULL");
 $stmt->bindParam(':idBenutzer', $userId);
 $stmt->execute();
@@ -14,11 +15,11 @@ if ($count == 0) {
     exit;
 }
 
+// Rest of the code
 $stmt = $pdo->prepare("SELECT idBuecher FROM warenkorb WHERE idBenutzer = :idBenutzer");
 $stmt->bindParam(':idBenutzer', $userId);
 $stmt->execute();
 $booksInCart = $stmt->fetchAll(PDO::FETCH_COLUMN);
-
 
 if (!empty($booksInCart)) {
     try {
@@ -54,7 +55,8 @@ if (isset($_POST['remove_from_cart'])) {
     }
 } elseif (isset($_POST['order']) && isset($_SESSION['idBenutzer'])) {
 
-  
+    
+
     $totalPrice = 0;
     $titelBuch = "";
     foreach ($cartBooks as $book) {
@@ -62,6 +64,7 @@ if (isset($_POST['remove_from_cart'])) {
         $totalPrice += $book['preis'] * $quantity;
         $titelBuch = $book['titel'] . ", " . $titelBuch;
     }
+    
 
     try {
 
@@ -75,7 +78,6 @@ if (isset($_POST['remove_from_cart'])) {
         $stmt->bindParam(':titel', $cleanStringTitel);
         $stmt->execute();
 
-
         $pdo->commit();
         //unset($_SESSION['warenkorb']);
         $stmt = $pdo->prepare("DELETE FROM warenkorb WHERE idBenutzer = :idBenutzer");
@@ -86,7 +88,6 @@ if (isset($_POST['remove_from_cart'])) {
 
         echo "Bestellung erfolgreich aufgegeben!";
 
-        
     } catch (Exception $e) {
 
         $pdo->rollback();
@@ -94,7 +95,6 @@ if (isset($_POST['remove_from_cart'])) {
         echo $stmt->queryString;
     }
 }
-
 
 ?>
 
@@ -203,15 +203,16 @@ if (isset($_POST['remove_from_cart'])) {
 
                 const input = document.createElement('input');
                 input.type = 'hidden';
-                input.name = 'remove_from_cart';
-                input.value = 'true';
+                input.name = 'idBuecher';
+                input.value = bookId;
                 form.appendChild(input);
 
-                const bookInput = document.createElement('input');
-                bookInput.type = 'hidden';
-                bookInput.name = 'idBuecher';
-                bookInput.value = bookId;
-                form.appendChild(bookInput);
+                const button = document.createElement('button');
+                button.type = 'submit';
+                button.name = 'remove_from_cart';
+                button.value = 'true';
+                button.textContent = 'Entfernen';
+                form.appendChild(button);
 
                 document.body.appendChild(form);
                 form.submit();
