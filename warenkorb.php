@@ -3,10 +3,22 @@ session_start();
 require_once('include/dbConnection.php');
 
 $userId = isset($_SESSION['idBenutzer']) ? $_SESSION['idBenutzer'] : 0;
+
+$stmt = $pdo->prepare("SELECT COUNT(*) FROM benutzer WHERE idBenutzer = :idBenutzer AND name IS NOT NULL AND email IS NOT NULL AND passwort IS NOT NULL AND geburtstag IS NOT NULL AND wohnort IS NOT NULL AND plz IS NOT NULL AND nname IS NOT NULL");
+$stmt->bindParam(':idBenutzer', $userId);
+$stmt->execute();
+$count = $stmt->fetchColumn();
+
+if ($count == 0) {
+    echo "Fehler: Benutzerdaten sind nicht vollständig.";
+    exit;
+}
+
 $stmt = $pdo->prepare("SELECT idBuecher FROM warenkorb WHERE idBenutzer = :idBenutzer");
 $stmt->bindParam(':idBenutzer', $userId);
 $stmt->execute();
 $booksInCart = $stmt->fetchAll(PDO::FETCH_COLUMN);
+
 
 if (!empty($booksInCart)) {
     try {
