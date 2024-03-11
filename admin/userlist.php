@@ -47,10 +47,13 @@
                     </ul>
                 </div>
                 <div class="col-md-10 d-flex flex-column align-items-center">
+                    <div class="row">
+
+                    
                     <?php
 
 
-                    echo "<div class ='loeschen'>";
+                    
 
 
                     if (
@@ -96,36 +99,38 @@
 
                         $statement->execute();
 
-                        echo "<table>";
+                        
 
 
                         if ($statement->rowCount() > 0) {
                             while ($zeile = $statement->fetch()) {
                                 echo
-                                "<div class='col-md-10 d-flex flex-column '>" .
-                                "<tr>" . "<th>Vorname: </th>" . "<td>" . $zeile['name'] . "</td>" .
-                                    "</tr>" .
+                                "<div class='col-md-6 d-flex flex-column'>" .
+                                "<table>" .
+                                    "<tr>" . "<th>Vorname: </th>" . "<td>" . $zeile['name'] . "</td>" .
+                                        "</tr>" .
 
-                                    "<tr>" .  "<th>Nachname: </th>" . "<td>" . $zeile['nname'] . "</td>" .
-                                    "</tr>" .
+                                        "<tr>" .  "<th>Nachname: </th>" . "<td>" . $zeile['nname'] . "</td>" .
+                                        "</tr>" .
 
-                                    "<tr>" .  "<th>Email: </th>" . "<td>" . $zeile['email'] . "</td>" .
+                                        "<tr>" .  "<th>Email: </th>" . "<td>" . $zeile['email'] . "</td>" .
 
-                                    "</tr>" .
+                                        "</tr>" .
 
 
-                                    "<tr>" .  "<th>Geburtstag: </th>" . "<td>" . $zeile['geburtstag'] . "</td>" .
-                                    "</tr>" .
+                                        "<tr>" .  "<th>Geburtstag: </th>" . "<td>" . $zeile['geburtstag'] . "</td>" .
+                                        "</tr>" .
 
-                                    "<tr>" .  "<th>Wohnort: </th>" . "<td>" . $zeile['wohnort'] . "</td>" .
-                                    "</tr>" .
+                                        "<tr>" .  "<th>Wohnort: </th>" . "<td>" . $zeile['wohnort'] . "</td>" .
+                                        "</tr>" .
 
-                                    "<tr>" . "<th>PLZ: </th>" . "<td>" . $zeile['plz'] . "</td>" .  "</tr>" . "<tr>" .
+                                        "<tr>" . "<th>PLZ: </th>" . "<td>" . $zeile['plz'] . "</td>" .  "</tr>" . "<tr>" .
 
-                                    "<form method='POST'>" . //Formular zum löschen erstellt
-                                    "<input type='hidden' name='idBenutzer' value='" . $zeile['idBenutzer'] . "'>" .
-                                    "<td>" .  "<input class='button' name='loeschen' type='submit' value='Konto löschen'>" . "</td>" .
-                                    "</form>" . "</tr>"
+                                        "<form method='POST'>" . //Formular zum löschen erstellt
+                                        "<input type='hidden' name='idBenutzer' value='" . $zeile['idBenutzer'] . "'>" .
+                                        "<td>" .  "<input class='button' name='loeschen' type='submit' value='Konto löschen'>" . "</td>" .
+                                        "</form>" . "</tr>" .
+                                        "</table>"
                                     . "</div>";
                             }
                         }
@@ -139,6 +144,7 @@
 
 
                     ?>
+                    </div>
                 </div>
             </div>
         </div>
