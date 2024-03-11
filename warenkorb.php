@@ -1,4 +1,5 @@
 <?php
+ob_start();
 session_start();
 require_once('include/dbConnection.php');
 
@@ -205,7 +206,9 @@ if (isset($_POST['remove_from_cart'])) {
             }
         }
     </script>
-
+    <?php
+            ob_end_flush();
+    ?>
 </body>
 
 </html>
