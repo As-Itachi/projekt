@@ -1,3 +1,4 @@
+
 <?php
 ob_start();
 session_start();
@@ -72,8 +73,9 @@ if (isset($_POST['remove_from_cart'])) {
         $stmt->execute();
 
         $cartBooks = [];
+        
+        echo '<div class="success-message" style="font-size: 32px; font-weight: bold; text-align: center; color: mediumpurple; margin-top: 20px;">Bestellung erfolgreich</div>';
 
-        echo "Bestellung erfolgreich aufgegeben!";
     } catch (Exception $e) {
 
         $pdo->rollback();
@@ -120,6 +122,7 @@ if (isset($_POST['remove_from_cart'])) {
             }
         }
     </script>
+    
 </head>
 
 <body>
