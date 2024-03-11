@@ -42,7 +42,7 @@ if (isset($_POST['remove_from_cart'])) {
     }
 } elseif (isset($_POST['order']) && isset($_SESSION['idBenutzer'])) {
 
-    echo "T";
+  
     $totalPrice = 0;
     $titelBuch = "";
     foreach ($cartBooks as $book) {
@@ -55,10 +55,12 @@ if (isset($_POST['remove_from_cart'])) {
 
         $pdo->beginTransaction();
 
+        $cleanStringTitel = substr_replace($titelBuch, "", -2);
+
         $stmt = $pdo->prepare("INSERT INTO bestellungen (idBenutzer, preis, titel) VALUES (:idBenutzer,:preis, :titel)");
         $stmt->bindParam(':idBenutzer', $_SESSION['idBenutzer']);
         $stmt->bindParam(':preis', $totalPrice);
-        $stmt->bindParam(':titel', substr_replace($titelBuch, "", -2));
+        $stmt->bindParam(':titel', $cleanStringTitel);
         $stmt->execute();
 
 
