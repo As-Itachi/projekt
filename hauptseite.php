@@ -116,7 +116,8 @@ $allBooks = $stmt->fetchAll();
                                             <figure class="product-style"> <img src="bilder/<?php echo $book['idBuecher'] ?>.jpg" alt="book" class="product-image">
 
                                                 <form method="post"> <input type="hidden" name="product_id" value="<?php echo $book['idBuecher'] ?>">
-                                                    <div class="buttons"> <button type="submit" name="add_to_cart" class="add-to-cart">Warenkorb</button>
+                                                    <div class="buttons"> 
+                                                        <button type="submit" name="add_to_cart" class="add-to-cart">Warenkorb</button>
                                                         <input type="number" name="menge" class="menge" min="1" max="10" value="1">
                                                     </div>
                                                 </form>

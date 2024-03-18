@@ -12,6 +12,21 @@ if (isset($_GET['search'])) {
     header("location: hauptseite.php");
 }
 
+if (isset($_POST['add_to_cart'])) {
+    $productId = $_POST['product_id'];
+    $userId = $_SESSION['idBenutzer'];
+    $quantity = $_POST['menge'];
+
+    $stmt = $pdo->prepare("INSERT INTO warenkorb (idBenutzer, idBuecher, menge) VALUES (:idBenutzer, :idBuecher, :menge)");
+    $stmt->bindParam(':idBenutzer', $userId);
+    $stmt->bindParam(':idBuecher', $productId);
+    $stmt->bindParam(':menge', $quantity);
+    $stmt->execute();
+
+    header('Location: hauptseite.php');
+    exit;
+}
+
 ?>
 
 <!DOCTYPE html>
