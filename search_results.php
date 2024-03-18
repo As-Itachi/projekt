@@ -11,6 +11,7 @@ if (isset($_GET['search'])) {
 } else {
     header("location: hauptseite.php");
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -26,6 +27,70 @@ if (isset($_GET['search'])) {
 
 <body>
 
+    <style>
+        img {
+
+            display: block;
+            margin: 0 auto;
+            margin-bottom: 10px;
+            height: 350px;
+            width: 250px;
+            height: 350px;
+            width: 250px;
+
+        }
+
+        .buttons {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 15px;
+
+        }
+
+        .add-to-cart {
+            margin-right: 5px;
+
+        }
+
+        .product-item {
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+            background-color: #fff;
+        }
+
+        .add-to-cart {
+            background: white;
+            border: 1px solid mediumpurple;
+            color: mediumpurple;
+            padding: 5px 10px;
+            transition: ease-in-out 0.25s;
+        }
+
+        .add-to-cart:hover {
+            background: mediumpurple;
+            color: white;
+            transition: ease-in-out 0.25s;
+        }
+
+        .menge {
+            border: 1px solid mediumpurple;
+            color: mediumpurple;
+            padding: 5px 10px;
+            width: 50px;
+        }
+
+        figcaption {
+            height: 8.5em;
+            margin-bottom: 20px;
+            color: black;
+            font-style: italic;
+            padding: 1px;
+            text-align: center;
+        }
+    </style>
 
     <?php
     include_once("navbar/navbar.php");
