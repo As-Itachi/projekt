@@ -93,7 +93,9 @@ require_once('../include/dbConnection.php');
             $_SESSION['wohnort'] = $wohnort;
             $_SESSION['geburtstag'] = $geburtstag;
             $_SESSION['plz'] = $plz;
+            
             header("Location: ./benutzerdaten.php?success=1");
+
         } catch(PDOException $e) {
             echo "Error: " . $e->getMessage();
             die();
