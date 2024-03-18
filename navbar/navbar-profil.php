@@ -23,14 +23,6 @@
                             </svg></a>
                     </li>
 
-                    <li class="nav-item">
-
-                        <form action="search_results.php" method="get" class="d-flex ms-3">
-                            <input class="form-control me-2" type="search" name="search" placeholder="Suche nach Buchtitel" aria-label="Suche">
-                            <button class="btn btn-outline-success" type="submit">Suchen</button>
-                        </form>
-
-                    </li>
                 <?php } else { ?>
 
                     <li class="nav-item">
