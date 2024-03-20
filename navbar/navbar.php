@@ -14,6 +14,7 @@
                     </a>
                 </li>
                 <?php if (isset($_SESSION['email'])) { ?>
+
                     <li class="nav-item">
                         <a class="nav-link" href="./profil/">
                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person-fill-gear" viewBox="0 0 16 16">
@@ -38,6 +39,7 @@
                     </li>
                 <?php } ?>
                 <?php if (isset($_SESSION['istAdmin'])) {
+                    
                     if ($_SESSION['istAdmin'] == 1) { ?>
                         <li class="nav-item">
                             <a class="nav-link" href="./admin/">
@@ -48,14 +50,14 @@
                         </li>
                 <?php }
                 } ?>
-
+                <?php if ($_SERVER['SCRIPT_NAME'] == "/projekt/hauptseite.php") { ?>
                 <li class="nav-item">
                     <form action="search_results.php" method="get" class="d-flex ms-3">
                         <input class="form-control me-2" type="search" name="search" placeholder="Suche nach Buchtitel" aria-label="Suche">
                         <button class="btn btn-outline-success" type="submit">Suchen</button>
                     </form>
                 </li>
-
+                <?php } ?>
             </ul>
             <a class="nav-link" href="./logout.php">
                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-door-closed" viewBox="0 0 16 16">
